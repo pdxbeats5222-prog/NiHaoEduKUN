@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --color-brand-gold: #0071e3;
+  --color-brand-gold-hover: #0077ed;
+  --color-brand-red: #ff3b30;
+  --color-brand-dark: #1d1d1f;
+  --color-brand-p: #86868b;
+  --color-cream-50: #ffffff;
+  --color-cream-100: #f5f5f7;
+  --color-cream-200: #e8e8ed;
+}
+
+body {
+  background-color: var(--color-cream-50);
+  color: var(--color-brand-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-brand-dark);
+  letter-spacing: -0.02em;
+}
