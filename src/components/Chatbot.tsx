@@ -59,7 +59,7 @@ export default function Chatbot() {
         href="https://instagram.com/nihaochinaeducation"
         target="_blank"
         rel="noopener noreferrer"
-        className={`fixed bottom-[9.5rem] right-6 z-50 w-14 h-14 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl ${isOpen ? 'hidden' : 'flex'}`}
+        className={`fixed bottom-[12rem] right-6 z-50 w-14 h-14 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl ${isOpen ? 'hidden' : 'flex'}`}
         aria-label="Follow on Instagram"
       >
         <Instagram className="w-7 h-7" />
@@ -70,7 +70,7 @@ export default function Chatbot() {
         href="https://wa.me/8615968141445"
         target="_blank"
         rel="noopener noreferrer"
-        className={`fixed bottom-[5.5rem] right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl ${isOpen ? 'hidden' : 'flex'}`}
+        className={`fixed bottom-[7.5rem] right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl ${isOpen ? 'hidden' : 'flex'}`}
         aria-label="Contact on WhatsApp"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
@@ -81,12 +81,23 @@ export default function Chatbot() {
       {/* Futuristic AI Chat Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(220,38,38,0.5)] hover:scale-110 transition-all duration-300 hover:shadow-[0_0_40px_rgba(220,38,38,0.8)] group overflow-hidden ${isOpen ? 'hidden' : 'flex'}`}
+        className={`fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full flex items-center justify-center group ${isOpen ? 'hidden' : 'flex'}`}
         aria-label="Open AI Assistant"
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 animate-spin-slow opacity-80"></div>
-        <div className="absolute inset-1 bg-[#1d1d1f] rounded-full z-10 flex items-center justify-center">
-          <Sparkles className="w-7 h-7 text-red-500 group-hover:text-amber-400 transition-colors" />
+        {/* Outer glowing blur */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 to-amber-500 blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+        
+        {/* Spinning gradient ring */}
+        <div className="absolute inset-0 rounded-full overflow-hidden">
+          <div 
+            className="absolute inset-[-50%] animate-spin bg-[conic-gradient(from_0deg,transparent_0%,#ef4444_30%,#f59e0b_50%,#ef4444_70%,transparent_100%)]" 
+            style={{ animationDuration: '3s' }}
+          ></div>
+        </div>
+        
+        {/* Inner dark circle */}
+        <div className="absolute inset-[2px] bg-[#1d1d1f] rounded-full z-10 flex items-center justify-center border border-white/10 shadow-[inset_0_0_15px_rgba(0,0,0,0.8)]">
+          <Sparkles className="w-7 h-7 text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)] group-hover:scale-110 group-hover:text-amber-300 group-hover:drop-shadow-[0_0_15px_rgba(251,191,36,1)] transition-all duration-300" />
         </div>
       </button>
 
