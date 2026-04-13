@@ -66,7 +66,7 @@ export default function Home() {
         >
           <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
             <img 
-              src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2940&auto=format&fit=crop" 
+              src="https://lh3.googleusercontent.com/u/0/d/1eyG9Rf_YkKg0V9ld0_1a8V6bdGG65srl" 
               alt="Students outside Chinese university" 
               referrerPolicy="no-referrer"
               className="w-full h-[50vh] md:h-[70vh] object-cover rounded-[1.5rem]"
@@ -135,9 +135,11 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-red-600 to-amber-500 rounded-[2rem] transform translate-x-4 translate-y-4 opacity-20 blur-lg"></div>
+              {/* Founder Image */}
               <img 
-                src="/founder.jpg" 
+                src="https://lh3.googleusercontent.com/u/0/d/1DtVITjc86j6Rqtm-TKWWot2-ZCVRFaFO" 
                 alt="Shiqi - Founder" 
+                referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-full object-cover h-[600px] relative z-10 border border-white/50"
               />
             </div>
@@ -163,6 +165,59 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: The Nihao Advantage */}
+      <section className="py-32 bg-white text-[#1d1d1f] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-red-100 to-transparent blur-3xl rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-amber-100 to-transparent blur-3xl rounded-full pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+              Why Choose <span className="bg-gradient-to-r from-red-600 to-amber-500 bg-clip-text text-transparent">Nihao.edu?</span>
+            </h2>
+            <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
+              We aren't just another overseas agency. We are your local insiders, dedicated to your success from application to graduation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Local HQ in Hangzhou",
+                desc: "We are based right here in China. When policies change or issues arise, we are on the ground to handle them immediately, not 5,000 miles away."
+              },
+              {
+                title: "Direct University Ties",
+                desc: "No middlemen. We work directly with admissions offices at top universities, ensuring your application gets priority review and faster processing."
+              },
+              {
+                title: "Alumni-Led Support",
+                desc: "Our team consists of former international students who have navigated the exact same challenges you will face. We know the system inside and out."
+              },
+              {
+                title: "End-to-End Care",
+                desc: "Other agencies stop when you get your visa. We provide ongoing support—from airport pickup to dorm setup and opening your local bank account."
+              }
+            ].map((advantage, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="bg-[#faf9f6] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 rounded-[2rem] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-amber-500 rounded-full flex items-center justify-center mb-6 text-xl font-bold text-white shadow-md">
+                  {idx + 1}
+                </div>
+                <h3 className="text-2xl font-semibold mb-3">{advantage.title}</h3>
+                <p className="text-[#5a5a5c] leading-relaxed">{advantage.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -225,63 +280,177 @@ export default function Home() {
       </section>
 
       {/* Section 5: Real Student Life in China */}
-      <section id="vlogs" className="py-32 bg-[#faf9f6] relative overflow-hidden">
-        {/* Subtle background motif */}
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #b91c1c 1px, transparent 0)', backgroundSize: '48px 48px' }}></div>
+      <section id="vlogs" className="py-32 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #b91c1c 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">Real Student Life in China</h2>
-            <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
-              Immerse yourself in the vibrant culture, futuristic cities, and world-class campuses through the eyes of our students.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="max-w-2xl">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-1.5 bg-red-50 text-red-600 rounded-full text-sm font-semibold tracking-wide uppercase mb-4"
+              >
+                The Experience
+              </motion.span>
+              <h2 className="text-5xl md:text-7xl font-bold text-[#1d1d1f] tracking-tight leading-[0.9] mb-6">
+                Life in <span className="text-red-600 italic font-serif">China.</span>
+              </h2>
+              <p className="text-xl text-[#5a5a5c] leading-relaxed">
+                Immerse yourself in vibrant culture, futuristic cities, and world-class campuses through the eyes of our students.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-right">
+                <div className="text-3xl font-bold text-[#1d1d1f]">500+</div>
+                <div className="text-sm text-[#86868b] uppercase tracking-wider font-semibold">Vlogs Shared</div>
+              </div>
+              <div className="w-px h-12 bg-gray-200"></div>
+              <div className="text-right">
+                <div className="text-3xl font-bold text-[#1d1d1f]">10M+</div>
+                <div className="text-sm text-[#86868b] uppercase tracking-wider font-semibold">Total Views</div>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-            {/* Large Feature Item */}
-            <a href="https://youtube.com/shorts/Gqv3Y-iKki8?si=YlnKTuazCiaaYd6D" target="_blank" rel="noopener noreferrer" className="md:col-span-2 md:row-span-2 relative rounded-[2rem] overflow-hidden group block">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[1000px]">
+            {/* Main Feature: YouTube Short */}
+            <motion.a 
+              href="https://youtube.com/shorts/Gqv3Y-iKki8?si=YlnKTuazCiaaYd6D" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="md:col-span-2 md:row-span-2 relative rounded-[2.5rem] overflow-hidden group block shadow-2xl"
+            >
               <img 
-                src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?q=80&w=2940&auto=format&fit=crop" 
-                alt="Vlog Thumbnail" 
+                src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2940&auto=format&fit=crop" 
+                alt="Chinese University Life" 
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-6 inline-block transition-transform duration-300 group-hover:translate-y-[-8px]">
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg cursor-pointer group-hover:bg-red-700 transition-colors">
-                      <Play className="w-5 h-5 text-white ml-1 fill-current" />
-                    </div>
-                    <span className="text-white font-medium tracking-wide uppercase text-sm">Featured Vlog</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">A Day in the Life at Tsinghua University</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="w-24 h-24 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 scale-75 group-hover:scale-100 transition-transform duration-500">
+                  <Play className="w-10 h-10 text-white fill-current ml-1" />
                 </div>
               </div>
-            </a>
+              <div className="absolute bottom-0 left-0 right-0 p-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full uppercase tracking-widest">Featured</div>
+                  <span className="text-white/80 text-sm font-medium">CJLU Campus Tour</span>
+                </div>
+                <h3 className="text-3xl font-bold text-white leading-tight">A Day in the Life at <br />China Jiliang University</h3>
+              </div>
+            </motion.a>
 
-            {/* Grid Items */}
-            {[
-              { img: "https://images.unsplash.com/photo-1558862107-d49ef2a04d72?q=80&w=2940&auto=format&fit=crop", title: "Campus Architecture", span: "md:col-span-1 md:row-span-1" },
-              { img: "https://images.unsplash.com/photo-1528701202534-1926618d3665?q=80&w=2940&auto=format&fit=crop", title: "Street Food Adventures", span: "md:col-span-1 md:row-span-1" },
-              { img: "https://images.unsplash.com/photo-1543097692-fa13c6cd8595?q=80&w=2940&auto=format&fit=crop", title: "High-Speed Rail Travel", span: "md:col-span-1 md:row-span-1" },
-              { img: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=2940&auto=format&fit=crop", title: "Modern Cityscapes", span: "md:col-span-2 md:row-span-1" },
-            ].map((item, idx) => (
-              <div key={idx} className={`${item.span} relative rounded-[2rem] overflow-hidden group`}>
-                <img 
-                  src={item.img} 
-                  alt={item.title} 
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-xl px-4 py-2 inline-block">
-                    <h3 className="text-white font-medium">{item.title}</h3>
-                  </div>
+            {/* Secondary Video */}
+            <motion.a 
+              href="https://youtube.com/shorts/3n_lS_7_X-M" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="md:col-span-1 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group block shadow-xl"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2940&auto=format&fit=crop" 
+                alt="Student Life in China" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-3">
+                  <Play className="w-4 h-4 text-white fill-current ml-0.5" />
                 </div>
+                <h3 className="text-lg font-bold text-white">Study Sessions</h3>
               </div>
-            ))}
+            </motion.a>
+
+            {/* Image: City Life */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="md:col-span-1 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1599591037488-3a543175bc20?q=80&w=2940&auto=format&fit=crop" 
+                alt="Hangzhou City Life" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-lg font-bold text-white">Hangzhou Life</h3>
+              </div>
+            </motion.div>
+
+            {/* Image: Modern China */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="md:col-span-2 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?q=80&w=2940&auto=format&fit=crop" 
+                alt="Modern China Skyline" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <h3 className="text-2xl font-bold text-white">The Future is Here.</h3>
+              </div>
+            </motion.div>
+
+            {/* Extra Item: Food/Culture */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="md:col-span-2 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2940&auto=format&fit=crop" 
+                alt="Chinese Food Culture" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <h3 className="text-2xl font-bold text-white">Culinary Journeys</h3>
+              </div>
+            </motion.div>
+
+            {/* Extra Item: Campus Life */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="md:col-span-2 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1523050335392-9bf5674293ca?q=80&w=2940&auto=format&fit=crop" 
+                alt="University Campus" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <h3 className="text-2xl font-bold text-white">World-Class Facilities</h3>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -48,31 +48,58 @@ export default function Services() {
       </div>
 
       {/* On-Ground Integration */}
-      <div className="bg-[#1d1d1f] py-32 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#faf9f6] py-32 text-[#1d1d1f] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #8b0000 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">On-Ground Integration & Landing Support.</h2>
-            <p className="text-xl text-[#86868b] max-w-3xl mx-auto">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-1.5 bg-red-50 text-red-600 rounded-full text-sm font-semibold tracking-wide uppercase mb-4"
+            >
+              48-Hour Landing Support
+            </motion.span>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">On-Ground Integration.</h2>
+            <p className="text-xl text-[#5a5a5c] max-w-3xl mx-auto leading-relaxed">
               Our job doesn't end when you get your visa. We ensure you are fully set up and comfortable within your first 48 hours in China.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#2d2d2f] p-10 rounded-[2rem]">
-              <PlaneLanding className="w-10 h-10 text-white mb-6" />
-              <h3 className="text-xl font-semibold mb-4">Arrival Services</h3>
-              <p className="text-[#86868b] leading-relaxed">Personalized airport greeting and pickup directly at Hangzhou Xiaoshan International Airport (HGH).</p>
-            </div>
-            <div className="bg-[#2d2d2f] p-10 rounded-[2rem]">
-              <Smartphone className="w-10 h-10 text-white mb-6" />
-              <h3 className="text-xl font-semibold mb-4">48-Hour Digital Setup</h3>
-              <p className="text-[#86868b] leading-relaxed">Immediate assistance with local SIM cards, bank accounts, and activating mobile payments (Alipay & WeChat Pay).</p>
-            </div>
-            <div className="bg-[#2d2d2f] p-10 rounded-[2rem]">
-              <HomeIcon className="w-10 h-10 text-white mb-6" />
-              <h3 className="text-xl font-semibold mb-4">Ongoing Support</h3>
-              <p className="text-[#86868b] leading-relaxed">Vetted dormitory/apartment sourcing, Ping An medical insurance enrollment, police registration, and senior alumni mentorship.</p>
-            </div>
+            {[
+              {
+                icon: <PlaneLanding className="w-10 h-10" />,
+                title: "Arrival Services",
+                desc: "Personalized airport greeting and pickup directly at Hangzhou Xiaoshan International Airport (HGH)."
+              },
+              {
+                icon: <Smartphone className="w-10 h-10" />,
+                title: "Digital Setup",
+                desc: "Immediate assistance with local SIM cards, bank accounts, and activating mobile payments (Alipay & WeChat Pay)."
+              },
+              {
+                icon: <HomeIcon className="w-10 h-10" />,
+                title: "Ongoing Support",
+                desc: "Vetted dormitory/apartment sourcing, Ping An medical insurance enrollment, and senior alumni mentorship."
+              }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2"
+              >
+                <div className="w-16 h-16 bg-[#f5f5f7] rounded-2xl flex items-center justify-center text-[#1d1d1f] mb-8 group-hover:bg-red-600 group-hover:text-white transition-colors duration-500">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
+                <p className="text-[#86868b] leading-relaxed text-lg">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

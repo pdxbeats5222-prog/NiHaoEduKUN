@@ -7,19 +7,19 @@ export default function About() {
       name: "Shiqi",
       role: "Founder & CEO",
       desc: "Local Institutional Authority specializing in University Admissions & Government Regulations.",
-      image: "/founder.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1DtVITjc86j6Rqtm-TKWWot2-ZCVRFaFO"
     },
     {
       name: "Kun",
       role: "India Lead",
       desc: "South Asia Strategic Partner, expert in HSK Training & Student Integration.",
-      image: "/kun.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1lhx6ceasYSrlWsBk7vy1BDdTzxq_r7_I"
     },
     {
       name: "Tani",
       role: "Mexico Lead",
       desc: "Latin American Liaison, managing bilingual transitions & cultural immersion.",
-      image: "/tani.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/13Dc-hTPDkzS5rFse0nxkjbIJA6d9rR0m"
     },
     {
       name: "Sam",
@@ -97,8 +97,9 @@ export default function About() {
             </div>
             <div className="relative">
               <img 
-                src="/about_hero.jpg" 
+                src="https://lh3.googleusercontent.com/u/0/d/1S2mUqsZvhRfmFG9nmiJutL-I-ZJYpBGu" 
                 alt="Nihao Education Advantage" 
+                referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-xl w-full object-cover h-[400px]"
               />
             </div>
