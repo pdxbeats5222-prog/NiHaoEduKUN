@@ -381,7 +381,7 @@ export default function Home() {
               className="md:col-span-1 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
             >
               <img 
-                src="https://images.unsplash.com/photo-1599591037488-3a543175bc20?q=80&w=2940&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1543097692-fa13c6cd8595?q=80&w=2940&auto=format&fit=crop" 
                 alt="Hangzhou City Life" 
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -441,7 +441,7 @@ export default function Home() {
               className="md:col-span-2 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
             >
               <img 
-                src="https://images.unsplash.com/photo-1523050335392-9bf5674293ca?q=80&w=2940&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1525920980995-f8a382bf42c5?q=80&w=2940&auto=format&fit=crop" 
                 alt="University Campus" 
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
