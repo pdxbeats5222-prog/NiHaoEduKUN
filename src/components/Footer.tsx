@@ -18,7 +18,7 @@ export default function Footer() {
               Your local gateway to China. We are a localized consultancy headquartered in Hangzhou, providing unmatched insight into campus life and seamless integration.
             </p>
             <div className="flex gap-4 pt-2">
-              <a href="https://instagram.com/nihaochinaeducation" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+              <a href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="https://youtube.com/shorts/Gqv3Y-iKki8?si=YlnKTuazCiaaYd6D" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
