@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download } from 'lucide-react';
+import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Deadlines from '../components/Deadlines';
+import UniversityMap from '../components/UniversityMap';
 
 export default function Home() {
   return (
@@ -48,7 +49,7 @@ export default function Home() {
               Get Your Place
             </Link>
             <a 
-              href="https://youtube.com/shorts/Gqv3Y-iKki8?si=YlnKTuazCiaaYd6D" 
+              href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-white/60 backdrop-blur-xl border border-white/40 text-red-600 px-10 py-4 rounded-full font-semibold text-lg shadow-sm hover:shadow-md hover:bg-white/80 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
@@ -297,9 +298,33 @@ export default function Home() {
               <h2 className="text-5xl md:text-7xl font-bold text-[#1d1d1f] tracking-tight leading-[0.9] mb-6">
                 Life in <span className="text-red-600 italic font-serif">China.</span>
               </h2>
-              <p className="text-xl text-[#5a5a5c] leading-relaxed">
+              <p className="text-xl text-[#5a5a5c] leading-relaxed mb-8">
                 Immerse yourself in vibrant culture, futuristic cities, and world-class campuses through the eyes of our students.
               </p>
+              <div className="flex flex-wrap gap-4">
+                <motion.a 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full font-bold shadow-lg shadow-red-200 hover:bg-red-700 transition-colors"
+                >
+                  <Youtube className="w-5 h-5" />
+                  Watch on YouTube
+                </motion.a>
+                <motion.a 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#1d1d1f] text-[#1d1d1f] rounded-full font-bold hover:bg-[#1d1d1f] hover:text-white transition-all"
+                >
+                  <Instagram className="w-5 h-5" />
+                  Follow on Instagram
+                </motion.a>
+              </div>
             </div>
             <div className="flex gap-4">
               <div className="text-right">
@@ -317,7 +342,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[1000px]">
             {/* Main Feature: YouTube Short */}
             <motion.a 
-              href="https://youtube.com/shorts/Gqv3Y-iKki8?si=YlnKTuazCiaaYd6D" 
+              href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" 
               target="_blank" 
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -348,7 +373,7 @@ export default function Home() {
 
             {/* Secondary Video */}
             <motion.a 
-              href="https://youtube.com/shorts/3n_lS_7_X-M" 
+              href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" 
               target="_blank" 
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -454,6 +479,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Section 5.1: Interactive University Map */}
+      <UniversityMap />
 
       {/* Section 5.5: Testimonials */}
       <section className="py-32 bg-gradient-to-b from-[#faf9f6] to-white relative overflow-hidden">

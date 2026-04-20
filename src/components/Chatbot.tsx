@@ -56,7 +56,7 @@ export default function Chatbot() {
     <>
       {/* Instagram Button */}
       <a
-        href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr"
+        href="https://instagram.com/nihaochinaeducation"
         target="_blank"
         rel="noopener noreferrer"
         className={`fixed bottom-[12rem] right-6 z-50 w-14 h-14 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl ${isOpen ? 'hidden' : 'flex'}`}

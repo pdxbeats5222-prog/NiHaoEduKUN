@@ -33,7 +33,6 @@ export default function Navbar() {
         }`}
       >
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
             <img 
               src="https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2" 

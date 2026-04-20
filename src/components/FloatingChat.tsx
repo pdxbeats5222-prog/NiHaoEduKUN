@@ -5,7 +5,7 @@ export default function FloatingChat() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
       {/* WhatsApp */}
       <a
-        href="https://wa.me/1234567890"
+        href="https://wa.me/8615968141445"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl"

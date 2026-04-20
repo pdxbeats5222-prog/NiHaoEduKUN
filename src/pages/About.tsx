@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Users, Building2, GraduationCap, Globe2, MapPin } from 'lucide-react';
+import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube } from 'lucide-react';
 
 export default function About() {
   const team = [
@@ -59,9 +59,29 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-[#1d1d1f] tracking-tight mb-6">Your Local Gateway to China.</h1>
-          <p className="text-xl text-[#86868b] leading-relaxed">
+          <p className="text-xl text-[#86868b] leading-relaxed mb-8">
             We are not a distant overseas agency. We are on the ground, inside the system, and dedicated to your success.
           </p>
+          <div className="flex justify-center gap-6">
+            <a 
+              href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 text-sm font-bold text-red-600 hover:opacity-80 transition-opacity"
+            >
+              <Youtube className="w-5 h-5" />
+              Watch Kun on YouTube
+            </a>
+            <a 
+              href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 text-sm font-bold text-[#1d1d1f] hover:opacity-80 transition-opacity"
+            >
+              <Instagram className="w-5 h-5" />
+              Follow Kun on Instagram
+            </a>
+          </div>
         </div>
       </div>
 
