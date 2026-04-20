@@ -71,7 +71,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Globe className="w-5 h-5 shrink-0" />
-                <a href="https://www.nihaoeducation.com" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">www.nihaoeducation.com</a>
+                <a href="https://nihaoedu.org" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">www.nihaoedu.org</a>
               </li>
             </ul>
           </div>

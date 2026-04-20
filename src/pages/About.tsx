@@ -92,7 +92,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] tracking-tight mb-6">The Nihao Education Difference.</h2>
               <p className="text-lg text-[#86868b] mb-6">
-                Founded by graduates of China Jiliang University (CJLU) and headquartered in Hangzhou, Nihao Education provides unmatched insight into campus life. 
+                Founded by graduates of China jiliang University (CJLU) and headquartered in Hangzhou, Nihao Education provides unmatched insight into campus life. 
               </p>
               <p className="text-lg text-[#86868b] mb-8">
                 By utilizing our extensive CJLU Alumni network and deep local partnerships, we ensure that your transition to studying in China is seamless, supported, and successful from day one.

@@ -339,7 +339,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[1000px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[650px]">
             {/* Main Feature: YouTube Short */}
             <motion.a 
               href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" 
@@ -367,7 +367,7 @@ export default function Home() {
                   <div className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full uppercase tracking-widest">Featured</div>
                   <span className="text-white/80 text-sm font-medium">CJLU Campus Tour</span>
                 </div>
-                <h3 className="text-3xl font-bold text-white leading-tight">A Day in the Life at <br />China Jiliang University</h3>
+                <h3 className="text-3xl font-bold !text-white leading-tight">A Day in the Life at <br />China Jiliang University</h3>
               </div>
             </motion.a>
 
@@ -393,7 +393,7 @@ export default function Home() {
                 <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-3">
                   <Play className="w-4 h-4 text-white fill-current ml-0.5" />
                 </div>
-                <h3 className="text-lg font-bold text-white">Study Sessions</h3>
+                <h3 className="text-lg font-bold !text-white">Study Sessions</h3>
               </div>
             </motion.a>
 
@@ -413,7 +413,7 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-lg font-bold text-white">Hangzhou Life</h3>
+                <h3 className="text-lg font-bold !text-white">Hangzhou Life</h3>
               </div>
             </motion.div>
 
@@ -426,56 +426,17 @@ export default function Home() {
               className="md:col-span-2 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
             >
               <img 
-                src="https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?q=80&w=2940&auto=format&fit=crop" 
-                alt="Modern China Skyline" 
+                src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2940&auto=format&fit=crop" 
+                alt="Modern China Night Skyline" 
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-2xl font-bold text-white">The Future is Here.</h3>
+                <h3 className="text-2xl font-bold !text-white">The Future is Here.</h3>
               </div>
             </motion.div>
 
-            {/* Extra Item: Food/Culture */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="md:col-span-2 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2940&auto=format&fit=crop" 
-                alt="Chinese Food Culture" 
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-2xl font-bold text-white">Culinary Journeys</h3>
-              </div>
-            </motion.div>
-
-            {/* Extra Item: Campus Life */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="md:col-span-2 md:row-span-1 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1525920980995-f8a382bf42c5?q=80&w=2940&auto=format&fit=crop" 
-                alt="University Campus" 
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-2xl font-bold text-white">World-Class Facilities</h3>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
