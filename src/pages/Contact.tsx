@@ -1,6 +1,15 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div className="pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
       <div className="text-center mb-16">
@@ -29,35 +38,67 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="lg:col-span-2 bg-[#f5f5f7] p-8 md:p-10 rounded-[2rem]">
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Name</label>
-                <input type="text" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="Your full name" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Email</label>
-                <input type="email" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="your@email.com" />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#1d1d1f] mb-2">What are you looking for?</label>
-              <select className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]">
-                <option>University Admissions</option>
-                <option>Language Programs</option>
-                <option>Visa Assistance</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Message</label>
-              <textarea rows={4} className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow resize-none" placeholder="Tell us about your goals..."></textarea>
-            </div>
-            <button type="submit" className="w-full bg-[#0071e3] text-white font-medium py-4 rounded-full hover:bg-[#0077ed] transition-colors text-lg">
-              Submit Request
-            </button>
-          </form>
+        <div className="lg:col-span-2 bg-[#f5f5f7] p-8 md:p-10 rounded-[2rem] min-h-[500px] flex flex-col justify-center">
+          <AnimatePresence mode="wait">
+            {!submitted ? (
+              <motion.form 
+                key="form"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="space-y-6" 
+                onSubmit={handleSubmit}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Name</label>
+                    <input required type="text" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="Your full name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Email</label>
+                    <input required type="email" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="your@email.com" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">What are you looking for?</label>
+                  <select className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]">
+                    <option>University Admissions</option>
+                    <option>Language Programs</option>
+                    <option>Visa Assistance</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Message</label>
+                  <textarea required rows={4} className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow resize-none" placeholder="Tell us about your goals..."></textarea>
+                </div>
+                <button type="submit" className="w-full bg-[#0071e3] text-white font-medium py-4 rounded-full hover:bg-[#0077ed] transition-colors text-lg">
+                  Submit Request
+                </button>
+              </motion.form>
+            ) : (
+              <motion.div 
+                key="success"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-12"
+              >
+                <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 className="w-10 h-10" />
+                </div>
+                <h3 className="text-3xl font-bold text-[#1d1d1f] mb-4">Request Sent.</h3>
+                <p className="text-lg text-[#86868b] max-w-xs mx-auto mb-8">
+                  Thank you for reaching out. A Nihao.edu consultant will contact you within 24 hours.
+                </p>
+                <button 
+                  onClick={() => setSubmitted(false)}
+                  className="text-[#0071e3] font-medium hover:underline"
+                >
+                  Send another message
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
