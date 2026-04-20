@@ -21,19 +21,18 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'dist',
-      emptyOutDir: true,
-      sourcemap: false,
+      chunkSizeWarningLimit: 1000,
       rollupOptions: {
         output: {
           manualChunks: {
-            'react-vendor': ['react', 'react-dom', 'react-router-dom', 'motion/react'],
-            'ui-vendor': ['lucide-react', 'react-icons'],
-            'viz-vendor': ['d3']
+            'vendor': ['react', 'react-dom', 'react-router-dom', 'motion/react'],
+            'libs': ['lucide-react', 'd3']
           }
         }
       }
     },
     server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
       hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
