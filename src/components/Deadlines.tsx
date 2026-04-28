@@ -93,7 +93,7 @@ END:VCALENDAR`;
                     {deadline.type}
                   </span>
                 </div>
-                <h3 className="text-2xl font-semibold text-[#1d1d1f] mb-2">{deadline.title}</h3>
+                <h3 className="text-2xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors">{deadline.title}</h3>
                 <div className="flex items-center gap-2 text-[#5a5a5c] mb-4">
                   <Calendar className="w-5 h-5 text-amber-500" />
                   <span className="font-medium">{new Date(deadline.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>

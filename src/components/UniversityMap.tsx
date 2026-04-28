@@ -33,6 +33,13 @@ export default function UniversityMap() {
 
   const cityList = ['All', 'Beijing', 'Shanghai', 'Hangzhou', 'Guangzhou', 'Nanjing', 'Shenzhen'];
 
+  const HEADQUARTERS = {
+    name: "NIHAO EDU HEADQUARTERS",
+    city: "Hangzhou",
+    address: "Block A, Xipei Education Building, 280 Xuelin St, Xiasha Higher Education Zone",
+    coordinates: [120.36424, 30.31174] // [lng, lat]
+  };
+
   const allUniversities = cityUniversities.flatMap(city => 
     city.universities.map(u => ({ city, university: u }))
   ).sort((a, b) => a.university.name.localeCompare(b.university.name));
@@ -86,6 +93,28 @@ export default function UniversityMap() {
       iconSize: [16, 16]
     });
 
+    const hqIcon = L.divIcon({
+      className: 'custom-marker hq-marker',
+      html: `<div class="w-5 h-5 bg-yellow-500 border-2 border-white rounded-full shadow-lg pulse-marker-gold flex items-center justify-center"><div class="w-1.5 h-1.5 bg-white rounded-full"></div></div>`,
+      iconSize: [20, 20]
+    });
+
+    // Add HQ Marker
+    const hqCoords: [number, number] = [HEADQUARTERS.coordinates[1], HEADQUARTERS.coordinates[0]];
+    L.marker(hqCoords, { icon: hqIcon })
+      .addTo(markerGroupRef.current!)
+      .on('click', () => {
+        setSelectedUniversity({ 
+          university: { 
+            name: HEADQUARTERS.name, 
+            coordinates: HEADQUARTERS.coordinates,
+            address: HEADQUARTERS.address 
+          }, 
+          city: { name: HEADQUARTERS.city } 
+        });
+        leafletMap.current?.flyTo(hqCoords, 16, { duration: 1.5 });
+      });
+
     universities.forEach(item => {
       const coords: [number, number] = [item.university.coordinates[1], item.university.coordinates[0]];
       L.marker(coords, { icon: markerIcon })
@@ -116,6 +145,11 @@ export default function UniversityMap() {
     setSelectedUniversity(null);
   };
 
+  const slugify = (text: string) => 
+    text.toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '');
+
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black font-sans">
       <style>{`
@@ -124,10 +158,16 @@ export default function UniversityMap() {
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
         .leaflet-container { background: #000; }
         .pulse-marker { animation: marker-pulse 2s infinite; }
+        .pulse-marker-gold { animation: marker-pulse-gold 2s infinite; }
         @keyframes marker-pulse {
           0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
           70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
           100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+        @keyframes marker-pulse-gold {
+          0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); }
+          70% { box-shadow: 0 0 0 15px rgba(234, 179, 8, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); }
         }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -143,8 +183,28 @@ export default function UniversityMap() {
         <div className="p-6 pb-2 space-y-4">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white">Campus Explorer</h3>
-            <div className="p-1.5 bg-white/5 rounded-lg border border-white/10">
-              <Layers className="w-4 h-4 text-white/60" />
+            <div className="flex gap-2">
+              <button 
+                onClick={() => {
+                  const coords: [number, number] = [HEADQUARTERS.coordinates[1], HEADQUARTERS.coordinates[0]];
+                  setSelectedUniversity({ 
+                    university: { 
+                      name: HEADQUARTERS.name, 
+                      coordinates: HEADQUARTERS.coordinates,
+                      address: HEADQUARTERS.address 
+                    }, 
+                    city: { name: HEADQUARTERS.city } 
+                  });
+                  leafletMap.current?.flyTo(coords, 16, { duration: 1.5 });
+                }}
+                className="p-1.5 bg-yellow-500/10 rounded-lg border border-yellow-500/20 hover:bg-yellow-500/20 transition-colors group"
+                title="Visit Headquarters"
+              >
+                <Star className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform" />
+              </button>
+              <div className="p-1.5 bg-white/5 rounded-lg border border-white/10">
+                <Layers className="w-4 h-4 text-white/60" />
+              </div>
             </div>
           </div>
           
@@ -209,7 +269,11 @@ export default function UniversityMap() {
                   <span className="text-xs font-black text-white">#{i + 1}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-[13px] font-bold text-white leading-tight truncate uppercase tracking-tight">
+                  <h4 className={`text-[13px] font-bold leading-tight truncate uppercase tracking-tight transition-colors ${
+                    selectedUniversity?.university.name === item.university.name 
+                    ? 'text-blue-400' 
+                    : i % 2 === 0 ? 'text-blue-200' : 'text-white'
+                  }`}>
                     {item.university.name}
                   </h4>
                   <div className="flex items-center gap-1.5 mt-1">
@@ -279,7 +343,7 @@ export default function UniversityMap() {
             <div className="flex justify-between items-start mb-6">
               <div className="flex-1 pr-4">
                 <span className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] mb-2 block">Institution Spotlight</span>
-                <h4 className="text-2xl font-black uppercase leading-tight tracking-tighter text-white">
+                <h4 className="text-2xl font-black uppercase leading-tight tracking-tighter text-blue-400">
                   {selectedUniversity.university.name}
                 </h4>
               </div>
@@ -295,16 +359,18 @@ export default function UniversityMap() {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-white uppercase tracking-widest leading-none mb-1.5">Locality</p>
-                  <p className="text-sm font-bold text-white uppercase tracking-tight">{selectedUniversity.city.name}, CHINA</p>
+                  <p className="text-sm font-bold text-white uppercase tracking-tight">
+                    {selectedUniversity.university.address || `${selectedUniversity.city.name}, CHINA`}
+                  </p>
                 </div>
               </div>
             </div>
 
             <button 
-              onClick={() => navigate(`/university/${selectedUniversity.university.name.toLowerCase().replace(/\s+/g, '-')}`)}
+              onClick={() => navigate(`/university/${slugify(selectedUniversity.university.name)}`)}
               className="w-full py-5 bg-blue-600 text-white rounded-[24px] font-black uppercase tracking-[0.15em] text-xs flex items-center justify-center gap-3 hover:bg-blue-500 transition-all shadow-xl group overflow-hidden relative"
             >
-              <span className="relative z-10">Launch Dashboard</span>
+              <span className="relative z-10">Explore Institution</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
             </button>
           </motion.div>

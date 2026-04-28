@@ -49,7 +49,7 @@ export default function Home() {
               Get Your Place
             </Link>
             <a 
-              href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" 
+              href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-white/60 backdrop-blur-xl border border-white/40 text-red-600 px-10 py-4 rounded-full font-semibold text-lg shadow-sm hover:shadow-md hover:bg-white/80 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
@@ -305,7 +305,7 @@ export default function Home() {
                 <motion.a 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP"
+                  href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full font-bold shadow-lg shadow-red-200 hover:bg-red-700 transition-colors"
@@ -342,7 +342,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[650px]">
             {/* Main Feature: YouTube Short */}
             <motion.a 
-              href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" 
+              href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" 
               target="_blank" 
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -509,7 +509,9 @@ export default function Home() {
                 <p className="text-[#1d1d1f] text-lg font-medium mb-8 leading-relaxed flex-grow">"{testimonial.quote}"</p>
                 <div className="pt-6 border-t border-gray-200/50">
                   <p className="font-bold text-[#1d1d1f] text-lg">{testimonial.author}</p>
-                  <p className="text-[#5a5a5c] text-sm mt-1">{testimonial.country} • {testimonial.program}</p>
+                  <p className="text-[#5a5a5c] text-sm mt-1">
+                    {testimonial.country} • <span className="text-blue-600 font-bold">{testimonial.program}</span>
+                  </p>
                 </div>
               </motion.div>
             ))}

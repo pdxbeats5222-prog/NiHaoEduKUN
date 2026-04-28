@@ -64,7 +64,7 @@ export default function About() {
           </p>
           <div className="flex justify-center gap-6">
             <a 
-              href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" 
+              href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm font-bold text-red-600 hover:opacity-80 transition-opacity"

@@ -22,7 +22,7 @@ export default function Footer() {
               <a href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://youtube.com/@kuninchina?si=7-4tjR4d3JoIUSaP" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+              <a href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
               <a href="https://www.tiktok.com/@kunofficial37?_r=1&_t=ZP-95drv1GlYpK" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
