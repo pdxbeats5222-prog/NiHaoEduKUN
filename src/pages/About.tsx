@@ -50,6 +50,12 @@ export default function About() {
       role: "Student Success Manager",
       desc: "On-campus support lead, helping students navigate daily life and academics in China.",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      name: "Carlos",
+      role: "Hispanic Markets Director",
+      desc: "Cultural storyteller & cross-cultural facilitator, connecting Spanish, English and Chinese-speaking communities.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1quTZ2fNzLRHHR0fIb2mQ45hOuu38Y7Cg"
     }
   ];
 
