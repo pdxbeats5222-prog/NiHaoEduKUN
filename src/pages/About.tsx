@@ -76,7 +76,7 @@ export default function About() {
               className="flex items-center gap-2 text-sm font-bold text-red-600 hover:opacity-80 transition-opacity"
             >
               <Youtube className="w-5 h-5" />
-              Watch Kun on YouTube
+              Watch Us on YouTube
             </a>
             <a 
               href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" 
@@ -85,7 +85,7 @@ export default function About() {
               className="flex items-center gap-2 text-sm font-bold text-[#1d1d1f] hover:opacity-80 transition-opacity"
             >
               <Instagram className="w-5 h-5" />
-              Follow Kun on Instagram
+              Follow Us on Instagram
             </a>
           </div>
         </div>

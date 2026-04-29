@@ -126,8 +126,8 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
               </div>
               <div className="space-y-6">
                 <div className="p-8 bg-white rounded-[2rem] shadow-sm">
-                  <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">Pre-University</h3>
-                  <p className="text-[#86868b] text-sm">1 year full-time • ~20k RMB tuition • March/September intake</p>
+                  <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">Chinese Language Program</h3>
+                  <p className="text-[#86868b] text-sm">Long-term (1 year) or Short-term • ~20k RMB tuition • March/September intake</p>
                 </div>
                 <div className="p-8 bg-white rounded-[2rem] shadow-sm">
                   <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">Bachelor's Degree</h3>
@@ -135,11 +135,24 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
                 </div>
                 <div className="p-8 bg-white rounded-[2rem] shadow-sm">
                   <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">Master's Degree</h3>
-                  <p className="text-[#86868b] text-sm">2-3 years full-time • 20k-30k RMB tuition • September intake</p>
+                  <p className="text-[#86868b] text-sm">2-3 years full-time • 25k-45k RMB tuition • September intake</p>
                 </div>
                 <div className="p-8 bg-white rounded-[2rem] shadow-sm">
                   <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">PhD Programs</h3>
-                  <p className="text-[#86868b] text-sm">3 years full-time • Free tuition (typically funded) • September intake</p>
+                  <p className="text-[#86868b] text-sm">3-4 years full-time • Typically fully funded with stipend • September intake</p>
+                </div>
+                <div className="p-8 bg-red-50 border border-red-100 rounded-[2rem] shadow-sm">
+                  <h3 className="text-xl font-bold text-red-600 mb-2">Eligibility Criteria</h3>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2 text-sm text-red-900 border-b border-red-100 pb-2">
+                      <CheckCircle2 className="w-4 h-4 text-red-500" />
+                      <span className="font-bold">Age:</span> Applicants must be 18–35 (Degree) / Up to 45 (Language)
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-red-900">
+                      <CheckCircle2 className="w-4 h-4 text-red-500" />
+                      <span className="font-bold">Nationality:</span> Non-Chinese citizens with a valid foreign passport
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

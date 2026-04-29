@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube } from 'lucide-react';
+import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Deadlines from '../components/Deadlines';
 import UniversityMap from '../components/UniversityMap';
@@ -48,14 +48,24 @@ export default function Home() {
             >
               Get Your Place
             </Link>
-            <a 
-              href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-white/60 backdrop-blur-xl border border-white/40 text-red-600 px-10 py-4 rounded-full font-semibold text-lg shadow-sm hover:shadow-md hover:bg-white/80 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+            <motion.div
+              animate={{ 
+                boxShadow: ["0 0 0 0 rgba(249, 115, 22, 0.4)", "0 0 0 15px rgba(249, 115, 22, 0)"],
+              }}
+              transition={{ 
+                duration: 2, 
+                repeat: Infinity, 
+                ease: "easeOut" 
+              }}
+              className="w-full sm:w-auto rounded-full"
             >
-              Watch the film <Play className="w-5 h-5 fill-current" />
-            </a>
+              <Link 
+                to="/about" 
+                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
+              >
+                Watch About Us <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -168,9 +178,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* NEW SECTION: The Nihao Advantage */}
+      </section>      {/* NEW SECTION: The Nihao Advantage */}
       <section className="py-32 bg-white text-[#1d1d1f] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-red-100 to-transparent blur-3xl rounded-full pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-amber-100 to-transparent blur-3xl rounded-full pointer-events-none" />
@@ -210,13 +218,71 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="bg-[#faf9f6] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 rounded-[2rem] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1"
+                className="bg-[#faf9f6] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 rounded-[2rem] hover:shadow-[0_20px_40_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-amber-500 rounded-full flex items-center justify-center mb-6 text-xl font-bold text-white shadow-md">
                   {idx + 1}
                 </div>
                 <h3 className="text-2xl font-semibold mb-3">{advantage.title}</h3>
                 <p className="text-[#5a5a5c] leading-relaxed">{advantage.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: Study Programs */}
+      <section className="py-32 bg-[#faf9f6] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">Study Programs.</h2>
+            <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
+              Find the perfect academic pathway for your career and personal growth.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Chinese Language",
+                subtitle: "Full Immersion",
+                desc: "Master Mandarin with intensive, HSK-focused programs at top linguistics centers.",
+                color: "from-blue-500 to-cyan-400"
+              },
+              {
+                title: "Bachelor's",
+                subtitle: "Undergraduate",
+                desc: "4-year degrees in Engineering, Business, Medicine (MBBS), and more.",
+                color: "from-red-600 to-orange-500"
+              },
+              {
+                title: "Master's",
+                subtitle: "Postgraduate",
+                desc: "Advance your career with specialized 2-3 year postgraduate degrees.",
+                color: "from-purple-600 to-indigo-500"
+              },
+              {
+                title: "PhD",
+                subtitle: "Doctoral Research",
+                desc: "High-level research opportunities with full scholarship potential.",
+                color: "from-emerald-600 to-teal-500"
+              }
+            ].map((program, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                <div className={`w-12 h-1.5 rounded-full bg-gradient-to-r ${program.color} mb-6`} />
+                <span className="text-xs font-black uppercase tracking-widest text-[#86868b] mb-2 block">{program.subtitle}</span>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-4">{program.title}</h3>
+                <p className="text-[#5a5a5c] leading-relaxed mb-6">{program.desc}</p>
+                <Link to="/contact" className="inline-flex items-center gap-2 text-[#1d1d1f] font-bold group-hover:text-red-600 transition-colors">
+                  Apply Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -311,7 +377,7 @@ export default function Home() {
                   className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full font-bold shadow-lg shadow-red-200 hover:bg-red-700 transition-colors"
                 >
                   <Youtube className="w-5 h-5" />
-                  Watch on YouTube
+                  Watch Us on YouTube
                 </motion.a>
                 <motion.a 
                   whileHover={{ scale: 1.05 }}
@@ -322,7 +388,7 @@ export default function Home() {
                   className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#1d1d1f] text-[#1d1d1f] rounded-full font-bold hover:bg-[#1d1d1f] hover:text-white transition-all"
                 >
                   <Instagram className="w-5 h-5" />
-                  Follow on Instagram
+                  Follow Us on Instagram
                 </motion.a>
               </div>
             </div>

@@ -59,13 +59,25 @@ export default function Contact() {
                     <input required type="email" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="your@email.com" />
                   </div>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Age</label>
+                    <input required type="number" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="Your age" min="16" max="100" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Nationality</label>
+                    <input required type="text" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="Your country" />
+                  </div>
+                </div>
                 <div>
                   <label className="block text-sm font-medium text-[#1d1d1f] mb-2">What are you looking for?</label>
                   <select className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]">
-                    <option>University Admissions</option>
-                    <option>Language Programs</option>
-                    <option>Visa Assistance</option>
-                    <option>Other</option>
+                    <option>Chinese Language Program</option>
+                    <option>Bachelor's Degree</option>
+                    <option>Master's Degree</option>
+                    <option>PhD / Doctoral Research</option>
+                    <option>Summer Cultural Tour</option>
+                    <option>Other / Consulting</option>
                   </select>
                 </div>
                 <div>
