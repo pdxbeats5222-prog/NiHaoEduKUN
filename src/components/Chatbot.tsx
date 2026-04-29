@@ -117,9 +117,12 @@ export default function Chatbot() {
             {/* Header */}
             <div className="relative p-5 flex items-center justify-between border-b border-gray-200/50 bg-white/40 backdrop-blur-md z-10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-lg">
-                  <Cpu className="w-5 h-5 text-white" />
-                </div>
+                <img 
+                  src="https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2" 
+                  alt="Nihao.edu Logo" 
+                  referrerPolicy="no-referrer"
+                  className="w-10 h-10 object-contain" 
+                />
                 <div>
                   <span className="font-bold text-[#1d1d1f] block text-lg tracking-tight">Nihao AI Nexus</span>
                   <span className="text-xs text-red-600 font-medium flex items-center gap-1 uppercase tracking-wider">
