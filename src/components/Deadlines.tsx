@@ -66,7 +66,7 @@ END:VCALENDAR`;
   };
 
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
+    <section id="deadlines" className="py-32 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-red-400/10 to-transparent blur-3xl rounded-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

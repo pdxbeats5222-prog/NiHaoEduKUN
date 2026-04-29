@@ -13,6 +13,13 @@
   --color-cream-50: #ffffff;
   --color-cream-100: #f5f5f7;
   --color-cream-200: #e8e8ed;
+
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  --animate-bounce-subtle: bounce-subtle 2s infinite;
 }
 
 body {

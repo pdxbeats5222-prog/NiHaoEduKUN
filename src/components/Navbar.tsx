@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Globe, Bell } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,23 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNotificationClick = () => {
+    setIsMobileMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/#deadlines');
+      // Small timeout to allow routing before scrolling
+      setTimeout(() => {
+        const el = document.getElementById('deadlines');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById('deadlines');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -33,14 +51,27 @@ export default function Navbar() {
         }`}
       >
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
-            <img 
+          <Link to="/" className="flex items-center gap-2 cursor-pointer group">
+            <motion.img 
               src="https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2" 
               alt="Nihao.edu Logo" 
               referrerPolicy="no-referrer"
               className="h-14 w-auto object-contain" 
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              animate={{
+                y: [0, -4, 0],
+              }}
+              transition={{
+                y: {
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                },
+                scale: { type: "spring", stiffness: 300 },
+                rotate: { type: "spring", stiffness: 300 }
+              }}
             />
-            <span className="text-xl font-semibold tracking-tight text-[#1d1d1f]">
+            <span className="text-xl font-semibold tracking-tight text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors">
               Nihao.edu
             </span>
           </Link>
@@ -56,25 +87,45 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/contact"
-              className="bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-[0_4px_14px_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
-            >
-              Contact Us
-            </Link>
+            
+            <div className="flex items-center gap-6 pl-4 border-l border-gray-200/50">
+              <button 
+                onClick={handleNotificationClick}
+                className="relative p-2 text-[#1d1d1f] hover:text-[#0071e3] transition-colors rounded-full hover:bg-white/50 group"
+              >
+                <Bell className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white animate-pulse" />
+              </button>
+
+              <Link
+                to="/contact"
+                className="bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-[0_4px_14px_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              >
+                Contact Us
+              </Link>
+            </div>
           </nav>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="text-[#1d1d1f]" />
-            ) : (
-              <Menu className="text-[#1d1d1f]" />
-            )}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <button 
+              onClick={handleNotificationClick}
+              className="relative p-2 text-[#1d1d1f] hover:text-[#0071e3] transition-colors rounded-full animate-bounce-subtle"
+            >
+              <Bell className="w-6 h-6" />
+              <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white" />
+            </button>
+            <button
+              className="p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="text-[#1d1d1f]" />
+              ) : (
+                <Menu className="text-[#1d1d1f]" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
