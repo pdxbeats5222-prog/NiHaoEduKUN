@@ -1,12 +1,84 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info } from 'lucide-react';
+import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Deadlines from '../components/Deadlines';
 import UniversityMap from '../components/UniversityMap';
 
 export default function Home() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Nihao.edu",
+    "url": "https://nihaoedu.org/",
+    "logo": "https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2",
+    "description": "Nihao.edu is a premier educational consultancy specializing in helping international students study in China with expert admissions, scholarship (CSC), and visa (X1/X2) assistance.",
+    "sameAs": [
+      "https://www.instagram.com/nihao_edu_kun",
+      "https://youtube.com/@kun-nihao.educhina"
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I study in China in English?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many top-tier Chinese universities offer a wide range of English-taught programs for Bachelor's, Master's, and PhD degrees. Popular fields include Business, Engineering, Medicine (MBBS), and Computer Science."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I apply for the Chinese Government Scholarship (CSC)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Applying for the Chinese Government Scholarship (CSC) typically involves registering on the China Scholarship Council website, selecting target universities, and submitting required documents early (usually between January and April). Nihao.edu provides expert guidance to maximize your chances of securing full funding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between X1 and X2 student visas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The X1 visa is for long-term study (more than 180 days) and must be converted into a Residence Permit within 30 days of arrival. The X2 visa is for shorter studies (up to 180 days). Both require a valid JW202/JW201 form and an admission letter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are degrees from Chinese universities recognized globally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, degrees from accredited Chinese universities are globally recognized. China has mutual recognition agreements with many countries, and top universities like Tsinghua, Fudan, and Zhejiang U rank highly in QS world rankings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the average cost of living for international students in China?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "International students can expect to spend between $300 to $700 USD per month depending on the city. Cities like Shanghai and Beijing are more expensive, while Hangzhou, Nanjing, and inland cities offer a very high quality of life at a lower cost."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Study in China: Expert University Admissions & Scholarships | Nihao.edu</title>
+        <meta name="description" content="Looking to study in China? Get expert assistance for English-taught programs, Chinese Government Scholarship (CSC) applications, and X1 student visa support. Apply now!" />
+        <meta name="keywords" content="Study in China, Study in China CSC, Study in China in English, China student visa X1, Apply to Chinese universities, Chinese Government Scholarship application, Best universities in China, MBBS in China, Study in Shanghai, China admission consultant" />
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
       {/* Section 1: The Hero Area */}
       <section className="relative pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden bg-[#faf9f6]">
         {/* Subtle background glow effects - Chinese Aesthetic (Crimson/Gold) */}
@@ -290,33 +362,33 @@ export default function Home() {
       </section>
 
       {/* Section 4: Our Services (How We Help) */}
-      <section className="py-32 bg-[#faf9f6] relative overflow-hidden">
+      <section id="services" className="py-32 bg-[#faf9f6] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-emerald-400/10 to-transparent blur-3xl rounded-full pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">How We Help You Succeed</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">Our Professional Study in China Services</h2>
             <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
-              From choosing the right program to stepping foot on campus, we handle the heavy lifting.
+              We provide the specialized support you need to navigate the complexities of Chinese university admissions and government scholarships.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "University & Program Matching",
-                desc: "Whether you want a non-degree language program to master Mandarin or a full degree at a top-tier university, we match you with the perfect fit based on your goals and budget.",
-                features: ["Personalized shortlists", "Application strategy", "Scholarship guidance"]
+                title: "English-Taught University Admissions",
+                desc: "We help you apply to Chinese universities offering prestigious Bachelor's, Master's, and PhD programs taught entirely in English. Our consultants identify the best match for your academic background and career goals.",
+                features: ["University shortlisting", "Personal statement reviews", "Direct application management"]
               },
               {
-                title: "Visa & Paperwork Assistance",
-                desc: "Navigating Chinese bureaucracy can be daunting. We provide step-by-step support for X1/X2 student visas, JW202 forms, and medical check requirements.",
-                features: ["Document verification", "Visa interview prep", "JW202 processing support"]
+                title: "Scholarship Application Guidance (CSC)",
+                desc: "Maximize your chances of securing the Chinese Government Scholarship (CSC) or provincial funding. We explain the exact requirements to help you study in China with full tuition and living coverage.",
+                features: ["CSC portal registration", "Research proposal editing", "Document checklist verification"]
               },
               {
-                title: "Pre-Departure Orientation",
-                desc: "Don't arrive unprepared. We equip you with the essential knowledge to hit the ground running, from setting up WeChat Pay to understanding dorm life.",
-                features: ["App setup (WeChat, Alipay)", "SIM card & banking advice", "Cultural etiquette"]
+                title: "X1/X2 Student Visa Assistance",
+                desc: "Securing your China student visa X1 or X2 can be confusing. We guide you through the JW202/JW201 process, medical exam protocols, and preparation for your embassy interview.",
+                features: ["Visa interview training", "Authentication of documents", "Health certificate guidance"]
               }
             ].map((service, idx) => (
               <motion.div 
@@ -340,6 +412,104 @@ export default function Home() {
                 <Link to="/services" className="text-red-600 font-medium text-lg flex items-center gap-2 hover:text-red-700 transition-colors mt-auto">
                   Learn more <ArrowRight className="w-5 h-5" />
                 </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEO PILLAR SECTION: THE ULTIMATE GUIDE */}
+      <section id="guide" className="py-32 bg-white relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="prose prose-lg prose-red max-w-none">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-8">The Ultimate Guide to Study in China (2026 Edition)</h2>
+            
+            <p className="text-xl text-[#5a5a5c] leading-relaxed mb-8">
+              Deciding to <strong>study in China</strong> is more than just an academic choice; it's a strategic investment in your future. As the world's second-largest economy, China offers international students a unique blend of high-tech innovation, historical depth, and unparalleled career opportunities. Whether you're aiming for a top-tier Engineering degree or a Master's in International Business, China's higher education system is designed to produce global leaders.
+            </p>
+
+            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Why International Students Choose China</h3>
+            <p className="text-[#5a5a5c] mb-6">
+              In the last decade, China has tripled its efforts to attract global talent. Universities like Tsinghua, Peking, and Zhejiang University now consistently rank within the top 50 globally. The infrastructure is world-class, but the real draw is the ecosystem: a front-row seat to the future of AI, renewable energy, and digital commerce. Furthermore, the <strong>Study in China in English</strong> options have expanded significantly, making it accessible to those who are still mastering Mandarin.
+            </p>
+
+            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Top-Ranked English-Taught Programs</h3>
+            <p className="text-[#5a5a5c] mb-6">
+              For many, the language barrier is a major concern. However, many designated \"Double First-Class\" universities offer <strong>English-taught programs</strong> across a variety of disciplines. From <strong>MBBS in China</strong> (Medicine) to MBA programs in Shanghai, you can receive a world-class education while taking Mandarin (HSK) elective courses to build your language skills on the side.
+            </p>
+
+            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Living in China's Academic Hubs: Shanghai & Hangzhou</h3>
+            <p className="text-[#5a5a5c] mb-6">
+              Where you study is just as important as what you study. <strong>Shanghai</strong> remains the international student favorite—a hyper-modern metropolis that never sleeps. Meanwhile, <strong>Hangzhou</strong> (home to Nihao.edu HQ) offers a more balanced lifestyle, combining the tech headquarters of Alibaba with the serene beauty of the UNESCO World Heritage West Lake. Both cities are incredibly safe, hyper-connected via high-speed rail, and completely cashless through platforms like WeChat Pay.
+            </p>
+
+            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Securing the Chinese Government Scholarship (CSC)</h3>
+            <p className="text-[#5a5a5c] mb-6">
+              Financial support is a cornerstone of the Chinese education strategy. The <strong>Chinese Government Scholarship application</strong> (CSC) is one of the most generous in the world, often covering full tuition, free on-campus housing, and a monthly living stipend. Managing this application requires precision: you must align your research proposal with the university's strengths and ensure your documentation is authenticated correctly.
+            </p>
+
+            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">The Application Timeline: How to Prepare</h3>
+            <div className="bg-[#faf9f6] p-8 rounded-3xl border border-gray-100 my-8">
+              <ol className="space-y-4 text-[#5a5a5c]">
+                <li><strong>Phase 1 (Sept - Dec):</strong> Research universities and programs. Prepare your academic transcripts and English proficiency scores (IELTS/TOEFL).</li>
+                <li><strong>Phase 2 (Jan - March):</strong> Submit your <strong>Apply to Chinese universities</strong> applications and scholarship requests.</li>
+                <li><strong>Phase 3 (April - June):</strong> Receive your Admission Letter and JW202/JW201 visa documents.</li>
+                <li><strong>Phase 4 (July - Aug):</strong> Apply for your <strong>China student visa X1</strong> at the nearest consulate.</li>
+                <li><strong>Phase 5 (Sept):</strong> Move to China, register at the university, and convert your visa to a Residence Permit.</li>
+              </ol>
+            </div>
+
+            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Navigating the China Student Visa X1 Process</h3>
+            <p className="text-[#5a5a5c] mb-12">
+              The <strong>China student visa X1</strong> is for students planning to stay for more than 180 days. It is critical to note that once you arrive in China, you have exactly 30 days to apply for a Residence Permit at the local Exit and Entry Administration. Failure to do so can lead to fines. At Nihao.edu, we provide the 1-on-1 guidance needed to ensure your documentation is compliant with local regulations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section id="faq" className="py-32 bg-[#faf9f6] relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block p-3 bg-red-100 rounded-2xl mb-4">
+              <HelpCircle className="w-8 h-8 text-red-600" />
+            </div>
+            <h2 className="text-4xl font-bold text-[#1d1d1f] tracking-tight">Frequently Asked Questions</h2>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "Can I study in China in English?",
+                a: "Absolutely. Many top-tier Chinese universities offer full degree programs in English for international students, particularly in fields like Medicine (MBBS), Business, and Engineering."
+              },
+              {
+                q: "How do I apply for the Chinese Government Scholarship (CSC)?",
+                a: "The CSC application process starts between January and April each year. You must apply through the official portal, select your target universities, and provide all required academic and medical documents."
+              },
+              {
+                q: "What is the difference between X1 and X2 student visas?",
+                a: "The X1 visa is for long-term study (180+ days) and requires conversion to a Residence Permit upon arrival. The X2 visa is for short-term stays (less than 180 days) and does not require a residence permit."
+              },
+              {
+                q: "Are degrees from Chinese universities recognized globally?",
+                a: "Yes. Accredited degrees from Chinese universities are recognized worldwide. China has mutual recognition agreements with the US, UK, Australia, and most EU nations."
+              },
+              {
+                q: "What is the average cost of living for international students?",
+                a: "It depends on the city. In Hangzhou or Nanjing, students can live well on $400-$600 USD per month. In Shanghai or Beijing, budget for $800-$1,000 USD for a similar lifestyle."
+              }
+            ].map((faq, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm"
+              >
+                <h3 className="text-xl font-bold text-[#1d1d1f] mb-3">{faq.q}</h3>
+                <p className="text-[#5a5a5c] leading-relaxed">{faq.a}</p>
               </motion.div>
             ))}
           </div>
