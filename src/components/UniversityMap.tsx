@@ -31,7 +31,7 @@ export default function UniversityMap() {
   const [selectedUniversity, setSelectedUniversity] = useState<any>(null);
   const [activeCity, setActiveCity] = useState('All');
 
-  const cityList = ['All', 'Beijing', 'Shanghai', 'Hangzhou', 'Guangzhou', 'Nanjing', 'Shenzhen'];
+  const cityList = ['All', 'Beijing', 'Shanghai', 'Hangzhou', 'Guangzhou', 'Nanjing', 'Harbin'];
 
   const HEADQUARTERS = {
     name: "NIHAO EDU HEADQUARTERS",
@@ -42,7 +42,12 @@ export default function UniversityMap() {
 
   const allUniversities = cityUniversities.flatMap(city => 
     city.universities.map(u => ({ city, university: u }))
-  ).sort((a, b) => a.university.name.localeCompare(b.university.name));
+  ).sort((a, b) => {
+    // Sort by recommended first, then by name
+    if (a.university.recommended && !b.university.recommended) return -1;
+    if (!a.university.recommended && b.university.recommended) return 1;
+    return a.university.name.localeCompare(b.university.name);
+  });
 
   const filteredUniversities = allUniversities.filter(item => {
     const matchesCity = activeCity === 'All' || item.city.name === activeCity;
@@ -117,7 +122,15 @@ export default function UniversityMap() {
 
     universities.forEach(item => {
       const coords: [number, number] = [item.university.coordinates[1], item.university.coordinates[0]];
-      L.marker(coords, { icon: markerIcon })
+      const isRecommended = item.university.recommended;
+      
+      const customIcon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div class="w-4 h-4 ${isRecommended ? 'bg-red-500 shadow-red-500/50' : 'bg-blue-500 shadow-blue-500/50'} border-2 border-white rounded-full shadow-lg pulse-marker"></div>`,
+        iconSize: [16, 16]
+      });
+
+      L.marker(coords, { icon: customIcon })
         .addTo(markerGroupRef.current!)
         .on('click', () => {
           setSelectedUniversity(item);
@@ -269,13 +282,18 @@ export default function UniversityMap() {
                   <span className="text-xs font-black text-white">#{i + 1}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className={`text-[13px] font-bold leading-tight truncate uppercase tracking-tight transition-colors ${
-                    selectedUniversity?.university.name === item.university.name 
-                    ? 'text-blue-400' 
-                    : i % 2 === 0 ? 'text-blue-200' : 'text-white'
-                  }`}>
-                    {item.university.name}
-                  </h4>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h4 className={`text-[13px] font-bold leading-tight truncate uppercase tracking-tight transition-colors ${
+                      selectedUniversity?.university.name === item.university.name 
+                      ? 'text-blue-400' 
+                      : i % 2 === 0 ? 'text-blue-200' : 'text-white'
+                    }`}>
+                      {item.university.name}
+                    </h4>
+                    {item.university.recommended && (
+                      <Star className="w-3 h-3 text-amber-400 fill-current shrink-0" />
+                    )}
+                  </div>
                   <div className="flex items-center gap-1.5 mt-1">
                     <MapPin className="w-3 h-3 text-white/60" />
                     <span className="text-[10px] font-bold text-white uppercase tracking-widest">{item.city.name}</span>

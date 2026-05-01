@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle2, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Contact() {
@@ -25,6 +25,10 @@ export default function Contact() {
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#1d1d1f]" />
                 <span>+86 15968141445</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <MessageCircle className="w-5 h-5 text-[#1d1d1f]" />
+                <span>WhatsApp: +86 15968141445</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#1d1d1f]" />
@@ -68,6 +72,10 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Nationality</label>
                     <input required type="text" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="Your country" />
                   </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">WhatsApp Number</label>
+                  <input required type="tel" className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" placeholder="+Country Code 000 000 000" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#1d1d1f] mb-2">What are you looking for?</label>

@@ -96,12 +96,24 @@ export default function UniversityDetail() {
     { label: "World Rank", value: "#126", icon: Award },
   ];
 
-  const images = [
+  const defaultImages = [
     `https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=1200`,
     `https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800`,
     `https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800`,
     `https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=800`,
     `https://images.unsplash.com/photo-1498243639359-f7c895171f5f?auto=format&fit=crop&q=80&w=800`
+  ];
+
+  const universityImages = foundUni.gallery && foundUni.gallery.length > 0 
+    ? [foundUni.image || defaultImages[0], ...foundUni.gallery]
+    : foundUni.image ? [foundUni.image, ...defaultImages.slice(1)] : defaultImages;
+
+  const universityMajors = foundUni.majors || [
+    "Computer Science", 
+    "International Business", 
+    "Mechanical Engineering", 
+    "Civil Engineering", 
+    "Economics"
   ];
 
   return (
@@ -130,10 +142,10 @@ export default function UniversityDetail() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section className="relative h-[65vh] flex items-end overflow-hidden">
+      <section className="relative h-[75vh] md:h-[65vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={images[0]} alt={foundUni.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <img src={universityImages[0]} alt={foundUni.name} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
         </div>
 
         <div className="container mx-auto px-6 pb-12 relative z-10">
@@ -186,11 +198,36 @@ export default function UniversityDetail() {
                 Institutional Profile <div className="h-px flex-1 bg-blue-100" />
               </h2>
               <p className="text-xl text-slate-600 leading-relaxed font-medium">
-                <span className="text-blue-600">{foundUni.name}</span> is a renowned center for higher learning located in the heart of {foundCity.name}. The institution maintains a global reputation for research innovation and technological advancement, consistently shaping the minds of future leaders.
+                <span className="text-blue-600">{foundUni.name}</span> {foundUni.description || `is a renowned center for higher learning located in the heart of ${foundCity.name}. The institution maintains a global reputation for research innovation and technological advancement, consistently shaping the minds of future leaders.`}
               </p>
-              <p className="mt-8 text-lg text-slate-500 leading-relaxed">
-                With world-class facilities and a diverse, multicultural student body, the campus serves as a bridge between traditional heritage and modern frontier science. Our laboratories and lecture halls are designed to inspire collaboration and critical thinking.
-              </p>
+              {!foundUni.description && (
+                <p className="mt-8 text-lg text-slate-500 leading-relaxed">
+                  With world-class facilities and a diverse, multicultural student body, the campus serves as a bridge between traditional heritage and modern frontier science. Our laboratories and lecture halls are designed to inspire collaboration and critical thinking.
+                </p>
+              )}
+            </div>
+
+            {/* Key Majors Section */}
+            <div className="bg-slate-50 rounded-[48px] p-10 border border-slate-100">
+              <h2 className="text-2xl font-black uppercase tracking-[0.2em] mb-8 flex items-center gap-4 text-red-600">
+                Featured Majors <div className="h-px flex-1 bg-red-100" />
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {universityMajors.map((major, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-center gap-4 bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all group"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center shrink-0 group-hover:bg-red-600 transition-colors">
+                      <GraduationCap className="w-5 h-5 text-red-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="font-bold text-slate-700 tracking-tight">{major}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
             {/* Why Choose Section */}
@@ -211,29 +248,60 @@ export default function UniversityDetail() {
               </div>
             </div>
 
-            {/* Gallery Grid */}
-            <div>
-              <h2 className="text-2xl font-black uppercase tracking-[0.2em] mb-8 flex items-center gap-4 text-blue-600">
-                Campus Exploration <div className="h-px flex-1 bg-blue-100" />
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {images.slice(1).map((img, i) => (
-                  <motion.div 
-                    key={i}
-                    whileHover={{ y: -10, scale: 1.02 }}
-                    onClick={() => setActiveImage(img)}
-                    className="relative rounded-[32px] overflow-hidden aspect-[4/3] border border-slate-200 cursor-zoom-in group shadow-lg"
-                  >
-                    <img src={img} alt={`Campus view ${i}`} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                      <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                        <Plus className="w-5 h-5 text-white" />
-                      </div>
+            {/* City Atmosphere Section */}
+            {foundCity.cityImage && (
+              <div className="space-y-8">
+                <h2 className="text-2xl font-black uppercase tracking-[0.2em] mb-8 flex items-center gap-4 text-emerald-600">
+                  {foundCity.name} Atmosphere <div className="h-px flex-1 bg-emerald-100" />
+                </h2>
+                <div className="relative h-[400px] rounded-[48px] overflow-hidden group shadow-2xl border border-slate-100">
+                  <img 
+                    src={foundCity.cityImage} 
+                    alt={`${foundCity.name} city view`} 
+                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-10 text-white max-w-2xl">
+                    <div className="flex items-center gap-3 text-emerald-400 font-black uppercase tracking-widest text-xs mb-4">
+                      <MapPin className="w-4 h-4" />
+                      <span>Local Experience</span>
                     </div>
-                  </motion.div>
-                ))}
+                    <h3 className="text-3xl font-black uppercase tracking-tight mb-4">
+                      Living in {foundCity.name}
+                    </h3>
+                    <p className="text-white/80 font-medium leading-relaxed">
+                      {foundCity.cityDescription || `Experience the vibrant lifestyle of ${foundCity.name}, a city that perfectly balances academic focus with cultural richness.`}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* Gallery Grid */}
+            {universityImages.length > 1 && (
+              <div>
+                <h2 className="text-2xl font-black uppercase tracking-[0.2em] mb-8 flex items-center gap-4 text-blue-600">
+                  Campus Exploration <div className="h-px flex-1 bg-blue-100" />
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {universityImages.slice(1).map((img, i) => (
+                    <motion.div 
+                      key={i}
+                      whileHover={{ y: -10, scale: 1.02 }}
+                      onClick={() => setActiveImage(img)}
+                      className="relative rounded-[32px] overflow-hidden aspect-[4/3] border border-slate-200 cursor-zoom-in group shadow-lg"
+                    >
+                      <img src={img} alt={`Campus view ${i}`} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                          <Plus className="w-5 h-5 text-white" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Sidebar Stats */}

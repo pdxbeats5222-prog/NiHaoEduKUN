@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Globe, Mail, MapPin, Phone, Instagram, Youtube } from 'lucide-react';
-import { SiTiktok } from 'react-icons/si';
+import { SiTiktok, SiXiaohongshu } from 'react-icons/si';
 
 export default function Footer() {
   return (
@@ -27,6 +27,9 @@ export default function Footer() {
               </a>
               <a href="https://www.tiktok.com/@kunofficial37?_r=1&_t=ZP-95drv1GlYpK" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
                 <SiTiktok size={20} />
+              </a>
+              <a href="https://www.xiaohongshu.com/user/profile/6487e41b00000000070188bb" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+                <SiXiaohongshu size={20} />
               </a>
             </div>
           </div>
