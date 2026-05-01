@@ -8,7 +8,7 @@ export default function About() {
       name: "Shiqi",
       role: "Founder & CEO",
       desc: "Local Institutional Authority specializing in University Admissions & Government Regulations.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1DtVITjc86j6Rqtm-TKWWot2-ZCVRFaFO"
+      image: "https://lh3.googleusercontent.com/u/0/d/10S1HpTJcRfu8uIrZd4mmSLXCKlqmlBdb"
     },
     {
       name: "Kun",
