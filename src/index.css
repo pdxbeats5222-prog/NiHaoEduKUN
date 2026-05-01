@@ -22,6 +22,16 @@
   --animate-bounce-subtle: bounce-subtle 2s infinite;
 }
 
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 body {
   background-color: var(--color-cream-50);
   color: var(--color-brand-dark);

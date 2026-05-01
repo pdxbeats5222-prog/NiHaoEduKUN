@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { motion, useAnimationFrame, useMotionValue } from 'motion/react';
+import { useRef, useState, useEffect } from 'react';
 import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube } from 'lucide-react';
 
 export default function About() {
@@ -16,16 +17,28 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/1lhx6ceasYSrlWsBk7vy1BDdTzxq_r7_I"
     },
     {
+      name: "Kiki",
+      role: "Video Creator",
+      desc: "Digital content specialist, highlighting authentic campus experiences and student success stories through high-quality video production.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1CpWfyo7kzybV9hrlQlu15-ibpqeXJopG"
+    },
+    {
+      name: "Clement Zhou",
+      role: "Consulting Teacher",
+      desc: "Expert academic advisor providing strategic guidance on university admissions and career planning for international students.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1DDu2udglAq1vbEli91PwnfJCCFc17Ju4"
+    },
+    {
+      name: "Alan",
+      role: "Team Head of Student Guidance",
+      desc: "Leading international student support and academic orientation strategies for all incoming scholars.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1A6ULZSjDo8edlSbMFH5X6xtZ6HXclIyX"
+    },
+    {
       name: "Tani",
       role: "Mexico Lead",
       desc: "Latin American Liaison, managing bilingual transitions & cultural immersion.",
       image: "https://lh3.googleusercontent.com/u/0/d/13Dc-hTPDkzS5rFse0nxkjbIJA6d9rR0m"
-    },
-    {
-      name: "Sam",
-      role: "Russia Lead",
-      desc: "Eastern European Academic Head, leading research pathways & enrollment standards.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
     },
     {
       name: "Elena",
@@ -58,6 +71,32 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/1quTZ2fNzLRHHR0fIb2mQ45hOuu38Y7Cg"
     }
   ];
+
+  // Marquee Controller
+  const x = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useAnimationFrame((t, delta) => {
+    if (isDragging || isPaused) return;
+
+    const moveBy = -0.5 * (delta / 16); // Normalizing for ~60fps
+    let nextX = x.get() + moveBy;
+
+    // Loop logic - half of the duplicated list
+    if (contentRef.current) {
+      const halfWidth = contentRef.current.offsetWidth / 2;
+      if (nextX <= -halfWidth) {
+        nextX = 0;
+      } else if (nextX > 0) {
+        nextX = -halfWidth;
+      }
+    }
+    
+    x.set(nextX);
+  });
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
@@ -142,22 +181,39 @@ export default function About() {
           </p>
         </div>
 
-        <div className="relative w-full overflow-hidden py-4">
+        <div 
+          ref={containerRef}
+          className="relative w-full overflow-hidden py-4 cursor-grab active:cursor-grabbing"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Gradient masks for smooth fade on edges */}
           <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
           
           <motion.div 
+            ref={contentRef}
             className="flex gap-8 w-max px-8"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
+            style={{ x }}
+            drag="x"
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={(e, info) => {
+              setIsDragging(false);
+              // Handle looping during/after drag
+              if (contentRef.current) {
+                const halfWidth = contentRef.current.offsetWidth / 2;
+                let currentX = x.get();
+                if (currentX <= -halfWidth) x.set(currentX + halfWidth);
+                if (currentX > 0) x.set(currentX - halfWidth);
+              }
+            }}
           >
             {[...team, ...team].map((member, idx) => (
               <div 
                 key={idx}
-                className="bg-[#f5f5f7] rounded-[2rem] overflow-hidden w-[280px] md:w-[320px] shrink-0 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-[#f5f5f7] rounded-[2rem] overflow-hidden w-[280px] md:w-[320px] shrink-0 shadow-sm hover:shadow-md transition-shadow select-none pointer-events-none sm:pointer-events-auto"
               >
-                <img src={member.image} alt={member.name} referrerPolicy="no-referrer" className="w-full h-64 object-cover" />
+                <img src={member.image} alt={member.name} referrerPolicy="no-referrer" className="w-full h-64 object-cover pointer-events-none" />
                 <div className="p-8">
                   <h3 className="text-xl font-semibold text-[#1d1d1f] mb-1">{member.name}</h3>
                   <p className="text-[#0071e3] font-medium mb-4">{member.role}</p>
