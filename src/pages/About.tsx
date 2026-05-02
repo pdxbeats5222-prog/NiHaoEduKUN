@@ -8,7 +8,13 @@ export default function About() {
       name: "Shiqi",
       role: "Founder & CEO",
       desc: "Local Institutional Authority specializing in University Admissions & Government Regulations.",
-      image: "https://lh3.googleusercontent.com/u/0/d/10S1HpTJcRfu8uIrZd4mmSLXCKlqmlBdb"
+      image: "https://lh3.googleusercontent.com/u/0/d/1C9LsBi5uVae6ZYm46Vl_1fuFPUPI5kjz"
+    },
+    {
+      name: "Jiabin Wang",
+      role: "Russian Market Lead & Financial Accountant",
+      desc: "Lead for the Russian market and company financial accountant, ensuring professional service and fiscal integrity.",
+      image: "https://lh3.googleusercontent.com/u/0/d/15bKTq7WGWEDC2g2lS4syadWtT0omDcdg"
     },
     {
       name: "Kun",

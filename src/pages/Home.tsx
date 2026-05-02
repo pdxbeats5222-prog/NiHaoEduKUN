@@ -220,7 +220,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-red-600 to-amber-500 rounded-[2rem] transform translate-x-4 translate-y-4 opacity-20 blur-lg"></div>
               {/* Founder Image */}
               <img 
-                src="https://lh3.googleusercontent.com/u/0/d/10S1HpTJcRfu8uIrZd4mmSLXCKlqmlBdb" 
+                src="https://lh3.googleusercontent.com/u/0/d/1C9LsBi5uVae6ZYm46Vl_1fuFPUPI5kjz" 
                 alt="Shiqi - Founder" 
                 referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-full object-cover h-[600px] relative z-10 border border-white/50"
