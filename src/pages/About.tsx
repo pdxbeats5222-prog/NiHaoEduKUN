@@ -35,6 +35,30 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/1DDu2udglAq1vbEli91PwnfJCCFc17Ju4"
     },
     {
+      name: "SAYAN",
+      role: "Consultant Teacher",
+      desc: "Specialized academic consultant providing comprehensive support for university applications and student success in China.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1OMMpRB8mml7ORgQJAS2xwyZgcLTBCdWa"
+    },
+    {
+      name: "JENNY",
+      role: "Consultant Teacher",
+      desc: "Dedicated international student advisor with a focus on academic coordination and institutional excellence.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1VIj7X45ceApyQeqmuK-v0y2fYikp4pDp"
+    },
+    {
+      name: "XIANGYI YANG",
+      role: "Document Specialist",
+      desc: "Expert in academic documentation, visa processing, and graduation clearances, ensuring all student paperwork meets strict institutional standards.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1rkEfLG8ifXqeNl4c8edpN02RL57URp5U"
+    },
+    {
+      name: "Max",
+      role: "Operation Supervisor",
+      desc: "Overseeing daily operations and institutional coordination to maintain high standards of service excellence across all departments.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1QtacY1FyRs_P53cx2PVUdS7GS4FU6lmn"
+    },
+    {
       name: "Alan",
       role: "Team Head of Student Guidance",
       desc: "Leading international student support and academic orientation strategies for all incoming scholars.",
@@ -47,34 +71,16 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/13Dc-hTPDkzS5rFse0nxkjbIJA6d9rR0m"
     },
     {
-      name: "Elena",
-      role: "Europe Lead",
-      desc: "European Admissions Specialist, focusing on degree equivalency and scholarships.",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      name: "Ahmed",
-      role: "MENA Lead",
-      desc: "Middle East & North Africa Director, ensuring smooth cultural transitions.",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      name: "Sarah",
-      role: "North America Lead",
-      desc: "US & Canada Coordinator, managing study abroad partnerships and credit transfers.",
-      image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      name: "Wei",
-      role: "Student Success Manager",
-      desc: "On-campus support lead, helping students navigate daily life and academics in China.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop"
-    },
-    {
       name: "Zixuan Ji",
       role: "Hispanic Markets Director",
       desc: "Cultural storyteller & cross-cultural facilitator, connecting Spanish, English and Chinese-speaking communities.",
       image: "https://lh3.googleusercontent.com/u/0/d/1quTZ2fNzLRHHR0fIb2mQ45hOuu38Y7Cg"
+    },
+    {
+      name: "IRINA",
+      role: "Campus Ambassador",
+      desc: "Our dedicated campus ambassador in Hangzhou, bridging the gap between potential students and authentic university life through on-ground insights.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1PZladjOvW30UEC1rjlRJHYP-AbLqY8sn"
     }
   ];
 
@@ -136,6 +142,51 @@ export default function About() {
         </div>
       </div>
 
+      {/* Team Video Spotlight */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-black aspect-video md:aspect-[21/9]">
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="w-full h-full object-cover opacity-70 pointer-events-none"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-business-people-meeting-in-a-bright-office-40453-large.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Brand Overlay */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white pointer-events-none z-10">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="text-center"
+            >
+              <h2 className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter drop-shadow-2xl">你好教育</h2>
+              <div className="flex items-center justify-center gap-4">
+                <div className="h-[1px] w-12 bg-red-600" />
+                <p className="text-xl md:text-3xl font-light tracking-[0.2em] uppercase text-white/90">Nihao Education</p>
+                <div className="h-[1px] w-12 bg-red-600" />
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+          
+          {/* Decorative progressive slider (Non-clickable) */}
+          <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
+            <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-red-600"
+                animate={{ width: ["0%", "100%"] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Core Advantage */}
       <div className="bg-[#f5f5f7] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,8 +219,8 @@ export default function About() {
             </div>
             <div className="relative">
               <img 
-                src="https://lh3.googleusercontent.com/u/0/d/1S2mUqsZvhRfmFG9nmiJutL-I-ZJYpBGu" 
-                alt="Nihao Education Advantage" 
+                src="https://lh3.googleusercontent.com/u/0/d/1N1WnU1yDWxOZrk5Dr29eUSiFG9nbSZHG" 
+                alt="Nihao Education Team" 
                 referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-xl w-full object-cover h-[400px]"
               />
