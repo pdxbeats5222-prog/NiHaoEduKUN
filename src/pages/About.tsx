@@ -81,6 +81,12 @@ export default function About() {
       role: "Campus Ambassador",
       desc: "Our dedicated campus ambassador in Hangzhou, bridging the gap between potential students and authentic university life through on-ground insights.",
       image: "https://lh3.googleusercontent.com/u/0/d/1PZladjOvW30UEC1rjlRJHYP-AbLqY8sn"
+    },
+    {
+      name: "AHMAD JASH",
+      role: "Coordinator for African Partnership",
+      desc: "Bilingual communication and Cultural Integration specialist, fostering strong relationships across African partnerships.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1eHXH_NkzpDOqIDw3l_X3GiAdwInug7Am"
     }
   ];
 
