@@ -284,15 +284,14 @@ END:VCALENDAR`;
                 </div>
 
                 <div className="mt-12">
-                  <a 
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setSelectedProgram(null)}
+                  <Link 
+                    to="/contact"
                     className="w-full bg-gradient-to-r from-red-600 to-red-500 text-white py-5 rounded-2xl font-bold text-center flex items-center justify-center gap-2 shadow-xl hover:shadow-red-500/30 hover:scale-[1.02] transition-all"
+                    onClick={() => setSelectedProgram(null)}
+                    state={{ program: 'Summer Cultural Tour', message: 'I am interested in the 4-Week Chinese Language Intensive Summer Camp.' }}
                   >
                     Apply for Summer Camp Now
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

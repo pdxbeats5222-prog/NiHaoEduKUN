@@ -117,14 +117,12 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <a 
-              href={WHATSAPP_LINK} 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-500 text-white px-10 py-4 rounded-full font-semibold text-lg shadow-[0_8px_24px_rgba(220,38,38,0.3)] hover:shadow-[0_12px_32px_rgba(220,38,38,0.4)] hover:scale-105 transition-all duration-300"
+            <Link 
+              to="/contact" 
+              className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-500 text-white px-10 py-4 rounded-full font-semibold text-lg shadow-[0_8px_24px_rgba(220,38,38,0.3)] hover:shadow-[0_12px_32px_rgba(220,38,38,0.4)] hover:scale-105 transition-all duration-300 flex items-center justify-center"
             >
               {t('Get Your Place')}
-            </a>
+            </Link>
             <motion.div
               animate={{ 
                 boxShadow: ["0 0 0 0 rgba(249, 115, 22, 0.4)", "0 0 0 15px rgba(249, 115, 22, 0)"],
@@ -359,9 +357,9 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-widest text-[#86868b] mb-2 block">{program.subtitle}</span>
                 <h3 className="text-2xl font-bold text-[#1d1d1f] mb-4">{program.title}</h3>
                 <p className="text-[#5a5a5c] leading-relaxed mb-6">{program.desc}</p>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#1d1d1f] font-bold group-hover:text-red-600 transition-colors">
+                <Link to="/contact" className="inline-flex items-center gap-2 text-[#1d1d1f] font-bold group-hover:text-red-600 transition-colors">
                   {t('Apply Now')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </motion.div>
             ))}
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Loader2, Sparkles, Cpu, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { chatWithGemini } from '../services/geminiService';
+import { WHATSAPP_LINK } from '../constants';
 
 interface Message {
   id: string;
@@ -67,7 +68,7 @@ export default function Chatbot() {
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/8615968141445"
+        href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
         className={`fixed bottom-[7.5rem] right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl ${isOpen ? 'hidden' : 'flex'}`}

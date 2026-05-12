@@ -152,14 +152,12 @@ export default function Navbar() {
                 <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white animate-pulse" />
               </button>
 
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-red-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-red-500/30 hover:shadow-red-500/40 hover:scale-105 transition-all duration-300 whitespace-nowrap"
-              >
-                {t('Contact Us')}
-              </a>
+          <Link
+            to="/contact"
+            className="bg-red-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-red-500/30 hover:shadow-red-500/40 hover:scale-105 transition-all duration-300 whitespace-nowrap"
+          >
+            {t('Contact Us')}
+          </Link>
             </div>
           </nav>
 
@@ -232,15 +230,13 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-red-600 text-white px-5 py-4 rounded-xl font-bold text-center mt-6 flex items-center justify-center gap-2 shadow-lg shadow-red-500/30 active:scale-95 transition-all"
               >
                 {t('Contact Us')}
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

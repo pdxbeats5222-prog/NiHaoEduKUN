@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowLeft, 
@@ -329,14 +329,13 @@ export default function UniversityDetail() {
               </div>
               
               <div className="mt-12 pt-10 border-t border-white/10">
-                <a 
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link 
+                  to="/contact"
                   className="w-full py-5 bg-blue-600 hover:bg-blue-500 rounded-3xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-900/50"
+                  state={{ university: foundUni.name, program: 'Bachelor\'s Degree' }}
                 >
                   {t('Apply Now')} <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </div>
 

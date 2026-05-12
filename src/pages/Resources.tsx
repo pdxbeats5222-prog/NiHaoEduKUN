@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Award, Building, Clock, FileText, Download, X, AlertCircle, ListChecks, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { WHATSAPP_LINK } from '../constants';
 import { useTranslation } from 'react-i18next';
 
@@ -209,14 +210,13 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
                 {t('X1/X2 Visa Guide Short')}
               </p>
               <div className="flex flex-col gap-4">
-                <a 
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link 
+                  to="/contact"
                   className="w-full px-6 py-4 bg-red-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-700 transition-colors shadow-lg shadow-red-500/20"
+                  state={{ message: 'I am interested in the X1/X2 Visa Guide and would like assistance.' }}
                 >
                   {t('Apply Now')} <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
                 <div className="flex gap-4">
                   <button 
                     onClick={() => setActiveGuide('visa')}
@@ -344,15 +344,13 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
                   <p className="text-white/70 mb-8 max-w-lg mx-auto leading-relaxed">
                     Our team provides personalized document review services for all our students to ensure a 100% visa success rate.
                   </p>
-                  <a 
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link 
+                    to="/contact"
                     className="inline-flex py-4 px-8 bg-red-600 text-white rounded-2xl font-bold text-sm tracking-wide uppercase hover:bg-red-700 transition-all items-center gap-3 group"
                   >
                     {t('Apply Now')}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </div>
               </div>
 
