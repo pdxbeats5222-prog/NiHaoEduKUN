@@ -2,10 +2,13 @@ import { motion } from 'motion/react';
 import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import { WHATSAPP_LINK } from '../constants';
 import Deadlines from '../components/Deadlines';
 import UniversityMap from '../components/UniversityMap';
 
 export default function Home() {
+  const { t } = useTranslation();
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -69,9 +72,9 @@ export default function Home() {
   return (
     <div className="w-full">
       <Helmet>
-        <title>Study in China: Expert University Admissions & Scholarships | Nihao.edu</title>
-        <meta name="description" content="Looking to study in China? Get expert assistance for English-taught programs, Chinese Government Scholarship (CSC) applications, and X1 student visa support. Apply now!" />
-        <meta name="keywords" content="Study in China, Study in China CSC, Study in China in English, China student visa X1, Apply to Chinese universities, Chinese Government Scholarship application, Best universities in China, MBBS in China, Study in Shanghai, China admission consultant" />
+        <title>{t('Meta Title Home')}</title>
+        <meta name="description" content={t('Meta Description Home')} />
+        <meta name="keywords" content={t('Meta Keywords Home')} />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
         </script>
@@ -94,8 +97,8 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-              <span className="bg-gradient-to-r from-red-600 via-red-500 to-amber-500 bg-clip-text text-transparent drop-shadow-sm">Study in China.</span> <br className="hidden md:block" />
-              <span className="text-[#1d1d1f]">Brilliantly simple.</span>
+              <span className="bg-gradient-to-r from-red-600 via-red-500 to-amber-500 bg-clip-text text-transparent drop-shadow-sm">{t('Study in China.')}</span> <br className="hidden md:block" />
+              <span className="text-[#1d1d1f]">{t('Brilliantly simple.')}</span>
             </h1>
           </motion.div>
           
@@ -105,7 +108,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-[#5a5a5c] mb-10 max-w-3xl mx-auto font-normal"
           >
-            Seamless admissions, guaranteed visa support, and insider guidance to help you thrive in the world's most dynamic educational destination.
+            {t('Hero Subtitle')}
           </motion.h2>
           
           <motion.div 
@@ -115,12 +118,12 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <a 
-              href="https://wa.me/8615968141445" 
+              href={WHATSAPP_LINK} 
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-500 text-white px-10 py-4 rounded-full font-semibold text-lg shadow-[0_8px_24px_rgba(220,38,38,0.3)] hover:shadow-[0_12px_32px_rgba(220,38,38,0.4)] hover:scale-105 transition-all duration-300"
             >
-              Get Your Place
+              {t('Get Your Place')}
             </a>
             <motion.div
               animate={{ 
@@ -137,7 +140,7 @@ export default function Home() {
                 to="/about" 
                 className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
-                Watch About Us <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
+                {t('Watch About Us')} <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
               </Link>
             </motion.div>
           </motion.div>
@@ -149,13 +152,15 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-16 max-w-6xl mx-auto w-full px-4 relative z-10"
         >
-          <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+          <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)] overflow-hidden aspect-video md:aspect-[21/9]">
             <img 
               src="https://lh3.googleusercontent.com/u/0/d/1eyG9Rf_YkKg0V9ld0_1a8V6bdGG65srl" 
-              alt="Students outside Chinese university" 
+              alt="Students in China"
               referrerPolicy="no-referrer"
-              className="w-full h-[50vh] md:h-[70vh] object-cover rounded-[1.5rem]"
+              className="w-full h-full object-cover rounded-[1.5rem]"
             />
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </section>
@@ -168,10 +173,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">
-              Why China? Why Now?
+              {t('Why China? Why Now?')}
             </h2>
             <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
-              China is rapidly becoming the top destination for ambitious international students. Here's why you should make the move.
+              {t('Why China Subtitle')}
             </p>
           </div>
 
@@ -179,18 +184,18 @@ export default function Home() {
             {[
               {
                 icon: <BookOpen className="w-10 h-10 text-red-600" />,
-                title: "World-Class Education.",
-                desc: "Access top-ranked universities with cutting-edge facilities, generous scholarships, and globally recognized degrees in tech, business, and medicine."
+                title: t("World-Class Education."),
+                desc: t("World-Class Education Desc")
               },
               {
                 icon: <Globe2 className="w-10 h-10 text-emerald-600" />,
-                title: "Cultural Immersion.",
-                desc: "Master Mandarin (HSK) while experiencing a rich, 5,000-year-old culture seamlessly blended with futuristic, cashless, hyper-connected cities."
+                title: t("Cultural Immersion."),
+                desc: t("Cultural Immersion Desc")
               },
               {
                 icon: <Briefcase className="w-10 h-10 text-amber-500" />,
-                title: "Unmatched Career Edge.",
-                desc: "Position yourself in the world's second-largest economy. Build a global network and unlock exclusive career opportunities across Asia and beyond."
+                title: t("Unmatched Career Edge."),
+                desc: t("Unmatched Career Edge Desc")
               }
             ].map((item, idx) => (
               <motion.div 
@@ -230,23 +235,23 @@ export default function Home() {
             </div>
             <div className="lg:w-1/2">
               <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-6">
-                Meet Shiqi. <br />
-                <span className="bg-gradient-to-r from-red-600 to-amber-500 bg-clip-text text-transparent">Founder & Insider Guide.</span>
+                {t('Meet Shiqi.')} <br />
+                <span className="bg-gradient-to-r from-red-600 to-amber-500 bg-clip-text text-transparent">{t('Founder & Insider Guide.')}</span>
               </h2>
               <div className="space-y-6 text-xl text-[#5a5a5c] font-light leading-relaxed">
                 <p>
-                  I know exactly what it feels like to land in China for the first time—excited, overwhelmed, and unsure of how to navigate the system.
+                  {t('Meet Shiqi Para 1')}
                 </p>
                 <p>
-                  Living and studying in Hangzhou, I had to figure out the X1 visa process, adapt to university life, and grind toward HSK mastery through trial and error. <strong className="font-medium text-[#1d1d1f]">You don't have to.</strong>
+                  {t('Meet Shiqi Para 2')}
                 </p>
                 <p>
-                  I founded Nihao.edu to provide the exact roadmap I wish I had. Alongside my dedicated team, we don't just process paperwork; we provide unmatched, on-the-ground insider knowledge to ensure your transition is smooth, successful, and stress-free.
+                  {t('Meet Shiqi Para 3')}
                 </p>
               </div>
               <div className="mt-10">
                 <Link to="/about" className="text-red-600 font-medium text-lg flex items-center gap-2 hover:text-red-700 transition-colors group">
-                  Read my full story <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {t('Read my full story')} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
@@ -260,30 +265,30 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Why Choose <span className="bg-gradient-to-r from-red-600 to-amber-500 bg-clip-text text-transparent">Nihao.edu?</span>
+              {t('Why Choose')} <span className="bg-gradient-to-r from-red-600 to-amber-500 bg-clip-text text-transparent">Nihao.edu?</span>
             </h2>
             <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
-              We aren't just another overseas agency. We are your local insiders, dedicated to your success from application to graduation.
+              {t('Why Choose Subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "Local HQ in Hangzhou",
-                desc: "We are based right here in China. When policies change or issues arise, we are on the ground to handle them immediately, not 5,000 miles away."
+                title: t("Local HQ in Hangzhou"),
+                desc: t("Local HQ Desc")
               },
               {
-                title: "Direct University Ties",
-                desc: "No middlemen. We work directly with admissions offices at top universities, ensuring your application gets priority review and faster processing."
+                title: t("Direct University Ties"),
+                desc: t("Direct University Ties Desc")
               },
               {
-                title: "Alumni-Led Support",
-                desc: "Our team consists of former international students who have navigated the exact same challenges you will face. We know the system inside and out."
+                title: t("Alumni-Led Support"),
+                desc: t("Alumni-Led Support Desc")
               },
               {
-                title: "End-to-End Care",
-                desc: "Other agencies stop when you get your visa. We provide ongoing support—from airport pickup to dorm setup and opening your local bank account."
+                title: t("End-to-End Care"),
+                desc: t("End-to-End Care Desc")
               }
             ].map((advantage, idx) => (
               <motion.div 
@@ -309,36 +314,36 @@ export default function Home() {
       <section className="py-32 bg-[#faf9f6] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">Study Programs.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">{t('Study Programs.')}</h2>
             <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
-              Find the perfect academic pathway for your career and personal growth.
+              {t('Study Programs Subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Chinese Language",
-                subtitle: "Full Immersion",
-                desc: "Master Mandarin with intensive, HSK-focused programs at top linguistics centers.",
+                title: t("Chinese Language"),
+                subtitle: t("Full Immersion"),
+                desc: t("Chinese Language Desc Short"),
                 color: "from-blue-500 to-cyan-400"
               },
               {
-                title: "Bachelor's",
-                subtitle: "Undergraduate",
-                desc: "4-year degrees in Engineering, Business, Medicine (MBBS), and more.",
+                title: t("Bachelor's"),
+                subtitle: t("Undergraduate"),
+                desc: t("Bachelor's Desc Short"),
                 color: "from-red-600 to-orange-500"
               },
               {
-                title: "Master's",
-                subtitle: "Postgraduate",
-                desc: "Advance your career with specialized 2-3 year postgraduate degrees.",
+                title: t("Master's"),
+                subtitle: t("Postgraduate"),
+                desc: t("Master's Desc Short"),
                 color: "from-purple-600 to-indigo-500"
               },
               {
-                title: "PhD",
-                subtitle: "Doctoral Research",
-                desc: "High-level research opportunities with full scholarship potential.",
+                title: t("PhD"),
+                subtitle: t("Doctoral Research"),
+                desc: t("PhD Desc Short"),
                 color: "from-emerald-600 to-teal-500"
               }
             ].map((program, idx) => (
@@ -354,8 +359,8 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-widest text-[#86868b] mb-2 block">{program.subtitle}</span>
                 <h3 className="text-2xl font-bold text-[#1d1d1f] mb-4">{program.title}</h3>
                 <p className="text-[#5a5a5c] leading-relaxed mb-6">{program.desc}</p>
-                <a href="https://wa.me/8615968141445" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#1d1d1f] font-bold group-hover:text-red-600 transition-colors">
-                  Apply Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#1d1d1f] font-bold group-hover:text-red-600 transition-colors">
+                  {t('Apply Now')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </motion.div>
             ))}
@@ -369,28 +374,28 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">Our Professional Study in China Services</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">{t('Our Professional Study in China Services')}</h2>
             <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
-              We provide the specialized support you need to navigate the complexities of Chinese university admissions and government scholarships.
+              {t('Professional Services Subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "English-Taught University Admissions",
-                desc: "We help you apply to Chinese universities offering prestigious Bachelor's, Master's, and PhD programs taught entirely in English. Our consultants identify the best match for your academic background and career goals.",
-                features: ["University shortlisting", "Personal statement reviews", "Direct application management"]
+                title: t("English-Taught University Admissions"),
+                desc: t("English-Taught Admissions Desc"),
+                features: [t("University shortlisting"), t("Personal statement reviews"), t("Direct application management")]
               },
               {
-                title: "Scholarship Application Guidance (CSC)",
-                desc: "Maximize your chances of securing the Chinese Government Scholarship (CSC) or provincial funding. We explain the exact requirements to help you study in China with full tuition and living coverage.",
-                features: ["CSC portal registration", "Research proposal editing", "Document checklist verification"]
+                title: t("Scholarship Application Guidance (CSC)"),
+                desc: t("Scholarship Guidance Desc Home"),
+                features: [t("CSC portal registration"), t("Research proposal editing"), t("Document checklist verification")]
               },
               {
-                title: "X1/X2 Student Visa Assistance",
-                desc: "Securing your China student visa X1 or X2 can be confusing. We guide you through the JW202/JW201 process, medical exam protocols, and preparation for your embassy interview.",
-                features: ["Visa interview training", "Authentication of documents", "Health certificate guidance"]
+                title: t("X1/X2 Student Visa Assistance"),
+                desc: t("Visa Assistance Desc Home"),
+                features: [t("Visa interview training"), t("Authentication of documents"), t("Health certificate guidance")]
               }
             ].map((service, idx) => (
               <motion.div 
@@ -476,30 +481,30 @@ export default function Home() {
             <div className="inline-block p-3 bg-red-100 rounded-2xl mb-4">
               <HelpCircle className="w-8 h-8 text-red-600" />
             </div>
-            <h2 className="text-4xl font-bold text-[#1d1d1f] tracking-tight">Frequently Asked Questions</h2>
+            <h2 className="text-4xl font-bold text-[#1d1d1f] tracking-tight">{t('Frequently Asked Questions')}</h2>
           </div>
 
           <div className="space-y-6">
             {[
               {
-                q: "Can I study in China in English?",
-                a: "Absolutely. Many top-tier Chinese universities offer full degree programs in English for international students, particularly in fields like Medicine (MBBS), Business, and Engineering."
+                q: t("FAQ Q1"),
+                a: t("FAQ A1")
               },
               {
-                q: "How do I apply for the Chinese Government Scholarship (CSC)?",
-                a: "The CSC application process starts between January and April each year. You must apply through the official portal, select your target universities, and provide all required academic and medical documents."
+                q: t("FAQ Q2"),
+                a: t("FAQ A2")
               },
               {
-                q: "What is the difference between X1 and X2 student visas?",
-                a: "The X1 visa is for long-term study (180+ days) and requires conversion to a Residence Permit upon arrival. The X2 visa is for short-term stays (less than 180 days) and does not require a residence permit."
+                q: t("FAQ Q3"),
+                a: t("FAQ A3")
               },
               {
-                q: "Are degrees from Chinese universities recognized globally?",
-                a: "Yes. Accredited degrees from Chinese universities are recognized worldwide. China has mutual recognition agreements with the US, UK, Australia, and most EU nations."
+                q: t("FAQ Q4"),
+                a: t("FAQ A4")
               },
               {
-                q: "What is the average cost of living for international students?",
-                a: "It depends on the city. In Hangzhou or Nanjing, students can live well on $400-$600 USD per month. In Shanghai or Beijing, budget for $800-$1,000 USD for a similar lifestyle."
+                q: t("FAQ Q5"),
+                a: t("FAQ A5")
               }
             ].map((faq, idx) => (
               <motion.div 
@@ -531,13 +536,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="inline-block px-4 py-1.5 bg-red-50 text-red-600 rounded-full text-sm font-semibold tracking-wide uppercase mb-4"
               >
-                The Experience
+                {t('The Experience')}
               </motion.span>
               <h2 className="text-5xl md:text-7xl font-bold text-[#1d1d1f] tracking-tight leading-[0.9] mb-6">
-                Life in <span className="text-red-600 italic font-serif">China.</span>
+                {t('Life in')} <span className="text-red-600 italic font-serif">{t('China.')}</span>
               </h2>
               <p className="text-xl text-[#5a5a5c] leading-relaxed mb-8">
-                Immerse yourself in vibrant culture, futuristic cities, and world-class campuses through the eyes of our students.
+                {t('Student Life Subtitle Home')}
               </p>
               <div className="flex flex-wrap gap-4">
                 <motion.a 
@@ -549,7 +554,7 @@ export default function Home() {
                   className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full font-bold shadow-lg shadow-red-200 hover:bg-red-700 transition-colors"
                 >
                   <Youtube className="w-5 h-5" />
-                  Watch Us on YouTube
+                  {t('Watch Us on YouTube')}
                 </motion.a>
                 <motion.a 
                   whileHover={{ scale: 1.05 }}
@@ -560,19 +565,19 @@ export default function Home() {
                   className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#1d1d1f] text-[#1d1d1f] rounded-full font-bold hover:bg-[#1d1d1f] hover:text-white transition-all"
                 >
                   <Instagram className="w-5 h-5" />
-                  Follow Us on Instagram
+                  {t('Follow Us on Instagram')}
                 </motion.a>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="text-right">
                 <div className="text-3xl font-bold text-[#1d1d1f]">500+</div>
-                <div className="text-sm text-[#86868b] uppercase tracking-wider font-semibold">Vlogs Shared</div>
+                <div className="text-sm text-[#86868b] uppercase tracking-wider font-semibold">{t('Vlogs Shared')}</div>
               </div>
               <div className="w-px h-12 bg-gray-200"></div>
               <div className="text-right">
                 <div className="text-3xl font-bold text-[#1d1d1f]">10M+</div>
-                <div className="text-sm text-[#86868b] uppercase tracking-wider font-semibold">Total Views</div>
+                <div className="text-sm text-[#86868b] uppercase tracking-wider font-semibold">{t('Total Views')}</div>
               </div>
             </div>
           </div>
@@ -688,48 +693,48 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">Hear From Our Students</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">{t('Hear From Our Students')}</h2>
             <p className="text-xl text-[#5a5a5c] max-w-2xl mx-auto">
-              Join thousands of international students who have successfully transitioned to studying in China with our guidance.
+              {t('Testimonials Subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                quote: "Kun's guidance was a lifesaver. He helped me navigate the confusing X1 visa process and got me into a top language program in Shanghai. I wouldn't be here without Nihao.edu.",
+                quote: t("Testimonial Quote 1"),
                 author: "Sarah M.",
-                country: "USA",
+                country: t("USA"),
                 program: "Fudan University"
               },
               {
-                quote: "The pre-departure orientation was incredible. I landed in Beijing already knowing how to use Alipay, order food on Meituan, and navigate the subway. Highly recommend!",
+                quote: t("Testimonial Quote 2"),
                 author: "David K.",
-                country: "UK",
+                country: t("UK"),
                 program: "Tsinghua University"
               },
               {
-                quote: "I was overwhelmed by the CSC scholarship application, but the team at Nihao broke it down step-by-step. I'm now studying my Master's fully funded!",
+                quote: t("Testimonial Quote 3"),
                 author: "Elena R.",
-                country: "Spain",
+                country: t("Spain"),
                 program: "Zhejiang University"
               },
               {
-                quote: "From finding the right dorm to setting up my bank account, they were there. It felt like having a local best friend waiting for me when I arrived.",
+                quote: t("Testimonial Quote 4"),
                 author: "Ahmed S.",
-                country: "Egypt",
+                country: t("Egypt"),
                 program: "Peking University"
               },
               {
-                quote: "The cultural immersion tips were spot on. I avoided so many faux pas and made local friends much faster thanks to their advice.",
+                quote: t("Testimonial Quote 5"),
                 author: "Jessica L.",
-                country: "Canada",
+                country: t("Canada"),
                 program: "Shanghai Jiao Tong"
               },
               {
-                quote: "Their network is unmatched. They connected me with alumni from my home country who were already studying at my target university.",
+                quote: t("Testimonial Quote 6"),
                 author: "Michael T.",
-                country: "Australia",
+                country: t("Australia"),
                 program: "Nanjing University"
               }
             ].map((testimonial, idx) => (
@@ -776,16 +781,16 @@ export default function Home() {
             <Download className="w-12 h-12 text-red-600" />
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold text-[#1d1d1f] tracking-tight mb-6">
-            Get The Ultimate China Student Visa Checklist.
+            {t('Lead Magnet Title')}
           </h2>
           <p className="text-xl text-[#5a5a5c] mb-12 max-w-2xl mx-auto">
-            Don't let a missing document delay your dream. Download our free, step-by-step guide to securing your X1/X2 visa without the stress.
+            {t('Lead Magnet Subtitle')}
           </p>
           
           <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative" onSubmit={(e) => e.preventDefault()}>
             <input 
               type="email" 
-              placeholder="Enter your email address" 
+              placeholder={t("Enter your email address")} 
               className="flex-grow px-8 py-4 rounded-full bg-white/80 backdrop-blur-md border border-white/50 text-[#1d1d1f] focus:outline-none focus:ring-2 focus:ring-red-500 text-lg shadow-[0_8px_30px_rgba(0,0,0,0.04)] placeholder:text-gray-400"
               required
             />
@@ -793,10 +798,10 @@ export default function Home() {
               type="submit" 
               className="bg-gradient-to-r from-red-600 to-red-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-[0_8px_24px_rgba(220,38,38,0.3)] hover:shadow-[0_12px_32px_rgba(220,38,38,0.4)] hover:scale-105 transition-all duration-300 whitespace-nowrap"
             >
-              Send My Free Guide
+              {t('Send My Free Guide')}
             </button>
           </form>
-          <p className="text-[#5a5a5c] text-sm mt-6">100% free. No spam. Unsubscribe anytime.</p>
+          <p className="text-[#5a5a5c] text-sm mt-6">{t('Lead Magnet Disclaimer')}</p>
         </div>
       </section>
     </div>

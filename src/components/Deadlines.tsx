@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Calendar, Bell, ArrowRight, X, MapPin, Clock, DollarSign, Users as UsersIcon, GraduationCap, Sparkles, CheckCircle2 } from 'lucide-react';
+import { WHATSAPP_LINK } from '../constants';
 
 interface Deadline {
   id: number;
@@ -284,7 +285,7 @@ END:VCALENDAR`;
 
                 <div className="mt-12">
                   <a 
-                    href="https://wa.me/8615968141445"
+                    href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setSelectedProgram(null)}

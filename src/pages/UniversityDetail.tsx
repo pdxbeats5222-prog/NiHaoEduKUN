@@ -24,8 +24,11 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { cityUniversities } from '../constants/universities';
+import { WHATSAPP_LINK } from '../constants';
+import { useTranslation } from 'react-i18next';
 
 export default function UniversityDetail() {
+  const { t } = useTranslation();
   const { name } = useParams();
   const navigate = useNavigate();
 
@@ -326,12 +329,14 @@ export default function UniversityDetail() {
               </div>
               
               <div className="mt-12 pt-10 border-t border-white/10">
-                <button 
-                  onClick={() => navigate('/contact')}
+                <a 
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full py-5 bg-blue-600 hover:bg-blue-500 rounded-3xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-900/50"
                 >
-                  Apply Online <ArrowRight className="w-4 h-4" />
-                </button>
+                  {t('Apply Now')} <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
             </div>
 
