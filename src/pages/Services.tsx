@@ -159,9 +159,14 @@ export default function Services() {
         </div>
 
         <div className="mt-20 text-center">
-          <Link to="/contact" className="inline-flex items-center justify-center bg-[#0071e3] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-[#0077ed] transition-colors">
+          <a 
+            href="https://wa.me/8615968141445" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-[#0071e3] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-[#0077ed] transition-colors"
+          >
             Get Your Place
-          </Link>
+          </a>
         </div>
       </div>
     </div>

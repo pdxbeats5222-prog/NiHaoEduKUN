@@ -1,6 +1,6 @@
 import { motion, useAnimationFrame, useMotionValue } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
-import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube } from 'lucide-react';
+import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube, Volume2, VolumeX } from 'lucide-react';
 
 export default function About() {
   const team = [
@@ -56,7 +56,7 @@ export default function About() {
       name: "Max",
       role: "Operation Supervisor",
       desc: "Overseeing daily operations and institutional coordination to maintain high standards of service excellence across all departments.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1QtacY1FyRs_P53cx2PVUdS7GS4FU6lmn"
+      image: "https://lh3.googleusercontent.com/u/0/d/1DHWaP_CEiV38Sqy9QWYUEU2FDeFPlBzv"
     },
     {
       name: "Alan",
@@ -110,6 +110,8 @@ export default function About() {
     x.set(nextX);
   });
 
+  const [isMuted, setIsMuted] = useState(true);
+
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
       {/* Hero Section */}
@@ -144,45 +146,41 @@ export default function About() {
 
       {/* Team Video Spotlight */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-black aspect-video md:aspect-[21/9]">
+        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#1d1d1f] aspect-video md:aspect-[21/9]">
           <video 
+            key={isMuted ? 'muted' : 'unmuted'}
             autoPlay 
-            muted 
+            muted={isMuted}
             loop 
             playsInline
-            className="w-full h-full object-cover opacity-70 pointer-events-none"
+            className="w-full h-full object-cover pointer-events-none"
+            src="https://lh3.googleusercontent.com/u/0/d/1bl8LBVe54iKyIANlekNgiFoJmMsPyfDp"
           >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-business-people-meeting-in-a-bright-office-40453-large.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
           
-          {/* Brand Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white pointer-events-none z-10">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="text-center"
-            >
-              <h2 className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter drop-shadow-2xl">你好教育</h2>
-              <div className="flex items-center justify-center gap-4">
-                <div className="h-[1px] w-12 bg-red-600" />
-                <p className="text-xl md:text-3xl font-light tracking-[0.2em] uppercase text-white/90">Nihao Education</p>
-                <div className="h-[1px] w-12 bg-red-600" />
-              </div>
-            </motion.div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
-          
-          {/* Decorative progressive slider (Non-clickable) */}
-          <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
-            <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden">
-              <motion.div 
-                className="h-full bg-red-600"
-                animate={{ width: ["0%", "100%"] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
+          {/* Sound Toggle */}
+          <div className="absolute bottom-8 right-8 z-30">
+            <button 
+              onClick={() => setIsMuted(!isMuted)}
+              className="bg-black/20 hover:bg-black/40 backdrop-blur-xl p-4 rounded-full border border-white/10 transition-all active:scale-95 group"
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+            >
+              <motion.div
+                key={isMuted ? 'muted' : 'unmuted'}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isMuted ? (
+                  <VolumeX className="w-6 h-6 text-white" />
+                ) : (
+                  <Volume2 className="w-6 h-6 text-white" />
+                )}
+              </motion.div>
+            </button>
           </div>
         </div>
       </div>

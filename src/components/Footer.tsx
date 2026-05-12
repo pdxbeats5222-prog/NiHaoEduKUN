@@ -41,7 +41,7 @@ export default function Footer() {
               <li><Link to="/services" className="hover:text-red-600 transition-colors">Our Services</Link></li>
               <li><Link to="/about" className="hover:text-red-600 transition-colors">Meet the Team</Link></li>
               <li><Link to="/resources" className="hover:text-red-600 transition-colors">Student Resources</Link></li>
-              <li><Link to="/contact" className="hover:text-red-600 transition-colors">Get Your Place</Link></li>
+              <li><a href="https://wa.me/8615968141445" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">Get Your Place</a></li>
             </ul>
           </div>
 

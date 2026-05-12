@@ -97,12 +97,14 @@ export default function Navbar() {
                 <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white animate-pulse" />
               </button>
 
-              <Link
-                to="/contact"
+              <a
+                href="https://wa.me/8615968141445"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-[0_4px_14px_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
               >
                 Contact Us
-              </Link>
+              </a>
             </div>
           </nav>
 
@@ -150,13 +152,15 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                to="/contact"
+              <a
+                href="https://wa.me/8615968141445"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-gradient-to-r from-red-600 to-red-500 text-white px-5 py-3.5 rounded-xl font-semibold text-center mt-4 flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.5)] hover:scale-[1.02] transition-all duration-300"
               >
                 Contact Us
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}
