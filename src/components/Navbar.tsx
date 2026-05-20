@@ -4,7 +4,7 @@ import { Menu, X, Globe, Bell, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { WHATSAPP_LINK } from '../constants';
-import logoImage from '../assets/images/regenerated_image_1779252029358.png';
+import { LOGO_BASE64 } from './logo_base64';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,7 +75,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-2 cursor-pointer group" id="navbar-brand-link">
             <motion.img
               id="navbar-logo"
-              src={logoImage}
+              src={LOGO_BASE64}
               alt="Nihao.edu Logo"
               className="h-11 w-11 object-contain shrink-0"
               whileHover={{ scale: 1.05, rotate: 3 }}
