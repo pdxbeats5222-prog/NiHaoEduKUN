@@ -4,6 +4,7 @@ import { Menu, X, Globe, Bell, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { WHATSAPP_LINK } from '../constants';
+import { LOGO_BASE64 } from './logo_base64';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,6 +54,7 @@ export default function Navbar() {
   const languages = [
     { code: 'en', name: 'English' },
     { code: 'zh', name: '中文' },
+    { code: 'th', name: 'ภาษาไทย' },
     { code: 'es', name: 'Español' },
     { code: 'fr', name: 'Français' },
     { code: 'ru', name: 'Русский' },
@@ -70,13 +72,13 @@ export default function Navbar() {
         }`}
       >
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2 cursor-pointer group">
-            <motion.img 
-              src="https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2" 
-              alt="Nihao.edu Logo" 
-              referrerPolicy="no-referrer"
-              className="h-12 w-auto object-contain" 
-              whileHover={{ scale: 1.1, rotate: 5 }}
+          <Link to="/" className="flex items-center gap-2 cursor-pointer group" id="navbar-brand-link">
+            <motion.img
+              id="navbar-logo"
+              src={LOGO_BASE64}
+              alt="Nihao.edu Logo"
+              className="h-11 w-11 object-contain shrink-0"
+              whileHover={{ scale: 1.05, rotate: 3 }}
               animate={{
                 y: [0, -4, 0],
               }}
@@ -90,7 +92,7 @@ export default function Navbar() {
                 rotate: { type: "spring", stiffness: 300 }
               }}
             />
-            <span className="text-xl font-bold tracking-tight text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors">
+            <span id="navbar-brand-name" className="text-xl font-bold tracking-tight text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors">
               Nihao.edu
             </span>
           </Link>

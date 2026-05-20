@@ -11,25 +11,25 @@ export default function About() {
       name: "Shiqi",
       role: "Founder & CEO",
       desc: "Local Institutional Authority specializing in University Admissions & Government Regulations.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1C9LsBi5uVae6ZYm46Vl_1fuFPUPI5kjz"
+      image: "/shiqi.jpg"
     },
     {
       name: "Jiabin Wang",
       role: "Russian Market Lead & Financial Accountant",
       desc: "Lead for the Russian market and company financial accountant, ensuring professional service and fiscal integrity.",
-      image: "https://lh3.googleusercontent.com/u/0/d/15bKTq7WGWEDC2g2lS4syadWtT0omDcdg"
+      image: "/jiabin.jpg"
     },
     {
       name: "Kun",
       role: "India Lead",
       desc: "South Asia Strategic Partner, expert in HSK Training & Student Integration.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1lhx6ceasYSrlWsBk7vy1BDdTzxq_r7_I"
+      image: "/kun.jpg"
     },
     {
       name: "Kiki",
       role: "Video Creator",
       desc: "Digital content specialist, highlighting authentic campus experiences and student success stories through high-quality video production.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1CpWfyo7kzybV9hrlQlu15-ibpqeXJopG"
+      image: "/kiki.jpg"
     },
     {
       name: "Hannah Hu",
@@ -41,61 +41,61 @@ export default function About() {
       name: "Clement Zhou",
       role: "Consulting Teacher",
       desc: "Expert academic advisor providing strategic guidance on university admissions and career planning for international students.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1DDu2udglAq1vbEli91PwnfJCCFc17Ju4"
+      image: "/clement.jpg"
     },
     {
       name: "SAYAN",
       role: "Consultant Teacher",
       desc: "Specialized academic consultant providing comprehensive support for university applications and student success in China.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1OMMpRB8mml7ORgQJAS2xwyZgcLTBCdWa"
+      image: "/sayan.jpg"
     },
     {
       name: "JENNY",
       role: "Consultant Teacher",
       desc: "Dedicated international student advisor with a focus on academic coordination and institutional excellence.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1VIj7X45ceApyQeqmuK-v0y2fYikp4pDp"
+      image: "/jenny.jpg"
     },
     {
       name: "XIANGYI YANG",
       role: "Document Specialist",
       desc: "Expert in academic documentation, visa processing, and graduation clearances, ensuring all student paperwork meets strict institutional standards.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1rkEfLG8ifXqeNl4c8edpN02RL57URp5U"
+      image: "/xiangyi.jpg"
     },
     {
       name: "Max",
       role: "Operation Supervisor",
       desc: "Overseeing daily operations and institutional coordination to maintain high standards of service excellence across all departments.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1DHWaP_CEiV38Sqy9QWYUEU2FDeFPlBzv"
+      image: "/max.jpg"
     },
     {
       name: "Alan",
       role: "Team Head of Student Guidance",
       desc: "Leading international student support and academic orientation strategies for all incoming scholars.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1A6ULZSjDo8edlSbMFH5X6xtZ6HXclIyX"
+      image: "/alan.jpg"
     },
     {
       name: "Tani",
       role: "Mexico Lead",
       desc: "Latin American Liaison, managing bilingual transitions & cultural immersion.",
-      image: "https://lh3.googleusercontent.com/u/0/d/13Dc-hTPDkzS5rFse0nxkjbIJA6d9rR0m"
+      image: "/tani.jpg"
     },
     {
       name: "Zixuan Ji",
       role: "Hispanic Markets Director",
       desc: "Cultural storyteller & cross-cultural facilitator, connecting Spanish, English and Chinese-speaking communities.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1quTZ2fNzLRHHR0fIb2mQ45hOuu38Y7Cg"
+      image: "/zixuan.jpg"
     },
     {
       name: "IRINA",
       role: "Campus Ambassador",
       desc: "Our dedicated campus ambassador in Hangzhou, bridging the gap between potential students and authentic university life through on-ground insights.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1PZladjOvW30UEC1rjlRJHYP-AbLqY8sn"
+      image: "/irina.jpg"
     },
     {
       name: "AHMAD JASH",
       role: "Coordinator for African Partnership",
       desc: "Bilingual communication and Cultural Integration specialist, fostering strong relationships across African partnerships.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1eHXH_NkzpDOqIDw3l_X3GiAdwInug7Am"
+      image: "/ahmad.jpg"
     }
   ];
 
@@ -199,6 +199,7 @@ export default function About() {
         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#1d1d1f] aspect-video md:aspect-[21/9]">
           <video 
             ref={videoRef}
+            poster="/about_hero.jpg"
             autoPlay 
             controls
             muted={isMuted}
@@ -269,9 +270,8 @@ export default function About() {
 
             <div className="relative">
               <img 
-                src="https://lh3.googleusercontent.com/u/0/d/1N1WnU1yDWxOZrk5Dr29eUSiFG9nbSZHG" 
+                src="/team_adv.jpg" 
                 alt="Nihao Education Team" 
-                referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-xl w-full object-cover h-[400px]"
               />
             </div>

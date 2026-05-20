@@ -15,7 +15,7 @@ export default function Home() {
     "@type": "EducationalOrganization",
     "name": "Nihao.edu",
     "url": "https://nihaoedu.org/",
-    "logo": "https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2",
+    "logo": "https://nihaoedu.org/logo2.png",
     "description": "Nihao.edu is a premier educational consultancy specializing in helping international students study in China with expert admissions, scholarship (CSC), and visa (X1/X2) assistance.",
     "sameAs": [
       "https://www.instagram.com/nihao_edu_kun",
@@ -160,6 +160,7 @@ export default function Home() {
             >
               <video 
                 src="/about_video.mp4"
+                poster="/about_hero.jpg"
                 autoPlay
                 muted
                 loop
@@ -255,9 +256,8 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-red-600 to-amber-500 rounded-[2rem] transform translate-x-4 translate-y-4 opacity-20 blur-lg"></div>
               {/* Founder Image */}
               <img 
-                src="https://lh3.googleusercontent.com/u/0/d/1C9LsBi5uVae6ZYm46Vl_1fuFPUPI5kjz" 
+                src="/shiqi.jpg" 
                 alt="Shiqi - Founder" 
-                referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-full object-cover h-[600px] relative z-10 border border-white/50"
               />
             </div>

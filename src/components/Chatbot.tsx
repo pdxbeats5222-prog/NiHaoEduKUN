@@ -3,6 +3,7 @@ import { X, Send, Loader2, Sparkles, Cpu, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { chatWithGemini } from '../services/geminiService';
 import { WHATSAPP_LINK } from '../constants';
+import { LOGO_BASE64 } from './logo_base64';
 
 interface Message {
   id: string;
@@ -118,11 +119,10 @@ export default function Chatbot() {
             {/* Header */}
             <div className="relative p-5 flex items-center justify-between border-b border-gray-200/50 bg-white/40 backdrop-blur-md z-10">
               <div className="flex items-center gap-3">
-                <img 
-                  src="https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2" 
-                  alt="Nihao.edu Logo" 
-                  referrerPolicy="no-referrer"
-                  className="w-10 h-10 object-contain" 
+                <img
+                  src={LOGO_BASE64}
+                  alt="Nihao.edu Logo"
+                  className="w-10 h-10 object-contain shrink-0"
                 />
                 <div>
                   <span className="font-bold text-[#1d1d1f] block text-lg tracking-tight">Nihao AI Nexus</span>

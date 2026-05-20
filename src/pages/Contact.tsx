@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, CheckCircle2, MessageCircle, Copy, Check, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { WHATSAPP_LINK } from '../constants';
 
 export default function Contact() {
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const [submitted, setSubmitted] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -71,14 +73,14 @@ export default function Contact() {
   return (
     <div className="pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">Get Your Place.</h1>
-        <p className="text-xl text-[#86868b] max-w-2xl mx-auto">Ready to start your journey? Let's talk.</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">{t('Contact Hero Title')}</h1>
+        <p className="text-xl text-[#86868b] max-w-2xl mx-auto">{t('Contact Hero Subtitle')}</p>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto">
         <div className="lg:col-span-1 space-y-8">
           <div>
-            <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">Contact Information</h3>
+            <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">{t('Contact Info Title')}</h3>
             <div className="space-y-4 text-[#86868b]">
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#1d1d1f]" />
@@ -94,7 +96,7 @@ export default function Contact() {
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#1d1d1f] shrink-0 mt-1" />
-                <span>Block A, Xipei Education Building, 280 Xuelin St, Xiasha Higher Education Zone, Hangzhou, Zhejiang</span>
+                <span>{t('Contact Address')}</span>
               </div>
             </div>
           </div>
@@ -113,100 +115,100 @@ export default function Contact() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Name</label>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">{t('Contact Label Name')}</label>
                     <input 
                       required 
                       name="name"
                       type="text" 
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" 
-                      placeholder="Your full name" 
+                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]" 
+                      placeholder={t('Contact Placeholder Name')} 
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Email</label>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">{t('Contact Label Email')}</label>
                     <input 
                       required 
                       name="email"
                       type="email" 
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" 
-                      placeholder="your@email.com" 
+                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]" 
+                      placeholder={t('Contact Placeholder Email')} 
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Age</label>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">{t('Contact Label Age')}</label>
                     <input 
                       required 
                       name="age"
                       type="number" 
                       value={formData.age}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" 
-                      placeholder="Your age" 
+                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]" 
+                      placeholder={t('Contact Placeholder Age')} 
                       min="16" 
                       max="100" 
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Nationality</label>
+                    <label className="block text-sm font-medium text-[#1d1d1f] mb-2">{t('Contact Label Nationality')}</label>
                     <input 
                       required 
                       name="nationality"
                       type="text" 
                       value={formData.nationality}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" 
-                      placeholder="Your country" 
+                      className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]" 
+                      placeholder={t('Contact Placeholder Nationality')} 
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">WhatsApp Number</label>
+                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">{t('Contact Label WhatsApp')}</label>
                   <input 
                     required 
                     name="whatsapp"
                     type="tel" 
                     value={formData.whatsapp}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow" 
+                    className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]" 
                     placeholder="+Country Code 000 000 000" 
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">What are you looking for?</label>
+                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">{t('Contact Label Program')}</label>
                   <select 
                     name="program"
                     value={formData.program}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow text-[#1d1d1f]"
                   >
-                    <option>Chinese Language Program</option>
-                    <option>Bachelor's Degree</option>
-                    <option>Master's Degree</option>
-                    <option>PhD / Doctoral Research</option>
-                    <option>Summer Cultural Tour</option>
-                    <option>Other / Consulting</option>
+                    <option value="Chinese Language Program">{t('Contact Opt Lang')}</option>
+                    <option value="Bachelor's Degree">{t('Contact Opt Bachelor')}</option>
+                    <option value="Master's Degree">{t('Contact Opt Master')}</option>
+                    <option value="PhD / Doctoral Research">{t('Contact Opt PhD')}</option>
+                    <option value="Summer Cultural Tour">{t('Contact Opt Summer')}</option>
+                    <option value="Other / Consulting">{t('Contact Opt Other')}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Message</label>
+                  <label className="block text-sm font-medium text-[#1d1d1f] mb-2">{t('Contact Label Message')}</label>
                   <textarea 
                     required 
                     name="message"
                     rows={4} 
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow resize-none" 
-                    placeholder="Tell us about your goals..."
+                    className="w-full px-4 py-3 rounded-xl bg-white border-none focus:ring-2 focus:ring-[#0071e3] outline-none transition-shadow resize-none text-[#1d1d1f]" 
+                    placeholder={t('Contact Placeholder Message')}
                   ></textarea>
                 </div>
                 <button type="submit" className="w-full bg-[#0071e3] text-white font-medium py-4 rounded-full hover:bg-[#0077ed] transition-colors text-lg">
-                  Submit Request
+                  {t('Contact Submit Request')}
                 </button>
               </motion.form>
             ) : (
@@ -219,9 +221,9 @@ export default function Contact() {
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">Almost There!</h3>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">{t('Contact Success Title')}</h3>
                 <p className="text-[#86868b] mb-8">
-                  Review your information and send it to our WhatsApp to complete your inquiry.
+                  {t('Contact Success Subtitle')}
                 </p>
 
                 <div className="bg-white rounded-2xl p-6 text-left mb-8 space-y-3 relative group">
@@ -233,19 +235,19 @@ export default function Contact() {
                     {copySuccess ? <Check size={18} className="text-green-600" /> : <Copy size={18} />}
                   </button>
                   <div className="text-sm">
-                    <span className="text-[#86868b] block mb-0.5">Name</span>
+                    <span className="text-[#86868b] block mb-0.5">{t('Contact Label Name')}</span>
                     <span className="font-medium text-[#1d1d1f]">{formData.name}</span>
                   </div>
                   <div className="text-sm">
-                    <span className="text-[#86868b] block mb-0.5">Contact</span>
+                    <span className="text-[#86868b] block mb-0.5">{t('Contact Label WhatsApp')} / {t('Contact Label Email')}</span>
                     <span className="font-medium text-[#1d1d1f]">{formData.whatsapp} | {formData.email}</span>
                   </div>
                   <div className="text-sm">
-                    <span className="text-[#86868b] block mb-0.5">Program</span>
+                    <span className="text-[#86868b] block mb-0.5">{t('Contact Label Program')}</span>
                     <span className="font-medium text-[#1d1d1f]">{formData.program}</span>
                   </div>
                   <div className="text-sm">
-                    <span className="text-[#86868b] block mb-0.5">Message</span>
+                    <span className="text-[#86868b] block mb-0.5">{t('Contact Label Message')}</span>
                     <span className="font-medium text-[#1d1d1f] line-clamp-2">{formData.message}</span>
                   </div>
                 </div>
@@ -255,18 +257,18 @@ export default function Contact() {
                     href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-[#25D366] text-white font-bold py-4 rounded-full hover:bg-[#128C7E] transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 active:scale-95"
+                    className="w-full bg-[#25D366] text-white font-bold py-4 rounded-full hover:bg-[#128C7E] transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 active:scale-95 text-[#1d1d1f]"
                   >
                     <MessageCircle className="w-5 h-5" />
-                    Confirm & Send to WhatsApp
+                    {t('Contact Confirm WhatsApp')}
                     <ArrowRight className="w-5 h-5" />
                   </a>
                   
                   <button 
                     onClick={() => setSubmitted(false)}
-                    className="text-[#0071e3] font-medium hover:underline text-sm"
+                    className="text-[#0071e3] font-medium hover:underline text-sm block mx-auto"
                   >
-                    Edit information
+                    {t('Contact Edit Info')}
                   </button>
                 </div>
               </motion.div>
