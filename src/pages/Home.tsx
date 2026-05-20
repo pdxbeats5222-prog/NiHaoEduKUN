@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -15,7 +14,7 @@ export default function Home() {
     "@type": "EducationalOrganization",
     "name": "Nihao.edu",
     "url": "https://nihaoedu.org/",
-    "logo": "https://nihaoedu.org/logo2.png",
+    "logo": "https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2",
     "description": "Nihao.edu is a premier educational consultancy specializing in helping international students study in China with expert admissions, scholarship (CSC), and visa (X1/X2) assistance.",
     "sameAs": [
       "https://www.instagram.com/nihao_edu_kun",
@@ -137,14 +136,13 @@ export default function Home() {
             >
               <Link 
                 to="/about" 
-                state={{ unmute: true }}
-                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
+                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 {t('Watch About Us')} <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
               </Link>
             </motion.div>
           </motion.div>
-         </div>
+        </div>
 
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -153,43 +151,14 @@ export default function Home() {
           className="mt-16 max-w-6xl mx-auto w-full px-4 relative z-10"
         >
           <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)] overflow-hidden aspect-video md:aspect-[21/9]">
-            <Link 
-              to="/about"
-              state={{ unmute: true }}
-              className="relative block w-full h-full cursor-pointer group rounded-[1.5rem] overflow-hidden"
-            >
-              <video 
-                src="/about_video.mp4"
-                poster="/about_hero.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              
-              {/* Backdrop shade */}
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 transition-colors duration-300 flex items-center justify-center" />
-              
-              {/* Stunning Big Play Button */}
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.08, 1],
-                  boxShadow: [
-                    "0 0 0 0 rgba(220, 38, 38, 0.4)",
-                    "0 0 0 20px rgba(220, 38, 38, 0)"
-                  ]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute w-20 h-20 bg-gradient-to-r from-red-600 to-red-500 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 group-hover:scale-110 z-20"
-              >
-                <Play className="w-8 h-8 fill-current ml-1" />
-              </motion.div>
-            </Link>
+            <img 
+              src="https://lh3.googleusercontent.com/u/0/d/1eyG9Rf_YkKg0V9ld0_1a8V6bdGG65srl" 
+              alt="Students in China"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover rounded-[1.5rem]"
+            />
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </section>
@@ -256,8 +225,9 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-red-600 to-amber-500 rounded-[2rem] transform translate-x-4 translate-y-4 opacity-20 blur-lg"></div>
               {/* Founder Image */}
               <img 
-                src="/shiqi.jpg" 
+                src="https://lh3.googleusercontent.com/u/0/d/1C9LsBi5uVae6ZYm46Vl_1fuFPUPI5kjz" 
                 alt="Shiqi - Founder" 
+                referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-full object-cover h-[600px] relative z-10 border border-white/50"
               />
             </div>

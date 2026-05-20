@@ -1,7 +1,6 @@
 import { motion, useAnimationFrame, useMotionValue } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube, Volume2, VolumeX } from 'lucide-react';
 
 export default function About() {
@@ -11,91 +10,85 @@ export default function About() {
       name: "Shiqi",
       role: "Founder & CEO",
       desc: "Local Institutional Authority specializing in University Admissions & Government Regulations.",
-      image: "/shiqi.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1C9LsBi5uVae6ZYm46Vl_1fuFPUPI5kjz"
     },
     {
       name: "Jiabin Wang",
       role: "Russian Market Lead & Financial Accountant",
       desc: "Lead for the Russian market and company financial accountant, ensuring professional service and fiscal integrity.",
-      image: "/jiabin.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/15bKTq7WGWEDC2g2lS4syadWtT0omDcdg"
     },
     {
       name: "Kun",
       role: "India Lead",
       desc: "South Asia Strategic Partner, expert in HSK Training & Student Integration.",
-      image: "/kun.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1lhx6ceasYSrlWsBk7vy1BDdTzxq_r7_I"
     },
     {
       name: "Kiki",
       role: "Video Creator",
       desc: "Digital content specialist, highlighting authentic campus experiences and student success stories through high-quality video production.",
-      image: "/kiki.jpg"
-    },
-    {
-      name: "Hannah Hu",
-      role: "Co-creation Partners",
-      desc: "Seasoned practitioner in international study services and premium video content creator, bridging global talents with study-in-China opportunities through media platforms.",
-      image: "/hannah.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1CpWfyo7kzybV9hrlQlu15-ibpqeXJopG"
     },
     {
       name: "Clement Zhou",
       role: "Consulting Teacher",
       desc: "Expert academic advisor providing strategic guidance on university admissions and career planning for international students.",
-      image: "/clement.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1DDu2udglAq1vbEli91PwnfJCCFc17Ju4"
     },
     {
       name: "SAYAN",
       role: "Consultant Teacher",
       desc: "Specialized academic consultant providing comprehensive support for university applications and student success in China.",
-      image: "/sayan.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1OMMpRB8mml7ORgQJAS2xwyZgcLTBCdWa"
     },
     {
       name: "JENNY",
       role: "Consultant Teacher",
       desc: "Dedicated international student advisor with a focus on academic coordination and institutional excellence.",
-      image: "/jenny.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1VIj7X45ceApyQeqmuK-v0y2fYikp4pDp"
     },
     {
       name: "XIANGYI YANG",
       role: "Document Specialist",
       desc: "Expert in academic documentation, visa processing, and graduation clearances, ensuring all student paperwork meets strict institutional standards.",
-      image: "/xiangyi.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1rkEfLG8ifXqeNl4c8edpN02RL57URp5U"
     },
     {
       name: "Max",
       role: "Operation Supervisor",
       desc: "Overseeing daily operations and institutional coordination to maintain high standards of service excellence across all departments.",
-      image: "/max.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1DHWaP_CEiV38Sqy9QWYUEU2FDeFPlBzv"
     },
     {
       name: "Alan",
       role: "Team Head of Student Guidance",
       desc: "Leading international student support and academic orientation strategies for all incoming scholars.",
-      image: "/alan.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1A6ULZSjDo8edlSbMFH5X6xtZ6HXclIyX"
     },
     {
       name: "Tani",
       role: "Mexico Lead",
       desc: "Latin American Liaison, managing bilingual transitions & cultural immersion.",
-      image: "/tani.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/13Dc-hTPDkzS5rFse0nxkjbIJA6d9rR0m"
     },
     {
       name: "Zixuan Ji",
       role: "Hispanic Markets Director",
       desc: "Cultural storyteller & cross-cultural facilitator, connecting Spanish, English and Chinese-speaking communities.",
-      image: "/zixuan.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1quTZ2fNzLRHHR0fIb2mQ45hOuu38Y7Cg"
     },
     {
       name: "IRINA",
       role: "Campus Ambassador",
       desc: "Our dedicated campus ambassador in Hangzhou, bridging the gap between potential students and authentic university life through on-ground insights.",
-      image: "/irina.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1PZladjOvW30UEC1rjlRJHYP-AbLqY8sn"
     },
     {
       name: "AHMAD JASH",
       role: "Coordinator for African Partnership",
       desc: "Bilingual communication and Cultural Integration specialist, fostering strong relationships across African partnerships.",
-      image: "/ahmad.jpg"
+      image: "https://lh3.googleusercontent.com/u/0/d/1eHXH_NkzpDOqIDw3l_X3GiAdwInug7Am"
     }
   ];
 
@@ -126,40 +119,7 @@ export default function About() {
     x.set(nextX);
   });
 
-  const location = useLocation();
   const [isMuted, setIsMuted] = useState(true);
-  const videoSectionRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Sync isMuted state & support smooth background auto-playing
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
-      videoRef.current.play().catch((err) => {
-        console.log("Play state handled by browser:", err);
-      });
-    }
-  }, [isMuted]);
-
-  useEffect(() => {
-    if (location.state?.unmute) {
-      setIsMuted(false);
-      setTimeout(() => {
-        videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        if (videoRef.current) {
-          videoRef.current.play().catch((err) => {
-            console.log("Play failed:", err);
-          });
-        }
-      }, 150);
-    } else {
-      if (videoRef.current) {
-        videoRef.current.play().catch((err) => {
-          console.log("Autoplay muted failed:", err);
-        });
-      }
-    }
-  }, [location]);
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
@@ -195,18 +155,16 @@ export default function About() {
 
 
       {/* Team Video Spotlight */}
-      <div ref={videoSectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#1d1d1f] aspect-video md:aspect-[21/9]">
           <video 
-            ref={videoRef}
-            poster="/about_hero.jpg"
+            key={isMuted ? 'muted' : 'unmuted'}
             autoPlay 
-            controls
             muted={isMuted}
             loop 
             playsInline
-            className="w-full h-full object-cover"
-            src="/about_video.mp4"
+            className="w-full h-full object-cover pointer-events-none"
+            src="https://lh3.googleusercontent.com/u/0/d/1bl8LBVe54iKyIANlekNgiFoJmMsPyfDp"
           >
             Your browser does not support the video tag.
           </video>
@@ -270,8 +228,9 @@ export default function About() {
 
             <div className="relative">
               <img 
-                src="/team_adv.jpg" 
+                src="https://lh3.googleusercontent.com/u/0/d/1N1WnU1yDWxOZrk5Dr29eUSiFG9nbSZHG" 
                 alt="Nihao Education Team" 
+                referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-xl w-full object-cover h-[400px]"
               />
             </div>
