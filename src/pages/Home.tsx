@@ -10,42 +10,40 @@ import UniversityMap from '../components/UniversityMap';
 
 export default function Home() {
   const { t } = useTranslation();
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoInView, setVideoInView] = useState(false);
+  const homeVideoContainerRef = useRef<HTMLDivElement>(null);
+  const homeVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Attempt standard play
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play().catch((err) => {
-        console.log("Initial autoplay prevented by browser policies, waiting for interaction:", err);
-      });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVideoInView(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '800px', // start loading early when within 800px of viewport to ensure instant playback upon reach
+        threshold: 0.01,
+      }
+    );
+
+    if (homeVideoContainerRef.current) {
+      observer.observe(homeVideoContainerRef.current);
     }
 
-    // Capture first user interaction to force-start play
-    const handleForcePlay = () => {
-      if (videoRef.current) {
-        videoRef.current.muted = true;
-        videoRef.current.play().then(() => {
-          cleanup();
-        }).catch((err) => {
-          console.log("Interaction-triggered play failed:", err);
-        });
-      }
+    return () => {
+      observer.disconnect();
     };
-
-    const events = ['touchstart', 'mousedown', 'keydown', 'mouseover', 'click', 'scroll'];
-    const cleanup = () => {
-      events.forEach((event) => {
-        document.removeEventListener(event, handleForcePlay);
-      });
-    };
-
-    events.forEach((event) => {
-      document.addEventListener(event, handleForcePlay, { passive: true });
-    });
-
-    return cleanup;
   }, []);
+
+  useEffect(() => {
+    if (homeVideoRef.current && videoInView) {
+      homeVideoRef.current.play().catch((err) => {
+        console.log("Play failed in home:", err);
+      });
+    }
+  }, [videoInView]);
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -184,55 +182,52 @@ export default function Home() {
          </div>
 
         <motion.div 
+          ref={homeVideoContainerRef}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-16 max-w-6xl mx-auto w-full px-4 relative z-10"
         >
           <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)] overflow-hidden aspect-video md:aspect-[21/9]">
-            <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-black/10">
+            <Link 
+              to="/about"
+              state={{ unmute: true }}
+              className="relative block w-full h-full cursor-pointer group rounded-[1.5rem] overflow-hidden"
+            >
               <video 
-                ref={videoRef}
+                ref={homeVideoRef}
+                src={videoInView ? "/1779239744575076.mp4" : undefined}
                 autoPlay
                 muted
                 loop
                 playsInline
-                preload="auto"
+                poster="/about_hero.jpg"
+                preload={videoInView ? "auto" : "none"}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              >
-                <source src="/about_video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              />
               
-              {/* Overlay Link covers the whole card to keep original navigational behavior */}
-              <Link 
-                to="/about"
-                state={{ unmute: true }}
-                className="absolute inset-0 cursor-pointer group z-10"
+              {/* Backdrop shade */}
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 transition-colors duration-300 flex items-center justify-center" />
+              
+              {/* Stunning Big Play Button */}
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.08, 1],
+                  boxShadow: [
+                    "0 0 0 0 rgba(220, 38, 38, 0.4)",
+                    "0 0 0 20px rgba(220, 38, 38, 0)"
+                  ]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute w-20 h-20 bg-gradient-to-r from-red-600 to-red-500 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 group-hover:scale-110 z-20"
               >
-                {/* Backdrop shade */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center" />
-                
-                {/* Stunning Big Play Button */}
-                <motion.div 
-                  animate={{ 
-                    scale: [1, 1.08, 1],
-                    boxShadow: [
-                      "0 0 0 0 rgba(220, 38, 38, 0.4)",
-                      "0 0 0 20px rgba(220, 38, 38, 0)"
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-r from-red-600 to-red-500 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 group-hover:scale-110 z-20 opacity-0 group-hover:opacity-100"
-                >
-                  <Play className="w-8 h-8 fill-current ml-1" />
-                </motion.div>
-              </Link>
-            </div>
+                <Play className="w-8 h-8 fill-current ml-1" />
+              </motion.div>
+            </Link>
           </div>
         </motion.div>
       </section>

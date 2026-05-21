@@ -32,12 +32,6 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/1CpWfyo7kzybV9hrlQlu15-ibpqeXJopG"
     },
     {
-      name: "Hannah Hu",
-      role: "Co-creation Partners",
-      desc: "Seasoned practitioner in international study services and premium video content creator, bridging global talents with study-in-China opportunities through media platforms.",
-      image: "/hannah.jpg"
-    },
-    {
       name: "Clement Zhou",
       role: "Consulting Teacher",
       desc: "Expert academic advisor providing strategic guidance on university admissions and career planning for international students.",
@@ -128,21 +122,47 @@ export default function About() {
 
   const location = useLocation();
   const [isMuted, setIsMuted] = useState(true);
+  const [videoInView, setVideoInView] = useState(false);
   const videoSectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Lazy loading setup via IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVideoInView(true);
+          observer.disconnect(); // Once loaded, no need to keep observing
+        }
+      },
+      {
+        rootMargin: '800px', // start loading early when within 800px of screen to ensure instant playback upon reach
+        threshold: 0.01,
+      }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   // Sync isMuted state & support smooth background auto-playing
   useEffect(() => {
-    if (videoRef.current) {
+    if (videoRef.current && videoInView) {
       videoRef.current.muted = isMuted;
       videoRef.current.play().catch((err) => {
         console.log("Play state handled by browser:", err);
       });
     }
-  }, [isMuted]);
+  }, [isMuted, videoInView]);
 
   useEffect(() => {
     if (location.state?.unmute) {
+      setVideoInView(true);
       setIsMuted(false);
       setTimeout(() => {
         videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -153,37 +173,13 @@ export default function About() {
         }
       }, 150);
     } else {
-      if (videoRef.current) {
+      if (videoRef.current && videoInView) {
         videoRef.current.play().catch((err) => {
           console.log("Autoplay muted failed:", err);
         });
       }
     }
-
-    // Force play on first document gesture to handle strict iframe sandbox policies safely
-    const handleForcePlay = () => {
-      if (videoRef.current) {
-        videoRef.current.play().then(() => {
-          cleanup();
-        }).catch((err) => {
-          console.log("Interaction play in About failed:", err);
-        });
-      }
-    };
-
-    const events = ['touchstart', 'mousedown', 'keydown', 'mouseover', 'click', 'scroll'];
-    const cleanup = () => {
-      events.forEach((event) => {
-        document.removeEventListener(event, handleForcePlay);
-      });
-    };
-
-    events.forEach((event) => {
-      document.addEventListener(event, handleForcePlay, { passive: true });
-    });
-
-    return cleanup;
-  }, [location]);
+  }, [location, videoInView]);
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
@@ -228,10 +224,11 @@ export default function About() {
             muted={isMuted}
             loop 
             playsInline
-            preload="auto"
+            poster="/about_hero.jpg"
+            preload={videoInView ? "auto" : "none"}
             className="w-full h-full object-cover"
+            src={videoInView ? "/1779239744575076.mp4" : undefined}
           >
-            <source src="/about_video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           
