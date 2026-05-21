@@ -1,6 +1,7 @@
 import { motion, useAnimationFrame, useMotionValue } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube, Volume2, VolumeX } from 'lucide-react';
 
 export default function About() {
@@ -29,6 +30,12 @@ export default function About() {
       role: "Video Creator",
       desc: "Digital content specialist, highlighting authentic campus experiences and student success stories through high-quality video production.",
       image: "https://lh3.googleusercontent.com/u/0/d/1CpWfyo7kzybV9hrlQlu15-ibpqeXJopG"
+    },
+    {
+      name: "Hannah Hu",
+      role: "Co-creation Partners",
+      desc: "Seasoned practitioner in international study services and premium video content creator, bridging global talents with study-in-China opportunities through media platforms.",
+      image: "/hannah.jpg"
     },
     {
       name: "Clement Zhou",
@@ -119,7 +126,64 @@ export default function About() {
     x.set(nextX);
   });
 
+  const location = useLocation();
   const [isMuted, setIsMuted] = useState(true);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Sync isMuted state & support smooth background auto-playing
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+      videoRef.current.play().catch((err) => {
+        console.log("Play state handled by browser:", err);
+      });
+    }
+  }, [isMuted]);
+
+  useEffect(() => {
+    if (location.state?.unmute) {
+      setIsMuted(false);
+      setTimeout(() => {
+        videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (videoRef.current) {
+          videoRef.current.play().catch((err) => {
+            console.log("Play failed:", err);
+          });
+        }
+      }, 150);
+    } else {
+      if (videoRef.current) {
+        videoRef.current.play().catch((err) => {
+          console.log("Autoplay muted failed:", err);
+        });
+      }
+    }
+
+    // Force play on first document gesture to handle strict iframe sandbox policies safely
+    const handleForcePlay = () => {
+      if (videoRef.current) {
+        videoRef.current.play().then(() => {
+          cleanup();
+        }).catch((err) => {
+          console.log("Interaction play in About failed:", err);
+        });
+      }
+    };
+
+    const events = ['touchstart', 'mousedown', 'keydown', 'mouseover', 'click', 'scroll'];
+    const cleanup = () => {
+      events.forEach((event) => {
+        document.removeEventListener(event, handleForcePlay);
+      });
+    };
+
+    events.forEach((event) => {
+      document.addEventListener(event, handleForcePlay, { passive: true });
+    });
+
+    return cleanup;
+  }, [location]);
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
@@ -155,17 +219,19 @@ export default function About() {
 
 
       {/* Team Video Spotlight */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+      <div ref={videoSectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#1d1d1f] aspect-video md:aspect-[21/9]">
           <video 
-            key={isMuted ? 'muted' : 'unmuted'}
+            ref={videoRef}
             autoPlay 
+            controls
             muted={isMuted}
             loop 
             playsInline
-            className="w-full h-full object-cover pointer-events-none"
-            src="https://lh3.googleusercontent.com/u/0/d/1bl8LBVe54iKyIANlekNgiFoJmMsPyfDp"
+            preload="auto"
+            className="w-full h-full object-cover"
           >
+            <source src="/about_video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           

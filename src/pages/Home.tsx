@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -9,6 +10,43 @@ import UniversityMap from '../components/UniversityMap';
 
 export default function Home() {
   const { t } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Attempt standard play
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.log("Initial autoplay prevented by browser policies, waiting for interaction:", err);
+      });
+    }
+
+    // Capture first user interaction to force-start play
+    const handleForcePlay = () => {
+      if (videoRef.current) {
+        videoRef.current.muted = true;
+        videoRef.current.play().then(() => {
+          cleanup();
+        }).catch((err) => {
+          console.log("Interaction-triggered play failed:", err);
+        });
+      }
+    };
+
+    const events = ['touchstart', 'mousedown', 'keydown', 'mouseover', 'click', 'scroll'];
+    const cleanup = () => {
+      events.forEach((event) => {
+        document.removeEventListener(event, handleForcePlay);
+      });
+    };
+
+    events.forEach((event) => {
+      document.addEventListener(event, handleForcePlay, { passive: true });
+    });
+
+    return cleanup;
+  }, []);
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -136,13 +174,14 @@ export default function Home() {
             >
               <Link 
                 to="/about" 
-                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
+                state={{ unmute: true }}
+                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
               >
                 {t('Watch About Us')} <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
               </Link>
             </motion.div>
           </motion.div>
-        </div>
+         </div>
 
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -151,14 +190,49 @@ export default function Home() {
           className="mt-16 max-w-6xl mx-auto w-full px-4 relative z-10"
         >
           <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)] overflow-hidden aspect-video md:aspect-[21/9]">
-            <img 
-              src="https://lh3.googleusercontent.com/u/0/d/1eyG9Rf_YkKg0V9ld0_1a8V6bdGG65srl" 
-              alt="Students in China"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover rounded-[1.5rem]"
-            />
-            
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-black/10">
+              <video 
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              >
+                <source src="/about_video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              
+              {/* Overlay Link covers the whole card to keep original navigational behavior */}
+              <Link 
+                to="/about"
+                state={{ unmute: true }}
+                className="absolute inset-0 cursor-pointer group z-10"
+              >
+                {/* Backdrop shade */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center" />
+                
+                {/* Stunning Big Play Button */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.08, 1],
+                    boxShadow: [
+                      "0 0 0 0 rgba(220, 38, 38, 0.4)",
+                      "0 0 0 20px rgba(220, 38, 38, 0)"
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-r from-red-600 to-red-500 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 group-hover:scale-110 z-20 opacity-0 group-hover:opacity-100"
+                >
+                  <Play className="w-8 h-8 fill-current ml-1" />
+                </motion.div>
+              </Link>
+            </div>
           </div>
         </motion.div>
       </section>
