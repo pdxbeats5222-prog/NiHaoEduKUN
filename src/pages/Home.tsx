@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -10,41 +9,6 @@ import UniversityMap from '../components/UniversityMap';
 
 export default function Home() {
   const { t } = useTranslation();
-  const [videoInView, setVideoInView] = useState(false);
-  const homeVideoContainerRef = useRef<HTMLDivElement>(null);
-  const homeVideoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVideoInView(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: '800px', // start loading early when within 800px of viewport to ensure instant playback upon reach
-        threshold: 0.01,
-      }
-    );
-
-    if (homeVideoContainerRef.current) {
-      observer.observe(homeVideoContainerRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (homeVideoRef.current && videoInView) {
-      homeVideoRef.current.play().catch((err) => {
-        console.log("Play failed in home:", err);
-      });
-    }
-  }, [videoInView]);
-
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -172,62 +136,29 @@ export default function Home() {
             >
               <Link 
                 to="/about" 
-                state={{ unmute: true }}
-                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
+                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 {t('Watch About Us')} <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
               </Link>
             </motion.div>
           </motion.div>
-         </div>
+        </div>
 
         <motion.div 
-          ref={homeVideoContainerRef}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-16 max-w-6xl mx-auto w-full px-4 relative z-10"
         >
           <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)] overflow-hidden aspect-video md:aspect-[21/9]">
-            <Link 
-              to="/about"
-              state={{ unmute: true }}
-              className="relative block w-full h-full cursor-pointer group rounded-[1.5rem] overflow-hidden"
-            >
-              <video 
-                ref={homeVideoRef}
-                src={videoInView ? "/1779239744575076.mp4" : undefined}
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/about_hero.jpg"
-                preload={videoInView ? "auto" : "none"}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              
-              {/* Backdrop shade */}
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 transition-colors duration-300 flex items-center justify-center" />
-              
-              {/* Stunning Big Play Button */}
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.08, 1],
-                  boxShadow: [
-                    "0 0 0 0 rgba(220, 38, 38, 0.4)",
-                    "0 0 0 20px rgba(220, 38, 38, 0)"
-                  ]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute w-20 h-20 bg-gradient-to-r from-red-600 to-red-500 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 group-hover:scale-110 z-20"
-              >
-                <Play className="w-8 h-8 fill-current ml-1" />
-              </motion.div>
-            </Link>
+            <img 
+              src="https://lh3.googleusercontent.com/u/0/d/1eyG9Rf_YkKg0V9ld0_1a8V6bdGG65srl" 
+              alt="Students in China"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover rounded-[1.5rem]"
+            />
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </section>

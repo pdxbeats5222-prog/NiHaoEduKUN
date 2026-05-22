@@ -1,7 +1,6 @@
 import { motion, useAnimationFrame, useMotionValue } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube, Volume2, VolumeX } from 'lucide-react';
 
 export default function About() {
@@ -120,66 +119,7 @@ export default function About() {
     x.set(nextX);
   });
 
-  const location = useLocation();
   const [isMuted, setIsMuted] = useState(true);
-  const [videoInView, setVideoInView] = useState(false);
-  const videoSectionRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Lazy loading setup via IntersectionObserver
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVideoInView(true);
-          observer.disconnect(); // Once loaded, no need to keep observing
-        }
-      },
-      {
-        rootMargin: '800px', // start loading early when within 800px of screen to ensure instant playback upon reach
-        threshold: 0.01,
-      }
-    );
-
-    if (videoSectionRef.current) {
-      observer.observe(videoSectionRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  // Sync isMuted state & support smooth background auto-playing
-  useEffect(() => {
-    if (videoRef.current && videoInView) {
-      videoRef.current.muted = isMuted;
-      videoRef.current.play().catch((err) => {
-        console.log("Play state handled by browser:", err);
-      });
-    }
-  }, [isMuted, videoInView]);
-
-  useEffect(() => {
-    if (location.state?.unmute) {
-      setVideoInView(true);
-      setIsMuted(false);
-      setTimeout(() => {
-        videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        if (videoRef.current) {
-          videoRef.current.play().catch((err) => {
-            console.log("Play failed:", err);
-          });
-        }
-      }, 150);
-    } else {
-      if (videoRef.current && videoInView) {
-        videoRef.current.play().catch((err) => {
-          console.log("Autoplay muted failed:", err);
-        });
-      }
-    }
-  }, [location, videoInView]);
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
@@ -215,19 +155,16 @@ export default function About() {
 
 
       {/* Team Video Spotlight */}
-      <div ref={videoSectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#1d1d1f] aspect-video md:aspect-[21/9]">
           <video 
-            ref={videoRef}
+            key={isMuted ? 'muted' : 'unmuted'}
             autoPlay 
-            controls
             muted={isMuted}
             loop 
             playsInline
-            poster="/about_hero.jpg"
-            preload={videoInView ? "auto" : "none"}
-            className="w-full h-full object-cover"
-            src={videoInView ? "/1779239744575076.mp4" : undefined}
+            className="w-full h-full object-cover pointer-events-none"
+            src="https://lh3.googleusercontent.com/u/0/d/1bl8LBVe54iKyIANlekNgiFoJmMsPyfDp"
           >
             Your browser does not support the video tag.
           </video>
