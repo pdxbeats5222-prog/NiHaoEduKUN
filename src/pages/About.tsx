@@ -1,12 +1,38 @@
 import { motion, useAnimationFrame, useMotionValue } from 'motion/react';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube, Volume2, VolumeX } from 'lucide-react';
 
 export default function About() {
   const { t } = useTranslation();
   const [isMuted, setIsMuted] = useState(true);
+  const [isIframeLoading, setIsIframeLoading] = useState(true);
+  const [isNearViewport, setIsNearViewport] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNearViewport(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '600px', // start loading when element is 600px from viewport
+        threshold: 0.01,
+      }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const handleToggleMute = () => {
     const nextMuted = !isMuted;
@@ -169,19 +195,41 @@ export default function About() {
 
 
       {/* Team Video Spotlight */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+      <div ref={videoSectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black">
-          <iframe
-            ref={iframeRef}
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/wiFe6UH6A9E?autoplay=1&mute=1&loop=1&playlist=wiFe6UH6A9E&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute top-1/2 left-1/2 w-[101%] h-[101%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style={{ border: 'none', display: 'block' }}
-          />
+          {isNearViewport && (
+            <iframe
+              ref={iframeRef}
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/wiFe6UH6A9E?autoplay=1&mute=1&loop=1&playlist=wiFe6UH6A9E&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+              onLoad={() => setIsIframeLoading(false)}
+              className="absolute top-1/2 left-1/2 w-[101%] h-[101%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              style={{ border: 'none', display: 'block' }}
+            />
+          )}
+
+          {/* Blur loading overlay placeholder */}
+          <div 
+            className={`absolute inset-0 z-20 flex items-center justify-center overflow-hidden transition-all duration-1000 ease-out pointer-events-none ${
+              isIframeLoading ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-105"
+            }`}
+          >
+            <img 
+              src="/about_hero.jpg" 
+              alt="" 
+              className="w-full h-full object-cover blur-xl scale-110"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute flex flex-col items-center gap-3">
+              <div className="w-12 h-12 border-4 border-orange-500/35 border-t-orange-500 rounded-full animate-spin shadow-lg" />
+            </div>
+          </div>
           
           {/* Custom Sound Toggle Overlay HUD */}
           <div className="absolute bottom-6 right-6 z-30">

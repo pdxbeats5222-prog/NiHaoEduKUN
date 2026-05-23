@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,33 @@ import UniversityMap from '../components/UniversityMap';
 export default function Home() {
   const { t } = useTranslation();
   const [isMuted, setIsMuted] = useState(true);
+  const [isIframeLoading, setIsIframeLoading] = useState(true);
+  const [isNearViewport, setIsNearViewport] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNearViewport(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '600px', // start loading when 600px from viewport
+        threshold: 0.01,
+      }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const handleToggleMute = () => {
     const nextMuted = !isMuted;
@@ -163,23 +189,46 @@ export default function Home() {
          </div>
 
         <motion.div 
+          ref={videoSectionRef}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-16 max-w-6xl mx-auto w-full px-4 relative z-10"
         >
           <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden bg-black shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
-            <iframe
-              ref={iframeRef}
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/wiFe6UH6A9E?autoplay=1&mute=1&loop=1&playlist=wiFe6UH6A9E&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute top-1/2 left-1/2 w-[101%] h-[101%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-              style={{border: 'none', display: 'block'}}
-            />
+            {isNearViewport && (
+              <iframe
+                ref={iframeRef}
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/wiFe6UH6A9E?autoplay=1&mute=1&loop=1&playlist=wiFe6UH6A9E&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                onLoad={() => setIsIframeLoading(false)}
+                className="absolute top-1/2 left-1/2 w-[101%] h-[101%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                style={{border: 'none', display: 'block'}}
+              />
+            )}
+
+            {/* Blur loading overlay placeholder */}
+            <div 
+              className={`absolute inset-0 z-20 flex items-center justify-center overflow-hidden transition-all duration-1000 ease-out pointer-events-none ${
+                isIframeLoading ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-105"
+              }`}
+            >
+              <img 
+                src="/about_hero.jpg" 
+                alt="" 
+                className="w-full h-full object-cover blur-xl scale-110"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/10" />
+              <div className="absolute flex flex-col items-center gap-3">
+                <div className="w-12 h-12 border-4 border-orange-500/35 border-t-orange-500 rounded-full animate-spin shadow-lg" />
+              </div>
+            </div>
 
             {/* Custom Sound Toggle Overlay HUD */}
             <div className="absolute bottom-6 right-6 z-30">
