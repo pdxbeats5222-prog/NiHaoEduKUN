@@ -1,5 +1,6 @@
+import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle } from 'lucide-react';
+import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +10,22 @@ import UniversityMap from '../components/UniversityMap';
 
 export default function Home() {
   const { t } = useTranslation();
+  const [isMuted, setIsMuted] = useState(true);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleToggleMute = () => {
+    const nextMuted = !isMuted;
+    setIsMuted(nextMuted);
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      const func = nextMuted ? 'mute' : 'unMute';
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func }),
+        '*'
+      );
+    }
+  };
+
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -136,13 +153,14 @@ export default function Home() {
             >
               <Link 
                 to="/about" 
-                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
+                state={{ unmute: true }}
+                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
               >
                 {t('Watch About Us')} <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
               </Link>
             </motion.div>
           </motion.div>
-        </div>
+         </div>
 
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -150,15 +168,47 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-16 max-w-6xl mx-auto w-full px-4 relative z-10"
         >
-          <div className="relative rounded-[2rem] p-2 bg-white/30 backdrop-blur-2xl border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.1)] overflow-hidden aspect-video md:aspect-[21/9]">
-            <img 
-              src="https://lh3.googleusercontent.com/u/0/d/1eyG9Rf_YkKg0V9ld0_1a8V6bdGG65srl" 
-              alt="Students in China"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover rounded-[1.5rem]"
+          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden bg-black shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+            <iframe
+              ref={iframeRef}
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/wiFe6UH6A9E?autoplay=1&mute=1&loop=1&playlist=wiFe6UH6A9E&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-1/2 left-1/2 w-[101%] h-[101%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              style={{border: 'none', display: 'block'}}
             />
-            
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+            {/* Custom Sound Toggle Overlay HUD */}
+            <div className="absolute bottom-6 right-6 z-30">
+              <button 
+                onClick={handleToggleMute}
+                className="bg-black/60 hover:bg-black/80 backdrop-blur-xl p-4 rounded-full border border-white/20 transition-all active:scale-95 group shadow-lg flex items-center justify-center cursor-pointer shadow-black/40"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                <motion.div
+                  key={isMuted ? 'muted' : 'unmuted'}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-2"
+                >
+                  {isMuted ? (
+                    <>
+                      <VolumeX className="w-5 h-5 text-white" />
+                      <span className="text-white text-xs font-bold pr-1 select-none">{t('Click to Unmute')}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Volume2 className="w-5 h-5 text-white" />
+                      <span className="text-white text-xs font-bold pr-1 select-none">{t('Mute')}</span>
+                    </>
+                  )}
+                </motion.div>
+              </button>
+            </div>
           </div>
         </motion.div>
       </section>

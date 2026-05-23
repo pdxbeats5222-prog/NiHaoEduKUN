@@ -1,10 +1,24 @@
 import { motion, useAnimationFrame, useMotionValue } from 'motion/react';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Users, Building2, GraduationCap, Globe2, MapPin, Instagram, Youtube, Volume2, VolumeX } from 'lucide-react';
 
 export default function About() {
   const { t } = useTranslation();
+  const [isMuted, setIsMuted] = useState(true);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleToggleMute = () => {
+    const nextMuted = !isMuted;
+    setIsMuted(nextMuted);
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      const func = nextMuted ? 'mute' : 'unMute';
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func }),
+        '*'
+      );
+    }
+  };
   const team = [
     {
       name: "Shiqi",
@@ -119,7 +133,7 @@ export default function About() {
     x.set(nextX);
   });
 
-  const [isMuted, setIsMuted] = useState(true);
+
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
@@ -156,26 +170,24 @@ export default function About() {
 
       {/* Team Video Spotlight */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#1d1d1f] aspect-video md:aspect-[21/9]">
-          <video 
-            key={isMuted ? 'muted' : 'unmuted'}
-            autoPlay 
-            muted={isMuted}
-            loop 
-            playsInline
-            className="w-full h-full object-cover pointer-events-none"
-            src="https://lh3.googleusercontent.com/u/0/d/1bl8LBVe54iKyIANlekNgiFoJmMsPyfDp"
-          >
-            Your browser does not support the video tag.
-          </video>
+        <div className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black">
+          <iframe
+            ref={iframeRef}
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/wiFe6UH6A9E?autoplay=1&mute=1&loop=1&playlist=wiFe6UH6A9E&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute top-1/2 left-1/2 w-[101%] h-[101%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{ border: 'none', display: 'block' }}
+          />
           
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-          {/* Sound Toggle */}
-          <div className="absolute bottom-8 right-8 z-30">
+          {/* Custom Sound Toggle Overlay HUD */}
+          <div className="absolute bottom-6 right-6 z-30">
             <button 
-              onClick={() => setIsMuted(!isMuted)}
-              className="bg-black/20 hover:bg-black/40 backdrop-blur-xl p-4 rounded-full border border-white/10 transition-all active:scale-95 group"
+              onClick={handleToggleMute}
+              className="bg-black/60 hover:bg-black/80 backdrop-blur-xl p-4 rounded-full border border-white/20 transition-all active:scale-95 group shadow-lg flex items-center justify-center cursor-pointer shadow-black/40"
               aria-label={isMuted ? "Unmute video" : "Mute video"}
             >
               <motion.div
@@ -183,11 +195,18 @@ export default function About() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}
+                className="flex items-center gap-2"
               >
                 {isMuted ? (
-                  <VolumeX className="w-6 h-6 text-white" />
+                  <>
+                    <VolumeX className="w-5 h-5 text-white" />
+                    <span className="text-white text-xs font-bold pr-1 select-none">{t('Click to Unmute')}</span>
+                  </>
                 ) : (
-                  <Volume2 className="w-6 h-6 text-white" />
+                  <>
+                    <Volume2 className="w-5 h-5 text-white" />
+                    <span className="text-white text-xs font-bold pr-1 select-none">{t('Mute')}</span>
+                  </>
                 )}
               </motion.div>
             </button>
