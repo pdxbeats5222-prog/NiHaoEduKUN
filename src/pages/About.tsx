@@ -207,7 +207,15 @@ export default function About() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               loading="lazy"
-              onLoad={() => setIsIframeLoading(false)}
+              onLoad={() => {
+                setIsIframeLoading(false);
+                if (iframeRef.current && iframeRef.current.contentWindow) {
+                  iframeRef.current.contentWindow.postMessage(
+                    JSON.stringify({ event: "command", func: "setPlaybackQuality", args: ["hd1080"] }),
+                    "*"
+                  );
+                }
+              }}
               className="absolute top-1/2 left-1/2 w-[101%] h-[101%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
               style={{ border: 'none', display: 'block' }}
             />
