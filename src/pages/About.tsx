@@ -83,6 +83,12 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/1OMMpRB8mml7ORgQJAS2xwyZgcLTBCdWa"
     },
     {
+      name: "Ameer",
+      role: "Consultant Teacher",
+      desc: "Multilingual academic consultant fluent in Chinese, English, and Persian, dedicated to guiding international students through seamless university applications and cultural traditions in China.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1_F5baB76EnUpC1LvWBccmcTMymnh0UUp"
+    },
+    {
       name: "JENNY",
       role: "Consultant Teacher",
       desc: "Dedicated international student advisor with a focus on academic coordination and institutional excellence.",
