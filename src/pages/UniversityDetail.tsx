@@ -135,6 +135,7 @@ export default function UniversityDetail() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               src={activeImage} 
+              referrerPolicy="no-referrer"
               className="max-w-full max-h-full rounded-3xl shadow-2xl border border-slate-200"
             />
             <button className="absolute top-8 right-8 w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
@@ -147,8 +148,8 @@ export default function UniversityDetail() {
       {/* Hero Section */}
       <section className="relative h-[75vh] md:h-[65vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={universityImages[0]} alt={foundUni.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+          <img src={universityImages[0]} alt={foundUni.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
         </div>
 
         <div className="container mx-auto px-6 pb-12 relative z-10">
@@ -169,11 +170,11 @@ export default function UniversityDetail() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl"
           >
-            <div className="flex items-center gap-2 text-blue-400 font-black uppercase tracking-[0.3em] mb-4 text-xs">
+            <div className="flex items-center gap-2 text-orange-400 font-black uppercase tracking-[0.3em] mb-4 text-xs">
               <Sparkles className="w-4 h-4" />
               <span>Academic Excellence</span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-tight mb-6 text-white drop-shadow-2xl">
+            <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 filter drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] pb-1">
               {foundUni.name}
             </h1>
             <div className="flex flex-wrap items-center gap-6">
@@ -261,6 +262,7 @@ export default function UniversityDetail() {
                   <img 
                     src={foundCity.cityImage} 
                     alt={`${foundCity.name} city view`} 
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -294,7 +296,7 @@ export default function UniversityDetail() {
                       onClick={() => setActiveImage(img)}
                       className="relative rounded-[32px] overflow-hidden aspect-[4/3] border border-slate-200 cursor-zoom-in group shadow-lg"
                     >
-                      <img src={img} alt={`Campus view ${i}`} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
+                      <img src={img} alt={`Campus view ${i}`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                         <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
                           <Plus className="w-5 h-5 text-white" />

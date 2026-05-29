@@ -39,10 +39,12 @@ export const cityUniversities: CityData[] = [
         name: "Communication University of Zhejiang", 
         coordinates: [120.352, 30.315], 
         recommended: true,
-        image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=1200",
+        image: "/cuz_image1.jpg",
         gallery: [
-          "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1498243639359-f7c895171f5f?auto=format&fit=crop&q=80&w=800"
+          "/cuz_image1.jpg",
+          "/cuz_image2.jpg",
+          "/cuz_image3.jpg",
+          "/cuz_image4.jpg"
         ],
         majors: ["Broadcasting", "Journalism", "Digital Media", "Animation", "Film Production"],
         description: "A premier hub for media and communications studies. CUZ is famous for its direct industry links with major Chinese broadcasting networks and its state-of-the-art production studios."
