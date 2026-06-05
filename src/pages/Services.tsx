@@ -4,6 +4,7 @@ import { BookOpen, FileText, PlaneLanding, Map, GraduationCap, ShieldCheck, Home
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { visaFaqsEn, visaFaqsZh } from '../constants/visaFaq';
+import VisaChecklist from '../components/VisaChecklist';
 
 export default function Services() {
   const { t, i18n } = useTranslation();
@@ -117,7 +118,7 @@ export default function Services() {
 
       {/* Pathway Programmes & Summer Camps */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] tracking-tight mb-6">{t('Pathway Programmes.')}</h2>
             <p className="text-lg text-[#86868b] mb-8">
@@ -167,6 +168,11 @@ export default function Services() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Visa document checklist tool */}
+        <div className="my-24 max-w-5xl mx-auto">
+          <VisaChecklist />
         </div>
 
         {/* Visa FAQ Accordion Section */}

@@ -82,7 +82,7 @@ export default function Home() {
         "name": "How do I apply for the Chinese Government Scholarship (CSC)?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Applying for the Chinese Government Scholarship (CSC) typically involves registering on the China Scholarship Council website, selecting target universities, and submitting required documents early (usually between January and April). Nihao.edu provides expert guidance to maximize your chances of securing full funding."
+          "text": "The CSC application process starts between January and April each year. You must apply through the official portal, select your target universities, and provide all required academic and medical documents. Alternatively, you can apply directly through us to guarantee yours! Since we collaborate directly with top universities in China, we can assist you in getting a confirmed admission. Our fee is exceptionally affordable: only a 500 RMB registration fee and a 2,500 RMB service fee."
         }
       },
       {
