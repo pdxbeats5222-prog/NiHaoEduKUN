@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Globe, Mail, MapPin, Phone, Instagram, Youtube } from 'lucide-react';
+import { Globe, Mail, MapPin, Phone, Instagram, Youtube, Linkedin } from 'lucide-react';
 import { SiTiktok, SiXiaohongshu } from 'react-icons/si';
 
 export default function Footer() {
@@ -30,6 +30,9 @@ export default function Footer() {
               </a>
               <a href="https://www.xiaohongshu.com/user/profile/6487e41b00000000070188bb" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
                 <SiXiaohongshu size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/nihaoedu-org-43a175413?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+                <Linkedin className="w-5 h-5" />
               </a>
             </div>
           </div>

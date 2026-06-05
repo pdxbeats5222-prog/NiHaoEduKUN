@@ -1,10 +1,17 @@
-import { motion } from 'motion/react';
-import { BookOpen, FileText, PlaneLanding, Map, GraduationCap, ShieldCheck, Home as HomeIcon, Smartphone } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { BookOpen, FileText, PlaneLanding, Map, GraduationCap, ShieldCheck, Home as HomeIcon, Smartphone, HelpCircle, AlertCircle, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { visaFaqsEn, visaFaqsZh } from '../constants/visaFaq';
 
 export default function Services() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const currentLang = i18n.language || 'en';
+  const faqs = currentLang.startsWith('zh') ? visaFaqsZh : visaFaqsEn;
+
   return (
     <div className="pt-32 pb-24 min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 text-center">
@@ -162,10 +169,108 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="mt-20 text-center">
+        {/* Visa FAQ Accordion Section */}
+        <div className="mt-20 border-t border-gray-100 pt-24">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-semibold tracking-wide uppercase mb-4">
+              {currentLang.startsWith('zh') ? '学生签证痛点与指南' : 'Student Visa & Pain Points'}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-6">
+              {currentLang.startsWith('zh') ? 'X1/X2 签证申请指南与核心雷区' : 'X1/X2 Student Visa Guide & Essential Traps'}
+            </h2>
+            <p className="text-lg text-[#86868b] max-w-3xl mx-auto">
+              {currentLang.startsWith('zh') 
+                ? '我们总结了成百上千位留学生在体检表盖章、JW202表延迟及入境30天倒计时中遭遇的最真实问题，助你一次过签。' 
+                : 'Key documentation requirements, embassy pitfalls, and critical post-arrival timelines decoded by our on-ground academic team.'}
+            </p>
+          </div>
+
+          <div className="space-y-12 max-w-4xl mx-auto">
+            {faqs.map((category, catIdx) => (
+              <div key={catIdx} className="space-y-4">
+                <h3 className="text-xl font-bold text-[#1d1d1f] tracking-tight border-b border-gray-200/60 pb-3 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
+                  {category.title}
+                </h3>
+                <div className="space-y-4">
+                  {category.items.map((item, itemIdx) => {
+                    const id = `${catIdx}-${itemIdx}`;
+                    const isOpen = openId === id;
+                    return (
+                      <div 
+                        key={itemIdx} 
+                        className={`bg-[#f5f5f7]/50 rounded-[1.5rem] border transition-all duration-300 overflow-hidden ${
+                          isOpen ? 'border-amber-500/30 bg-amber-50/5 shadow-[0_12px_24px_rgba(245,158,11,0.03)]' : 'border-gray-100 hover:border-gray-200 shadow-sm'
+                        }`}
+                      >
+                        <button
+                          onClick={() => setOpenId(isOpen ? null : id)}
+                          className="w-full text-left p-6 md:p-8 flex justify-between items-start gap-4 cursor-pointer focus:outline-none"
+                        >
+                          <div className="flex items-start gap-4">
+                            <HelpCircle className={`w-6 h-6 mt-0.5 shrink-0 transition-colors ${isOpen ? 'text-amber-500' : 'text-[#86868b]'}`} />
+                            <h4 className="text-lg md:text-xl font-semibold text-[#1d1d1f] leading-snug">
+                              {item.question}
+                            </h4>
+                          </div>
+                          <div className={`mt-0.5 w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-amber-50 text-amber-600 border-amber-200/50' : 'text-[#1d1d1f]'}`}>
+                            <ChevronDown className="w-5 h-5" />
+                          </div>
+                        </button>
+
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: 'easeInOut' }}
+                            >
+                              <div className="px-6 pb-6 md:px-8 md:pb-8 pt-0 text-[#5a5a5c] leading-relaxed text-base space-y-4">
+                                <p className="text-gray-700">{item.answer}</p>
+                                {item.bullets && item.bullets.length > 0 && (
+                                  <ul className="space-y-3 list-disc pl-5 mt-2 marker:text-amber-500 text-[#5a5a5c]">
+                                    {item.bullets.map((bullet, bulletIdx) => {
+                                      const parts = bullet.split(':');
+                                      if (parts.length > 1) {
+                                        return (
+                                          <li key={bulletIdx} className="text-sm md:text-base">
+                                            <strong className="text-gray-900">{parts[0]}:</strong>{parts.slice(1).join(':')}
+                                          </li>
+                                        );
+                                      }
+                                      return <li key={bulletIdx} className="text-sm md:text-base">{bullet}</li>;
+                                    })}
+                                  </ul>
+                                )}
+                                {item.painPoint && (
+                                  <div className="mt-4 p-4 md:p-5 bg-amber-50/60 rounded-[1rem] border border-amber-100 flex items-start gap-3">
+                                    <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                                    <div>
+                                      <span className="font-bold uppercase tracking-wider text-[11px] block text-amber-700 mb-1">
+                                        {currentLang.startsWith('zh') ? '高危痛点 / 雷区提醒' : 'CRITICAL PAIN POINT / EMBASSY TRAP'}
+                                      </span>
+                                      <p className="text-sm leading-relaxed text-amber-800 font-medium">{item.painPoint}</p>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-24 text-center">
           <Link 
             to="/contact" 
-            className="inline-flex items-center justify-center bg-[#0071e3] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-[#0077ed] transition-colors"
+            className="inline-flex items-center justify-center bg-[#0071e3] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-[#0077ed] transition-colors shadow-lg hover:shadow-xl transition-all duration-300"
           >
             {t('Get Your Place')}
           </Link>
