@@ -15,6 +15,7 @@ export default function Contact() {
     nationality: '',
     whatsapp: '',
     program: 'Chinese Language Program',
+    budget: '15000',
     message: ''
   });
 
@@ -41,6 +42,7 @@ export default function Contact() {
       `*Nationality:* ${formData.nationality}\n` +
       `*WhatsApp:* ${formData.whatsapp}\n` +
       `*Program:* ${formData.program}\n` +
+      `*Annual Budget:* ¥${Number(formData.budget).toLocaleString()} RMB\n` +
       `*Message:* ${formData.message}`;
 
     const encodedText = encodeURIComponent(text);
@@ -55,6 +57,7 @@ export default function Contact() {
       `Nationality: ${formData.nationality}\n` +
       `WhatsApp: ${formData.whatsapp}\n` +
       `Program: ${formData.program}\n` +
+      `Annual Budget: ¥${Number(formData.budget).toLocaleString()} RMB\n` +
       `Message: ${formData.message}`;
     
     navigator.clipboard.writeText(text).then(() => {
@@ -194,6 +197,33 @@ export default function Contact() {
                   </select>
                 </div>
                 <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-medium text-[#1d1d1f]">
+                      Estimated Annual Tuition/Living Budget (RMB)
+                    </label>
+                    <span className="text-sm font-bold bg-[#1d1d1f]/5 px-3 py-1 rounded-lg text-amber-600 font-mono">
+                      ¥{Number(formData.budget).toLocaleString()} RMB
+                    </span>
+                  </div>
+                  <div className="bg-white p-5 rounded-2xl border border-gray-100 space-y-3">
+                    <input 
+                      type="range" 
+                      name="budget"
+                      min="8000" 
+                      max="30000" 
+                      step="500" 
+                      value={formData.budget} 
+                      onChange={handleInputChange}
+                      className="w-full accent-amber-500 cursor-pointer h-2 bg-gray-200 rounded-lg appearance-none" 
+                    />
+                    <div className="flex justify-between text-[10px] font-bold text-[#86868b] px-0.5">
+                      <span>¥8,000 RMB</span>
+                      <span>¥19,000 RMB</span>
+                      <span>¥30,000 RMB</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
                   <label className="block text-sm font-medium text-[#1d1d1f] mb-2">Message</label>
                   <textarea 
                     required 
@@ -243,6 +273,10 @@ export default function Contact() {
                   <div className="text-sm">
                     <span className="text-[#86868b] block mb-0.5">Program</span>
                     <span className="font-medium text-[#1d1d1f]">{formData.program}</span>
+                  </div>
+                  <div className="text-sm">
+                    <span className="text-[#86868b] block mb-0.5">Annual Budget</span>
+                    <span className="font-semibold text-amber-600">¥{Number(formData.budget).toLocaleString()} RMB</span>
                   </div>
                   <div className="text-sm">
                     <span className="text-[#86868b] block mb-0.5">Message</span>
