@@ -135,6 +135,18 @@ export default function About() {
       role: "Coordinator for African Partnership",
       desc: "Bilingual communication and Cultural Integration specialist, fostering strong relationships across African partnerships.",
       image: "https://lh3.googleusercontent.com/u/0/d/1eHXH_NkzpDOqIDw3l_X3GiAdwInug7Am"
+    },
+    {
+      name: "Jilong Li",
+      role: "Video Editor & Photographer",
+      desc: "Creative visual storyteller and editor capturing student life, campus aesthetics, and modern educational journeys in China.",
+      image: "https://lh3.googleusercontent.com/u/0/d/163mkHG1NSzX2PrcONwQl2EuU6_QwdWVx"
+    },
+    {
+      name: "Anli Li",
+      role: "Script Writer & Video Editor",
+      desc: "Talented narrative writer and content creator specialized in structuring engaging student guides and on-campus video stories.",
+      image: "https://lh3.googleusercontent.com/u/0/d/13k2ZKux61whmV9p7TNaFdTWuz2tsvpdv"
     }
   ];
 
@@ -208,7 +220,7 @@ export default function About() {
               ref={iframeRef}
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/wiFe6UH6A9E?autoplay=1&mute=1&loop=1&playlist=wiFe6UH6A9E&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
+              src="https://www.youtube.com/embed/BH65NxtM2yg?autoplay=1&mute=1&loop=1&playlist=BH65NxtM2yg&controls=0&playsinline=1&rel=0&enablejsapi=1&vq=hd1080"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
