@@ -58,6 +58,7 @@ export default function Navbar() {
     { code: 'ru', name: 'Русский' },
     { code: 'ar', name: 'العربية' },
     { code: 'pt', name: 'Português' },
+    { code: 'th', name: 'ภาษาไทย' },
   ];
 
   return (
