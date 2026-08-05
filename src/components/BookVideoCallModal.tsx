@@ -7,6 +7,7 @@ import {
   DollarSign, Check, HelpCircle, ExternalLink, Globe, Lock
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import paymentQrImg from '../assets/payment_qr.jpeg';
 
 interface BookVideoCallModalProps {
   isOpen: boolean;
@@ -682,13 +683,20 @@ export const BookVideoCallModal: React.FC<BookVideoCallModalProps> = ({
                     {/* Alipay & WeChat Pay QR Code Image */}
                     <div className="max-w-[280px] sm:max-w-[300px] mx-auto bg-white p-2 rounded-2xl shadow-xl overflow-hidden border border-slate-200 text-slate-900 select-none">
                       <img 
-                        src="/payment_qr.jpeg" 
+                        src={paymentQrImg} 
                         alt="Alipay / WeChat Pay QR Code" 
-                        className="w-full h-auto rounded-xl object-contain shadow-sm"
+                        referrerPolicy="no-referrer"
+                        className="w-full h-auto rounded-xl object-contain shadow-sm min-h-[250px] bg-slate-50"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           if (!target.dataset.tried) {
-                            target.dataset.tried = 'true';
+                            target.dataset.tried = '1';
+                            target.src = 'https://lh3.googleusercontent.com/u/0/d/1oZPtUY1vEVZ4EAJqowZycTC8VEeOFYmm';
+                          } else if (target.dataset.tried === '1') {
+                            target.dataset.tried = '2';
+                            target.src = '/payment_qr.jpeg';
+                          } else if (target.dataset.tried === '2') {
+                            target.dataset.tried = '3';
                             target.src = '/IMG_0638.jpeg';
                           }
                         }}
