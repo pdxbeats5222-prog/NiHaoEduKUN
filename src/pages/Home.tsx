@@ -1,18 +1,21 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX } from 'lucide-react';
+import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX, Video, Calendar, DollarSign, Award, ShieldCheck, Sparkles, GraduationCap, Building2, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { WHATSAPP_LINK } from '../constants';
 import Deadlines from '../components/Deadlines';
 import UniversityMap from '../components/UniversityMap';
+import { BookVideoCallModal } from '../components/BookVideoCallModal';
 
 export default function Home() {
   const { t } = useTranslation();
   const [isMuted, setIsMuted] = useState(true);
   const [isIframeLoading, setIsIframeLoading] = useState(true);
   const [isNearViewport, setIsNearViewport] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [videoModalTopic, setVideoModalTopic] = useState<string>('career');
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const videoSectionRef = useRef<HTMLDivElement>(null);
 
@@ -158,33 +161,46 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-3xl mx-auto"
           >
+            {/* 1. Book Video Call Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setVideoModalTopic('career');
+                setIsVideoModalOpen(true);
+              }}
+              className="w-full sm:w-auto bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 hover:from-slate-900 hover:to-slate-850 text-white border border-amber-400/60 hover:border-amber-400 px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-xl shadow-slate-950/30 hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group cursor-pointer"
+            >
+              <div className="w-7 h-7 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center group-hover:bg-amber-400/30 transition-colors">
+                <Video className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+              </div>
+              <span className="tracking-tight text-white">{t('Book Video Call')}</span>
+              <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 ml-0.5 tracking-wider hidden xs:inline-block shadow-xs">
+                1-on-1
+              </span>
+            </button>
+
+            {/* 2. Get Your Place for Free Button */}
             <Link 
               to="/contact" 
-              className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-500 text-white px-10 py-4 rounded-full font-semibold text-lg shadow-[0_8px_24px_rgba(220,38,38,0.3)] hover:shadow-[0_12px_32px_rgba(220,38,38,0.4)] hover:scale-105 transition-all duration-300 flex items-center justify-center"
+              className="w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2 group text-center"
             >
-              {t('Get Your Place')}
+              <Sparkles className="w-4 h-4 text-amber-200 group-hover:rotate-12 transition-transform" />
+              <span className="tracking-tight">{t('Get Free Place')}</span>
             </Link>
-            <motion.div
-              animate={{ 
-                boxShadow: ["0 0 0 0 rgba(249, 115, 22, 0.4)", "0 0 0 15px rgba(249, 115, 22, 0)"],
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity, 
-                ease: "easeOut" 
-              }}
-              className="w-full sm:w-auto rounded-full"
+
+            {/* 3. Watch About Us Button */}
+            <Link 
+              to="/about" 
+              state={{ unmute: true }}
+              className="w-full sm:w-auto bg-white/95 hover:bg-white text-slate-900 border border-slate-200/90 px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
             >
-              <Link 
-                to="/about" 
-                state={{ unmute: true }}
-                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 text-white border border-orange-400 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
-              >
-                {t('Watch About Us')} <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
-              </Link>
-            </motion.div>
+              <div className="w-7 h-7 rounded-full bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors shadow-xs">
+                <Play className="w-3.5 h-3.5 fill-current ml-0.5 group-hover:scale-110 transition-transform" />
+              </div>
+              <span className="tracking-tight">{t('Watch About Us')}</span>
+            </Link>
           </motion.div>
          </div>
 
@@ -870,6 +886,113 @@ export default function Home() {
       {/* Section 6: Deadlines */}
       <Deadlines />
 
+      {/* Section 6.5: Video Consultation Feature Showcase */}
+      <section className="py-24 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">
+              <Video className="w-4 h-4" /> 1-on-1 Personalized Counselor Video Guidance
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
+              Get Expert Guidance on a Direct Video Call
+            </h2>
+            <p className="text-slate-400 text-base md:text-lg mt-4 leading-relaxed">
+              Have burning questions about studying in China? Book a dedicated 45-minute video call with a senior Nihao Education counselor. Here is what we guide you on during your session:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              {
+                icon: GraduationCap,
+                title: 'Career & Major Selection',
+                desc: 'Choosing high-demand degrees (Engineering, MBBS, AI, CS, Business) tailored to your global goals.'
+              },
+              {
+                icon: Building2,
+                title: 'University Selection',
+                desc: 'Targeting C9, 985 & 211 double-first-class universities matching your GPA and budget.'
+              },
+              {
+                icon: Award,
+                title: 'Scholarships Guidance',
+                desc: 'CSC Government, Provincial (Zhejiang/Jiangsu) & University Presidential scholarship strategies.'
+              },
+              {
+                icon: FileText,
+                title: 'Recommendations & Documents',
+                desc: 'Preparing winning motivation letters, study plans, and authenticated transcripts.'
+              },
+              {
+                icon: Sparkles,
+                title: 'Recent Offers & New Rules',
+                desc: 'Latest Chinese Ministry of Education updates, JW202/JW201 digital processing & 2026 rules.'
+              },
+              {
+                icon: ShieldCheck,
+                title: 'Visa Process (X1 & X2)',
+                desc: 'Embassy interview prep, physical exam forms, JW issuance, and Residence Permit conversion.'
+              },
+              {
+                icon: Calendar,
+                title: 'Step-by-Step Timeline',
+                desc: 'Clear roadmap from initial application to offer letter, physical arrival, and university registration.'
+              },
+              {
+                icon: Globe2,
+                title: 'Company Overview & On-Ground',
+                desc: 'How our Hangzhou HQ team handles 24/7 airport pickup, dorm setup, SIM, Alipay & bank accounts.'
+              }
+            ].map((item, idx) => {
+              const ItemIcon = item.icon;
+              return (
+                <div 
+                  key={idx} 
+                  className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 hover:border-amber-400/50 hover:bg-slate-800 transition-all duration-300 flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                      <ItemIcon className="w-6 h-6" />
+                    </div>
+                    <h3 className="font-bold text-white text-base mb-2">{item.title}</h3>
+                    <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="bg-gradient-to-r from-red-900/40 via-slate-900 to-amber-900/40 border border-white/10 rounded-3xl p-8 md:p-10 text-center relative overflow-hidden max-w-4xl mx-auto shadow-2xl">
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left">
+              <div>
+                <span className="bg-amber-400 text-slate-950 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">
+                  Instant Confirmation via WhatsApp
+                </span>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-white">
+                  Ready to speak with a senior counselor?
+                </h3>
+                <p className="text-slate-300 text-sm mt-1">
+                  Select your topic, preferred date and time, and receive instant meeting confirmation.
+                </p>
+              </div>
+
+              <button
+                onClick={() => {
+                  setVideoModalTopic('career');
+                  setIsVideoModalOpen(true);
+                }}
+                className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-8 py-4 rounded-full font-extrabold text-base shadow-xl shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap flex-shrink-0"
+              >
+                <Video className="w-5 h-5" /> Book Video Call
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section 7: The Lead Magnet */}
       <section className="py-32 bg-[#faf9f6] relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-red-50/50 pointer-events-none" />
@@ -909,6 +1032,13 @@ export default function Home() {
           <p className="text-[#5a5a5c] text-sm mt-6">{t('Lead Magnet Disclaimer')}</p>
         </div>
       </section>
+
+      {/* Book Video Call Modal */}
+      <BookVideoCallModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        initialTopic={videoModalTopic}
+      />
     </div>
   );
 }

@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Globe, Bell, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, Bell, ChevronDown, Video } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { WHATSAPP_LINK } from '../constants';
+import { BookVideoCallModal } from './BookVideoCallModal';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
@@ -153,33 +155,48 @@ export default function Navbar() {
                 <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white animate-pulse" />
               </button>
 
-          <Link
-            to="/contact"
-            className="bg-red-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-red-500/30 hover:shadow-red-500/40 hover:scale-105 transition-all duration-300 whitespace-nowrap"
-          >
-            {t('Contact Us')}
-          </Link>
+              <button 
+                onClick={() => setIsVideoModalOpen(true)}
+                className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-full text-xs font-bold border border-slate-700/60 shadow-md hover:scale-105 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap"
+              >
+                <Video className="w-3.5 h-3.5 text-amber-400" />
+                <span>Book Video Call</span>
+              </button>
+
+              <Link
+                to="/contact"
+                className="bg-red-600 text-white px-5 py-2 rounded-full text-xs font-bold shadow-lg shadow-red-500/30 hover:shadow-red-500/40 hover:scale-105 transition-all duration-300 whitespace-nowrap"
+              >
+                {t('Contact Us')}
+              </Link>
             </div>
           </nav>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center gap-1 md:hidden">
+          <div className="flex items-center gap-1.5 md:hidden">
+            <button 
+              onClick={() => setIsVideoModalOpen(true)}
+              className="bg-slate-900 text-white px-3 py-1.5 rounded-full text-[11px] font-bold flex items-center gap-1 shadow-sm border border-slate-700"
+            >
+              <Video className="w-3 h-3 text-amber-400" />
+              <span>Book Call</span>
+            </button>
             <button 
               onClick={() => changeLanguage(i18n.language.startsWith('en') ? 'zh' : 'en')}
-              className="p-2 text-[#1d1d1f] flex items-center gap-1"
+              className="p-1.5 text-[#1d1d1f] flex items-center gap-1"
             >
-              <Globe className="w-5 h-5 text-gray-500" />
-              <span className="text-xs font-bold uppercase">{i18n.language.split('-')[0]}</span>
+              <Globe className="w-4 h-4 text-gray-500" />
+              <span className="text-[11px] font-bold uppercase">{i18n.language.split('-')[0]}</span>
             </button>
             <button 
               onClick={handleNotificationClick}
-              className="relative p-2 text-[#1d1d1f] hover:text-[#0071e3] transition-colors rounded-full"
+              className="relative p-1.5 text-[#1d1d1f] hover:text-[#0071e3] transition-colors rounded-full"
             >
-              <Bell className="w-5 h-5 text-gray-500" />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white" />
+              <Bell className="w-4 h-4 text-gray-500" />
+              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-white" />
             </button>
             <button
-              className="p-2"
+              className="p-1.5"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
@@ -231,10 +248,21 @@ export default function Navbar() {
                 ))}
               </div>
 
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsVideoModalOpen(true);
+                }}
+                className="bg-slate-900 text-white px-5 py-3.5 rounded-xl font-bold text-center mt-4 flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all"
+              >
+                <Video className="w-5 h-5 text-amber-400" />
+                Book 1-on-1 Video Call
+              </button>
+
               <Link
                 to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-red-600 text-white px-5 py-4 rounded-xl font-bold text-center mt-6 flex items-center justify-center gap-2 shadow-lg shadow-red-500/30 active:scale-95 transition-all"
+                className="bg-red-600 text-white px-5 py-3.5 rounded-xl font-bold text-center mt-2 flex items-center justify-center gap-2 shadow-lg shadow-red-500/30 active:scale-95 transition-all"
               >
                 {t('Contact Us')}
               </Link>
@@ -242,6 +270,12 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Book Video Call Modal */}
+      <BookVideoCallModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+      />
     </header>
   );
 }
