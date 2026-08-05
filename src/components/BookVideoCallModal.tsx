@@ -679,17 +679,17 @@ export const BookVideoCallModal: React.FC<BookVideoCallModalProps> = ({
                       </p>
                     </div>
 
-                    {/* User specified QR Code Image IMG_0638.jpeg */}
+                    {/* Alipay & WeChat Pay QR Code Image */}
                     <div className="max-w-[280px] sm:max-w-[300px] mx-auto bg-white p-2 rounded-2xl shadow-xl overflow-hidden border border-slate-200 text-slate-900 select-none">
                       <img 
-                        src="/IMG_0638.jpeg" 
+                        src="/payment_qr.jpeg" 
                         alt="Alipay / WeChat Pay QR Code" 
                         className="w-full h-auto rounded-xl object-contain shadow-sm"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           if (!target.dataset.tried) {
                             target.dataset.tried = 'true';
-                            target.src = '/src/assets/IMG_0638.jpeg';
+                            target.src = '/IMG_0638.jpeg';
                           }
                         }}
                       />
