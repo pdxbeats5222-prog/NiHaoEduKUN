@@ -220,7 +220,7 @@ export const BookVideoCallModal: React.FC<BookVideoCallModalProps> = ({
     `\nPlease confirm my counselor meeting link!`
   );
 
-  const whatsappUrl = `https://wa.me/8618012345678?text=${formattedWhatsappMessage}`;
+  const whatsappUrl = `https://wa.me/8615968141445?text=${formattedWhatsappMessage}`;
 
   const topicObj = GUIDANCE_TOPICS.find(t => t.id === selectedTopic);
 
