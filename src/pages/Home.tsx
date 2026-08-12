@@ -10,9 +10,10 @@ import UniversityMap from '../components/UniversityMap';
 import { BookVideoCallModal } from '../components/BookVideoCallModal';
 import { Realistic3DLantern, ChineseAestheticHeroBanner } from '../components/Chinese3DLantern';
 import { ChinaLandmarksAnimation } from '../components/ChinaLandmarksAnimation';
-import { GuofengHeritageShowcaseCard, ChineseWaveBorder, FallingPlumPetals, FlyingCranes } from '../components/ChineseGuofengAesthetic';
+import { FallingPlumPetals, FlyingCranes } from '../components/ChineseGuofengAesthetic';
 import { TempleOfHeavenHeroBackground } from '../components/TempleOfHeavenBackground';
 import { ChineseAnimatedDragon } from '../components/ChineseAnimatedDragon';
+import { ChineseEducationCrest } from '../components/ChineseEducationCrest';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -595,10 +596,10 @@ export default function Home() {
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 text-red-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs">
-              <BookOpen className="w-4 h-4 text-red-600" />
+              <ChineseEducationCrest className="w-5 h-5 text-red-600" />
               <span>Official 2026 Student Handbook</span>
-              <span className="chinese-stamp px-1.5 py-0 border-red-600 text-red-700 text-[10px] bg-red-100/60 ml-1">
-                留学指南
+              <span className="chinese-stamp px-2 py-1 border-red-600 text-red-700 bg-red-100/60 ml-1 inline-flex items-center justify-center">
+                <ChineseEducationCrest className="w-4 h-4 text-red-600" />
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1d1d1f] tracking-tight">
@@ -1201,14 +1202,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Chinese Guofeng Heritage Showcase Card & Wave Border */}
-      <section className="py-12 bg-slate-50/50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <GuofengHeritageShowcaseCard />
-        </div>
-        <ChineseWaveBorder height={48} colorTheme="red" className="mt-8 opacity-90" />
       </section>
 
       {/* Section 7: The Lead Magnet */}

@@ -241,18 +241,7 @@ export const GuofengHeritageShowcaseCard: React.FC = () => {
 
       {/* Content Container */}
       <div className="relative z-20 max-w-2xl">
-        {/* Seal Stamps Row */}
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="chinese-stamp px-2.5 py-1 text-xs font-serif font-bold border-red-700 text-red-700 bg-red-50/80">
-            平安喜乐
-          </span>
-          <span className="chinese-stamp px-2.5 py-1 text-xs font-serif font-bold border-amber-700 text-amber-800 bg-amber-50/80">
-            月满中秋
-          </span>
-          <span className="text-xs font-bold tracking-widest text-slate-600 uppercase font-serif">
-            Peace, Joy & Prosperity
-          </span>
-        </div>
+
 
         <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c1917] tracking-tight mb-4 leading-[1.15]">
           A Journey to China.<br />
