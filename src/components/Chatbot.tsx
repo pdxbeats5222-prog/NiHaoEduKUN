@@ -3,6 +3,7 @@ import { X, Send, Loader2, Sparkles, Cpu, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { chatWithGemini } from '../services/geminiService';
 import { WHATSAPP_LINK } from '../constants';
+import { OrangeStarburstLogo } from './OrangeStarburstLogo';
 
 interface Message {
   id: string;
@@ -86,19 +87,19 @@ export default function Chatbot() {
         aria-label="Open AI Assistant"
       >
         {/* Outer glowing blur */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 to-amber-500 blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 blur-xl opacity-60 group-hover:opacity-90 transition-opacity duration-500 animate-pulse"></div>
         
         {/* Spinning gradient ring */}
         <div className="absolute inset-0 rounded-full overflow-hidden">
           <div 
-            className="absolute inset-[-50%] animate-spin bg-[conic-gradient(from_0deg,transparent_0%,#ef4444_30%,#f59e0b_50%,#ef4444_70%,transparent_100%)]" 
+            className="absolute inset-[-50%] animate-spin bg-[conic-gradient(from_0deg,transparent_0%,#f97316_30%,#f59e0b_50%,#ef4444_70%,transparent_100%)]" 
             style={{ animationDuration: '3s' }}
           ></div>
         </div>
         
         {/* Inner dark circle */}
-        <div className="absolute inset-[2px] bg-[#1d1d1f] rounded-full z-10 flex items-center justify-center border border-white/10 shadow-[inset_0_0_15px_rgba(0,0,0,0.8)]">
-          <Sparkles className="w-7 h-7 text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)] group-hover:scale-110 group-hover:text-amber-300 group-hover:drop-shadow-[0_0_15px_rgba(251,191,36,1)] transition-all duration-300" />
+        <div className="absolute inset-[2px] bg-[#1d1d1f] rounded-full z-10 flex items-center justify-center border border-orange-500/30 shadow-[inset_0_0_15px_rgba(0,0,0,0.8)]">
+          <OrangeStarburstLogo className="w-8 h-8 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 drop-shadow-[0_0_12px_rgba(249,115,22,0.9)]" />
         </div>
       </button>
 
@@ -118,16 +119,15 @@ export default function Chatbot() {
             {/* Header */}
             <div className="relative p-5 flex items-center justify-between border-b border-gray-200/50 bg-white/40 backdrop-blur-md z-10">
               <div className="flex items-center gap-3">
-                <img 
-                  src="https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2" 
-                  alt="Nihao.edu Logo" 
-                  referrerPolicy="no-referrer"
-                  className="w-10 h-10 object-contain" 
-                />
+                <div className="relative w-10 h-10 rounded-full bg-[#1d1d1f] flex items-center justify-center p-1.5 shadow-md border border-orange-500/20">
+                  <OrangeStarburstLogo className="w-full h-full drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+                </div>
                 <div>
-                  <span className="font-bold text-[#1d1d1f] block text-lg tracking-tight">Nihao AI Nexus</span>
-                  <span className="text-xs text-red-600 font-medium flex items-center gap-1 uppercase tracking-wider">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> Online
+                  <span className="font-bold text-[#1d1d1f] block text-lg tracking-tight flex items-center gap-1.5">
+                    Nihao AI Nexus
+                  </span>
+                  <span className="text-xs text-orange-600 font-medium flex items-center gap-1 uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span> Online
                   </span>
                 </div>
               </div>
