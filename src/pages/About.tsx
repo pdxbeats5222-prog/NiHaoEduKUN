@@ -326,6 +326,12 @@ export default function About() {
                 alt="Nihao Education Team" 
                 referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-xl w-full object-cover h-[400px]"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== '/founder.jpg') {
+                    target.src = '/founder.jpg';
+                  }
+                }}
               />
             </div>
           </div>
@@ -374,7 +380,18 @@ export default function About() {
                 key={idx}
                 className="bg-[#f5f5f7] rounded-[2rem] overflow-hidden w-[280px] md:w-[320px] shrink-0 shadow-sm hover:shadow-md transition-shadow select-none pointer-events-none sm:pointer-events-auto"
               >
-                <img src={member.image} alt={member.name} referrerPolicy="no-referrer" className="w-full h-64 object-cover pointer-events-none" />
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  referrerPolicy="no-referrer" 
+                  className="w-full h-64 object-cover pointer-events-none" 
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (target.src !== 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800') {
+                      target.src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800';
+                    }
+                  }}
+                />
                 <div className="p-8">
                   <h3 className="text-xl font-semibold text-[#1d1d1f] mb-1">{member.name}</h3>
                   <p className="text-[#0071e3] font-medium mb-4">{member.role}</p>

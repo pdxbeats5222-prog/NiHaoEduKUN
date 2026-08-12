@@ -525,9 +525,19 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
                 <h2 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] tracking-tight">Fully Funded Scholarship Opportunities in China</h2>
               </div>
               <div className="space-y-6">
-                <div className="p-8 bg-white rounded-[2rem] shadow-sm">
-                  <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">{t('Scholarship CSC Title')}</h3>
-                  <p className="text-[#86868b] leading-relaxed">{t('Scholarship CSC Desc')}</p>
+                <div className="p-8 bg-white rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">{t('Scholarship CSC Title')}</h3>
+                    <p className="text-[#86868b] leading-relaxed mb-6">{t('Scholarship CSC Desc')}</p>
+                  </div>
+                  <Link 
+                    to="/contact" 
+                    state={{ program: 'Chinese Government Scholarship (CSC)' }}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all w-fit shadow-md shadow-red-500/20"
+                  >
+                    <span>{t('Apply Now')}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
                 <div className="p-8 bg-white rounded-[2rem] shadow-sm">
                   <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">{t('Scholarship Prov Title')}</h3>

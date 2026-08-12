@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 interface LanternProps {
   className?: string;
@@ -232,17 +233,16 @@ export const ChineseAestheticHeroBanner: React.FC = () => {
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
-          <a
-            href="https://wa.me/8615968141445"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/contact"
+            state={{ program: 'Chinese Government Scholarship (CSC)' }}
             className="bg-[#b91c1c] hover:bg-[#991b1b] text-white px-6 py-3 rounded-2xl font-semibold text-sm shadow-lg shadow-red-900/20 hover:shadow-xl transition-all flex items-center gap-2"
           >
             <span>Apply For CSC Scholarship</span>
             <span className="chinese-stamp text-[10px] px-1 py-0 border-white text-white bg-transparent">
               申请
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

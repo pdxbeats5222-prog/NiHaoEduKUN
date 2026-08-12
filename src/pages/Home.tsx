@@ -159,66 +159,171 @@ export default function Home() {
           <Realistic3DLantern size="md" floatDuration={7.5} />
         </div>
         
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12 sm:mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-50/90 border border-red-200/80 text-red-700 text-xs sm:text-sm font-semibold mb-6 shadow-xs backdrop-blur-md"
-          >
-            <span className="chinese-stamp px-1.5 py-0.2 text-[10px] font-bold border-red-600 text-red-600 bg-red-100/50">留学</span>
-            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
-            <span>Official Study in China Higher Education Advisory</span>
-          </motion.div>
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-50/90 border border-red-200/80 text-red-700 text-xs sm:text-sm font-semibold mb-6 shadow-xs backdrop-blur-md"
+              >
+                <span className="chinese-stamp px-1.5 py-0.2 text-[10px] font-bold border-red-600 text-red-600 bg-red-100/50">留学</span>
+                <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+                <span>Official Study in China Higher Education Advisory</span>
+              </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-              <span className="bg-gradient-to-r from-red-600 via-red-500 to-amber-500 bg-clip-text text-transparent drop-shadow-sm">{t('Study in China.')}</span> <br className="hidden md:block" />
-              <span className="text-[#1d1d1f]">{t('Brilliantly simple.')}</span>
-            </h1>
-          </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-[#5a5a5c] mb-10 max-w-3xl mx-auto font-normal"
-          >
-            {t('Hero Subtitle')}
-          </motion.h2>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-3xl mx-auto"
-          >
-            {/* Get Your Place Button */}
-            <Link 
-              to="/contact" 
-              className="w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl shadow-red-500/25 hover:shadow-2xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2 group text-center cursor-pointer"
-            >
-              <Sparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
-              <span className="tracking-tight">{t('Get Free Place')}</span>
-            </Link>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 text-[#1d1d1f] leading-[1.1]">
+                  <span className="bg-gradient-to-r from-red-600 via-red-500 to-amber-500 bg-clip-text text-transparent drop-shadow-sm">{t('Study in China.')}</span> <br />
+                  <span className="text-[#1d1d1f]">{t('Brilliantly simple.')}</span>
+                </h1>
+              </motion.div>
+              
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg sm:text-xl lg:text-2xl text-[#5a5a5c] mb-8 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed"
+              >
+                {t('Hero Subtitle')}
+              </motion.h2>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8"
+              >
+                {/* Get Your Place Button */}
+                <Link 
+                  to="/contact" 
+                  className="w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl shadow-red-500/25 hover:shadow-2xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2 group text-center cursor-pointer"
+                >
+                  <Sparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
+                  <span className="tracking-tight">{t('Get Free Place')}</span>
+                </Link>
 
-            {/* Watch About Us Button */}
-            <Link 
-              to="/about" 
-              state={{ unmute: true }}
-              className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 px-8 py-4 rounded-full font-bold text-base shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
-            >
-              <div className="w-7 h-7 rounded-full bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors shadow-xs">
-                <Play className="w-3.5 h-3.5 fill-current ml-0.5 group-hover:scale-110 transition-transform" />
-              </div>
-              <span className="tracking-tight">{t('Watch About Us')}</span>
-            </Link>
-          </motion.div>
-         </div>
+                {/* Watch About Us Button */}
+                <Link 
+                  to="/about" 
+                  state={{ unmute: true }}
+                  className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 px-8 py-4 rounded-full font-bold text-base shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
+                >
+                  <div className="w-7 h-7 rounded-full bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors shadow-xs">
+                    <Play className="w-3.5 h-3.5 fill-current ml-0.5 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <span className="tracking-tight">{t('Watch About Us')}</span>
+                </Link>
+              </motion.div>
+
+              {/* Trust Indicators Bar */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="pt-4 border-t border-slate-200/60 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-600 font-medium"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span><strong>10,000+</strong> Students Placed</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-amber-500 font-bold">★ 4.9/5</span>
+                  <span>Student Satisfaction</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600 font-bold">100%</span>
+                  <span>CSC & Visa Guidance</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Hero Student Showcase Card */}
+            <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative w-full max-w-md sm:max-w-lg lg:max-w-none"
+              >
+                {/* Background Decorative Arch/Shape with Orange Accent */}
+                <div className="absolute -inset-2 bg-gradient-to-tr from-amber-500/20 via-red-500/20 to-orange-400/30 rounded-[2.5rem] blur-xl opacity-80 pointer-events-none"></div>
+                
+                {/* Main Card Container */}
+                <div className="relative rounded-[2.2rem] bg-white/80 backdrop-blur-xl border border-white/80 p-3 sm:p-4 shadow-[0_20px_50px_rgba(220,38,38,0.12)] overflow-hidden">
+                  
+                  {/* Backdrop Curved Accent (IDP-style orange curve element) */}
+                  <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-full opacity-20 blur-lg pointer-events-none"></div>
+                  <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-red-500/15 rounded-full blur-xl pointer-events-none"></div>
+
+                  {/* Student Portrait Image */}
+                  <div className="relative rounded-[1.8rem] overflow-hidden bg-gradient-to-b from-amber-50 to-red-50 aspect-[4/5] shadow-inner">
+                    <img 
+                      src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=900" 
+                      alt="International Student studying in China" 
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                    />
+
+                    {/* Gradient Overlay for subtle text contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none"></div>
+
+                    {/* Floating Badge Top Left: Dreams Took Flight */}
+                    <motion.div 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                      className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-white/60 flex items-center gap-2.5 z-10"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-sm shrink-0">
+                        🎓
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-extrabold text-[#1d1d1f] leading-tight">10,000+ Dreams</p>
+                        <p className="text-[9px] text-slate-500 font-medium">Took flight with Nihao</p>
+                      </div>
+                    </motion.div>
+
+                    {/* Floating Badge Bottom Right: 100% Scholarship Success */}
+                    <motion.div 
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.8 }}
+                      className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-amber-200/60 flex items-center gap-3 z-10"
+                    >
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-red-500 text-white flex items-center justify-center font-bold text-base shadow-xs shrink-0">
+                        ✨
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-[#1d1d1f]">100% CSC Scholarship</p>
+                        <p className="text-[10px] text-red-600 font-semibold">Fully Funded Admissions</p>
+                      </div>
+                    </motion.div>
+
+                    {/* Floating Badge Bottom Left: Hangzhou HQ */}
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 1.0 }}
+                      className="absolute bottom-4 left-4 bg-[#1d1d1f]/90 text-white backdrop-blur-md px-3 py-1.5 rounded-xl shadow-md border border-white/20 flex items-center gap-1.5 z-10"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                      <span className="text-[10px] font-bold tracking-wide">Hangzhou & Shanghai HQ</span>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+          </div>
+        </div>
 
         <motion.div 
           ref={videoSectionRef}
@@ -373,6 +478,12 @@ export default function Home() {
                 alt="Shiqi - Founder" 
                 referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-full object-cover h-[600px] relative z-10 border border-white/50"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== '/founder.jpg') {
+                    target.src = '/founder.jpg';
+                  }
+                }}
               />
               {/* Chinese Seal Badge overlay */}
               <motion.div 
@@ -689,10 +800,20 @@ export default function Home() {
                   The <strong>CSC Scholarship</strong> is among the most comprehensive funding awards globally — covering full tuition, on-campus accommodation, and a monthly living stipend. Managing your application with Nihao Education guarantees precision alignment with university quotas.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">Full Tuition Covered</span>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800">Free Accommodation</span>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-50 text-red-700">Monthly Stipend</span>
+              <div>
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 mb-6">
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">Full Tuition Covered</span>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800">Free Accommodation</span>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-50 text-red-700">Monthly Stipend</span>
+                </div>
+                <Link 
+                  to="/contact" 
+                  state={{ program: 'Chinese Government Scholarship (CSC)' }}
+                  className="w-full py-3 px-5 rounded-2xl bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-bold text-sm shadow-md hover:shadow-lg flex items-center justify-center gap-2 hover:scale-[1.02] transition-all"
+                >
+                  <span>Apply for CSC Scholarship</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
@@ -1098,18 +1219,21 @@ export default function Home() {
       {/* Section 6: Deadlines */}
       <Deadlines />
 
-      {/* Section 6.5: Video Consultation & Guidance Showcase (Clean White Professional Theme) */}
-      <section className="py-24 bg-white text-[#1d1d1f] relative overflow-hidden border-t border-slate-100">
+      {/* Section 6.5: Video Consultation & Guidance Showcase (Elevated Modern Bento Design) */}
+      <section className="py-28 bg-gradient-to-b from-slate-50/80 via-white to-amber-50/20 text-[#1d1d1f] relative overflow-hidden border-t border-slate-200/80">
         {/* Animated Shanghai & Beijing Landmarks Background Layer */}
-        <ChinaLandmarksAnimation variant="all" className="opacity-25" />
+        <ChinaLandmarksAnimation variant="all" className="opacity-20 pointer-events-none" />
+
+        {/* Ambient Glow Elements */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-red-500/10 via-amber-400/10 to-red-400/10 blur-3xl rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 text-red-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 text-red-700 text-xs font-extrabold uppercase tracking-widest mb-4 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
               1-on-1 Direct Study in China Advisory
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1d1d1f] tracking-tight">
               Get Complete Guidance From Hangzhou HQ
             </h2>
             <p className="text-[#5a5a5c] text-base md:text-lg mt-4 leading-relaxed">
@@ -1117,130 +1241,282 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
               {
                 icon: GraduationCap,
                 title: 'Career & Major Selection',
-                desc: 'Choosing high-demand degrees (Engineering, MBBS, AI, CS, Business) tailored to your global goals.'
+                desc: 'Choosing high-demand degrees (Engineering, MBBS, AI, CS, Business) tailored to your global goals.',
+                tag: 'Step 01'
               },
               {
                 icon: Building2,
                 title: 'University Selection',
-                desc: 'Targeting C9, 985 & 211 double-first-class universities matching your GPA and budget.'
+                desc: 'Targeting C9, 985 & 211 double-first-class universities matching your GPA and budget.',
+                tag: 'Step 02'
               },
               {
                 icon: Award,
                 title: 'Scholarships Guidance',
-                desc: 'CSC Government, Provincial (Zhejiang/Jiangsu) & University Presidential scholarship strategies.'
+                desc: 'CSC Government, Provincial (Zhejiang/Jiangsu) & University Presidential scholarship strategies.',
+                tag: 'Step 03'
               },
               {
                 icon: FileText,
                 title: 'Recommendations & Documents',
-                desc: 'Preparing winning motivation letters, study plans, and authenticated transcripts.'
+                desc: 'Preparing winning motivation letters, study plans, and authenticated transcripts.',
+                tag: 'Step 04'
               },
               {
                 icon: Sparkles,
                 title: 'Recent Offers & New Rules',
-                desc: 'Latest Chinese Ministry of Education updates, JW202/JW201 digital processing & 2026 rules.'
+                desc: 'Latest Chinese Ministry of Education updates, JW202/JW201 digital processing & 2026 rules.',
+                tag: 'Step 05'
               },
               {
                 icon: ShieldCheck,
                 title: 'Visa Process (X1 & X2)',
-                desc: 'Embassy interview prep, physical exam forms, JW issuance, and Residence Permit conversion.'
+                desc: 'Embassy interview prep, physical exam forms, JW issuance, and Residence Permit conversion.',
+                tag: 'Step 06'
               },
               {
                 icon: Calendar,
                 title: 'Step-by-Step Timeline',
-                desc: 'Clear roadmap from initial application to offer letter, physical arrival, and university registration.'
+                desc: 'Clear roadmap from initial application to offer letter, physical arrival, and university registration.',
+                tag: 'Step 07'
               },
               {
                 icon: Globe2,
                 title: 'Company Overview & On-Ground',
-                desc: 'How our Hangzhou HQ team handles 24/7 airport pickup, dorm setup, SIM, Alipay & bank accounts.'
+                desc: 'How our Hangzhou HQ team handles 24/7 airport pickup, dorm setup, SIM, Alipay & bank accounts.',
+                tag: 'Step 08'
               }
             ].map((item, idx) => {
               const ItemIcon = item.icon;
               return (
                 <div 
                   key={idx} 
-                  className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-red-400/60 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-white/90 backdrop-blur-md border border-slate-200/90 hover:border-red-500/50 rounded-3xl p-6 shadow-xs hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
                 >
-                  <div>
-                    <div className="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                      <ItemIcon className="w-6 h-6" />
+                  {/* Card Subtle Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-50/0 via-amber-50/0 to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-50 to-amber-50 border border-red-100 text-red-600 flex items-center justify-center group-hover:from-red-600 group-hover:to-amber-500 group-hover:text-white group-hover:border-transparent group-hover:shadow-md transition-all duration-300">
+                        <ItemIcon className="w-6 h-6" />
+                      </div>
+                      <span className="text-[11px] font-mono font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 group-hover:bg-red-100 group-hover:text-red-700 transition-colors">
+                        {item.tag}
+                      </span>
                     </div>
-                    <h3 className="font-bold text-[#1d1d1f] text-base mb-2">{item.title}</h3>
-                    <p className="text-[#5a5a5c] text-xs leading-relaxed">{item.desc}</p>
+
+                    <h3 className="font-extrabold text-[#1d1d1f] text-base mb-2 group-hover:text-red-700 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#5a5a5c] text-xs leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <div className="bg-gradient-to-r from-red-50 via-amber-50 to-red-50 border border-red-200/80 rounded-3xl p-8 md:p-10 text-center relative overflow-hidden max-w-4xl mx-auto shadow-sm">
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left">
-              <div>
-                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">
-                  Direct Support via WhatsApp
-                </span>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-[#1d1d1f]">
+          <div className="bg-gradient-to-r from-red-600 via-red-500 to-amber-500 text-white rounded-[2.5rem] p-8 sm:p-10 md:p-12 shadow-2xl shadow-red-500/20 relative overflow-hidden max-w-5xl mx-auto">
+            {/* Background Glow Ring */}
+            <div className="absolute -right-16 -bottom-16 w-64 h-64 bg-amber-400/30 rounded-full blur-2xl pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-left">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Direct Advisory via Hangzhou HQ</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
                   Ready to secure your place in China?
                 </h3>
-                <p className="text-[#5a5a5c] text-sm mt-1">
-                  Connect with our Hangzhou advisory team today for zero-stress university applications.
+                <p className="text-red-100 text-sm md:text-base max-w-xl">
+                  Connect with our senior Hangzhou advisory team today for 100% free personalized guidance and application matching.
                 </p>
               </div>
 
               <Link
                 to="/contact"
-                className="bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-8 py-4 rounded-full font-bold text-base shadow-lg shadow-red-500/20 hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap flex-shrink-0"
+                className="bg-white hover:bg-slate-50 text-red-600 hover:text-red-700 px-8 py-4 rounded-2xl font-extrabold text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2.5 whitespace-nowrap shrink-0 cursor-pointer"
               >
                 <span>Get Your Place</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 text-red-600" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 7: The Lead Magnet */}
-      <section className="py-32 bg-[#faf9f6] relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-red-50/50 pointer-events-none" />
+      {/* Section 7: Get Your Place For Free (Lead Magnet & Advisory Form) */}
+      <section id="get-your-place" className="py-24 bg-[#faf9f6] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-50/30 to-amber-50/40 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-red-400/10 to-amber-400/10 blur-3xl rounded-full pointer-events-none" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", bounce: 0.5 }}
-            className="inline-block bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-lg border border-white/50 mb-8"
-          >
-            <Download className="w-12 h-12 text-red-600" />
-          </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold text-[#1d1d1f] tracking-tight mb-6">
-            {t('Lead Magnet Title')}
-          </h2>
-          <p className="text-xl text-[#5a5a5c] mb-12 max-w-2xl mx-auto">
-            {t('Lead Magnet Subtitle')}
-          </p>
-          
-          <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative" onSubmit={(e) => e.preventDefault()}>
-            <input 
-              type="email" 
-              placeholder={t("Enter your email address")} 
-              className="flex-grow px-8 py-4 rounded-full bg-white/80 backdrop-blur-md border border-white/50 text-[#1d1d1f] focus:outline-none focus:ring-2 focus:ring-red-500 text-lg shadow-[0_8px_30px_rgba(0,0,0,0.04)] placeholder:text-gray-400"
-              required
-            />
-            <button 
-              type="submit" 
-              className="bg-gradient-to-r from-red-600 to-red-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-[0_8px_24px_rgba(220,38,38,0.3)] hover:shadow-[0_12px_32px_rgba(220,38,38,0.4)] hover:scale-105 transition-all duration-300 whitespace-nowrap"
-            >
-              {t('Send My Free Guide')}
-            </button>
-          </form>
-          <p className="text-[#5a5a5c] text-sm mt-6">{t('Lead Magnet Disclaimer')}</p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white/90 backdrop-blur-xl border border-white/80 rounded-[2.5rem] p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.06)] overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              
+              {/* Left Column: Form & Title */}
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold mb-4">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>100% Free Advisory • Zero Hidden Charges</span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1d1d1f] tracking-tight mb-3">
+                  Get Your Place for Free
+                </h2>
+                <p className="text-base sm:text-lg text-[#5a5a5c] mb-8 leading-relaxed">
+                  Over 10,000+ international students took flight with Nihao.edu to top Chinese universities. Get your free personalized admissions & visa guide today!
+                </p>
+
+                {/* Form */}
+                <form 
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.currentTarget);
+                    const name = formData.get('name') || '';
+                    const email = formData.get('email') || '';
+                    const whatsapp = formData.get('whatsapp') || '';
+                    const program = formData.get('program') || 'Bachelor Degree';
+                    
+                    const msg = encodeURIComponent(`Hello Nihao.edu! I would like to get my place for free.\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${whatsapp}\nProgram: ${program}`);
+                    window.open(`https://wa.me/8615968141445?text=${msg}`, '_blank');
+                  }}
+                  className="space-y-4"
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-1.5">
+                        Full Name *
+                      </label>
+                      <input 
+                        type="text" 
+                        name="name" 
+                        required 
+                        placeholder="e.g. Sarah Jenkins"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-red-500 focus:ring-2 focus:ring-red-500/20 text-[#1d1d1f] text-sm outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-1.5">
+                        Email Address *
+                      </label>
+                      <input 
+                        type="email" 
+                        name="email" 
+                        required 
+                        placeholder="sarah@example.com"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-red-500 focus:ring-2 focus:ring-red-500/20 text-[#1d1d1f] text-sm outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-1.5">
+                        WhatsApp / Mobile *
+                      </label>
+                      <input 
+                        type="tel" 
+                        name="whatsapp" 
+                        required 
+                        placeholder="+1 234 567 8900"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-red-500 focus:ring-2 focus:ring-red-500/20 text-[#1d1d1f] text-sm outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-1.5">
+                        Preferred Level / Degree
+                      </label>
+                      <select 
+                        name="program"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-red-500 focus:ring-2 focus:ring-red-500/20 text-[#1d1d1f] text-sm outline-none transition-all"
+                      >
+                        <option value="Bachelor Degree">Bachelor's Degree</option>
+                        <option value="Master Degree">Master's Degree</option>
+                        <option value="PhD Program">PhD / Doctorate</option>
+                        <option value="Chinese Language Program">1-Year Language Program</option>
+                        <option value="MBBS Medical">MBBS / Medicine</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <button 
+                      type="submit" 
+                      className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white rounded-2xl font-bold text-base shadow-lg shadow-red-500/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <Sparkles className="w-5 h-5 text-amber-200" />
+                      <span>Avail FREE Counselling & Guide</span>
+                    </button>
+                  </div>
+
+                  <p className="text-xs text-slate-500 pt-2 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>100% Free advisory. No hidden charges. Unsubscribe anytime.</span>
+                  </p>
+                </form>
+              </div>
+
+              {/* Right Column: IDP-style Student Showcase Card */}
+              <div className="lg:col-span-5 relative flex justify-center">
+                <div className="relative w-full max-w-sm sm:max-w-md">
+                  
+                  {/* Organic Background Shape (Green & Orange IDP Style backdrop curve) */}
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/25 via-teal-400/20 to-amber-400/30 rounded-[3rem] blur-xl opacity-90 pointer-events-none" />
+                  
+                  {/* Green Curved Accent behind image */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-emerald-500 rounded-[3.5rem] transform -rotate-3 opacity-95 pointer-events-none" />
+
+                  {/* Student Image Frame */}
+                  <div className="relative z-10 rounded-[2.5rem] overflow-hidden bg-white p-2.5 shadow-2xl border border-emerald-100">
+                    <div className="relative rounded-[2rem] overflow-hidden bg-emerald-100 aspect-[4/5]">
+                      <img 
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" 
+                        alt="International Student checking study options on smartphone" 
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                      />
+
+                      {/* Top Right Orange Accent Blur */}
+                      <div className="absolute -top-6 -right-6 w-24 h-24 bg-amber-500 rounded-full blur-xs opacity-80 pointer-events-none" />
+
+                      {/* Floating Badge: Free Counseling */}
+                      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-emerald-200 flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                          ✓
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-extrabold text-[#1d1d1f]">Free Counselling</p>
+                          <p className="text-[9px] text-emerald-600 font-bold">100% Free Advisory</p>
+                        </div>
+                      </div>
+
+                      {/* Floating Badge Bottom Right: CSC Scholarship */}
+                      <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-amber-200 flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-xs shrink-0">
+                          🎓
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[#1d1d1f]">CSC Scholarships</p>
+                          <p className="text-[10px] text-amber-600 font-bold">100% Tuition Covered</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
 

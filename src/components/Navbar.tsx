@@ -80,6 +80,12 @@ export default function Navbar() {
               alt="Nihao.edu Logo" 
               referrerPolicy="no-referrer"
               className="h-12 w-auto object-contain" 
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                if (target.src !== '/logo2.png') {
+                  target.src = '/logo2.png';
+                }
+              }}
               whileHover={{ scale: 1.1, rotate: 5 }}
               animate={{
                 y: [0, -4, 0],

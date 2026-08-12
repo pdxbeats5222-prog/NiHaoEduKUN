@@ -26,10 +26,10 @@ export const cityUniversities: CityData[] = [
       { 
         name: "Zhejiang University", 
         coordinates: [120.089, 30.301],
-        image: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=1200",
+        image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200",
         gallery: [
           "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800",
+          "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800",
           "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800"
         ],
         majors: ["Computer Science", "Engineering", "Life Sciences", "Economics", "Industrial Design"],
@@ -90,10 +90,10 @@ export const cityUniversities: CityData[] = [
       { 
         name: "Fudan University", 
         coordinates: [121.503, 31.297],
-        image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&q=80&w=1200",
+        image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200",
         gallery: [
-          "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800"
+          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
+          "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=800"
         ],
         majors: ["International Relations", "Clinical Medicine", "Physics", "Chemistry", "Philosophy"],
         description: "A top-tier C9 League university located in Shanghai. Fudan is recognized globally for its liberal arts programs, high-impact research, and prestigious international atmosphere."
@@ -155,7 +155,7 @@ export const cityUniversities: CityData[] = [
       { 
         name: "Tsinghua University", 
         coordinates: [116.326, 40.003],
-        image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1200",
+        image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200",
         gallery: [
           "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800",
           "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800"

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { Realistic3DLantern } from './Chinese3DLantern';
 
 // 1. Classical Chinese Ocean Wave Crest Pattern (海水江崖纹)
@@ -255,17 +256,16 @@ export const GuofengHeritageShowcaseCard: React.FC = () => {
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
-          <a
-            href="https://wa.me/8615968141445"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/contact"
+            state={{ program: 'Chinese Government Scholarship (CSC)' }}
             className="bg-[#b91c1c] hover:bg-[#991b1b] text-white px-7 py-3.5 rounded-2xl font-bold text-sm shadow-xl shadow-red-900/20 hover:scale-105 transition-all flex items-center gap-2"
           >
             <span>Apply Now</span>
             <span className="chinese-stamp text-[10px] px-1.5 py-0 border-white text-white bg-transparent">
               即刻申请
             </span>
-          </a>
+          </Link>
         </div>
       </div>
 
