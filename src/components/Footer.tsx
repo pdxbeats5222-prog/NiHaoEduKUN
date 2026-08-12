@@ -4,90 +4,88 @@ import { SiTiktok, SiXiaohongshu } from 'react-icons/si';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#faf9f6] text-[#5a5a5c] pt-16 pb-8 border-t border-gray-200/60 relative overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-t from-red-50/50 to-transparent pointer-events-none" />
+    <footer className="bg-slate-900 text-slate-400 pt-16 pb-12 border-t border-slate-800 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/5 rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
-              <span className="text-xl font-semibold tracking-tight text-[#1d1d1f]">
-                Nihao.edu
-              </span>
+            <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity cursor-pointer group">
+              <img src="/logo2.png" alt="Nihao.edu Logo" className="h-10 w-auto object-contain" />
             </Link>
-            <p className="text-sm leading-relaxed max-w-xs">
+            <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
               Your local gateway to China. We are a localized consultancy headquartered in Hangzhou, providing unmatched insight into campus life and seamless integration.
             </p>
-            <div className="flex gap-4 pt-2">
-              <a href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
-                <Instagram className="w-5 h-5" />
+            <div className="flex gap-2.5 pt-2">
+              <a href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
+                <Instagram className="w-4 h-4" />
               </a>
-              <a href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
-                <Youtube className="w-5 h-5" />
+              <a href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
+                <Youtube className="w-4 h-4" />
               </a>
-              <a href="https://www.tiktok.com/@kunofficial37?_r=1&_t=ZP-95drv1GlYpK" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
-                <SiTiktok size={20} />
+              <a href="https://www.tiktok.com/@kunofficial37?_r=1&_t=ZP-95drv1GlYpK" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
+                <SiTiktok size={16} />
               </a>
-              <a href="https://www.xiaohongshu.com/user/profile/6487e41b00000000070188bb" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
-                <SiXiaohongshu size={20} />
+              <a href="https://www.xiaohongshu.com/user/profile/6487e41b00000000070188bb" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
+                <SiXiaohongshu size={16} />
               </a>
-              <a href="https://www.linkedin.com/in/nihaoedu-org-43a175413?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
-                <Linkedin className="w-5 h-5" />
+              <a href="https://www.linkedin.com/in/nihaoedu-org-43a175413?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
+                <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-[#1d1d1f] font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-white font-bold text-sm tracking-wide uppercase mb-4">Quick Links</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/services" className="hover:text-red-600 transition-colors">Our Services</Link></li>
-              <li><Link to="/about" className="hover:text-red-600 transition-colors">Meet the Team</Link></li>
-              <li><Link to="/resources" className="hover:text-red-600 transition-colors">Student Resources</Link></li>
-              <li><a href="https://wa.me/8615968141445" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">Get Your Place</a></li>
+              <li><Link to="/services" className="hover:text-amber-400 transition-colors">Our Services</Link></li>
+              <li><Link to="/about" className="hover:text-amber-400 transition-colors">Meet the Team</Link></li>
+              <li><Link to="/resources" className="hover:text-amber-400 transition-colors">Student Resources</Link></li>
+              <li><a href="https://wa.me/8615968141445" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">Get Your Place</a></li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-[#1d1d1f] font-semibold mb-4">Services</h3>
+            <h3 className="text-white font-bold text-sm tracking-wide uppercase mb-4">Services</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/services" className="hover:text-red-600 transition-colors">University Selection</Link></li>
-              <li><Link to="/services" className="hover:text-red-600 transition-colors">Language Training (HSK)</Link></li>
-              <li><Link to="/services" className="hover:text-red-600 transition-colors">X1/X2 Visa & Logistics</Link></li>
-              <li><Link to="/services" className="hover:text-red-600 transition-colors">On-Ground Integration</Link></li>
+              <li><Link to="/services" className="hover:text-amber-400 transition-colors">University Selection</Link></li>
+              <li><Link to="/services" className="hover:text-amber-400 transition-colors">Language Training (HSK)</Link></li>
+              <li><Link to="/services" className="hover:text-amber-400 transition-colors">X1/X2 Visa & Logistics</Link></li>
+              <li><Link to="/services" className="hover:text-amber-400 transition-colors">On-Ground Integration</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-[#1d1d1f] font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-white font-bold text-sm tracking-wide uppercase mb-4">Contact Us</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 shrink-0 mt-0.5" />
-                <span className="leading-tight">Block A, Xipei Education Building, 280 Xuelin St, Xiasha Higher Education Zone, Hangzhou, Zhejiang</span>
+                <MapPin className="w-4 h-4 shrink-0 mt-1 text-amber-400" />
+                <span className="leading-relaxed">Block A, Xipei Education Building, 280 Xuelin St, Xiasha Higher Education Zone, Hangzhou, Zhejiang</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 shrink-0" />
-                <a href="mailto:nihaoedu@gmail.com" className="hover:text-red-600 transition-colors">nihaoedu@gmail.com</a>
+                <Mail className="w-4 h-4 shrink-0 text-amber-400" />
+                <a href="mailto:nihaoedu@gmail.com" className="hover:text-amber-400 transition-colors">nihaoedu@gmail.com</a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 shrink-0" />
+                <Phone className="w-4 h-4 shrink-0 text-amber-400" />
                 <span>+86 15968141445</span>
               </li>
               <li className="flex items-center gap-3">
-                <Globe className="w-5 h-5 shrink-0" />
-                <a href="https://nihaoedu.org" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">www.nihaoedu.org</a>
+                <Globe className="w-4 h-4 shrink-0 text-amber-400" />
+                <a href="https://nihaoedu.org" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">www.nihaoedu.org</a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-200/60 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+        <div className="border-t border-slate-800/80 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Nihao Education. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link to="#" className="hover:text-red-600 transition-colors">Privacy Policy</Link>
-            <Link to="#" className="hover:text-red-600 transition-colors">Terms of Service</Link>
+            <Link to="#" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+            <Link to="#" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

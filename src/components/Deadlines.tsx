@@ -255,17 +255,17 @@ END:VCALENDAR`;
 
                   <section>
                     <div className="flex items-center gap-2 mb-4">
-                      <Sparkles className="w-6 h-6 text-purple-600" />
+                      <Sparkles className="w-6 h-6 text-amber-600" />
                       <h3 className="text-xl font-bold text-[#1d1d1f]">Program Bonus</h3>
                     </div>
-                    <div className="bg-purple-50 p-6 rounded-2xl border border-purple-100">
+                    <div className="bg-amber-50/80 p-6 rounded-2xl border border-amber-200/80">
                       <ul className="space-y-3">
                         <li className="flex gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-purple-600 shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0" />
                           <p className="text-[#5a5a5c]">Students from the <strong className="text-[#1d1d1f]">US, Europe, or Russia</strong> are warmly welcome.</p>
                         </li>
                         <li className="flex gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-purple-600 shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0" />
                           <p className="text-[#5a5a5c]"><strong className="text-[#1d1d1f]">Early departure</strong> is allowed after full payment by July 13.</p>
                         </li>
                       </ul>

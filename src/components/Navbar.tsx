@@ -156,32 +156,17 @@ export default function Navbar() {
                 <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white animate-pulse" />
               </button>
 
-              <button 
-                onClick={() => setIsVideoModalOpen(true)}
-                className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-full text-xs font-bold border border-slate-700/60 shadow-md hover:scale-105 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap"
-              >
-                <Video className="w-3.5 h-3.5 text-amber-400" />
-                <span>Book Video Call</span>
-              </button>
-
               <Link
                 to="/contact"
-                className="bg-red-600 text-white px-5 py-2 rounded-full text-xs font-bold shadow-lg shadow-red-500/30 hover:shadow-red-500/40 hover:scale-105 transition-all duration-300 whitespace-nowrap"
+                className="bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-5 py-2 rounded-full text-xs font-bold shadow-md shadow-red-500/20 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 whitespace-nowrap"
               >
-                {t('Contact Us')}
+                {t('Get Your Place')}
               </Link>
             </div>
           </nav>
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center gap-1.5 md:hidden">
-            <button 
-              onClick={() => setIsVideoModalOpen(true)}
-              className="bg-slate-900 text-white px-3 py-1.5 rounded-full text-[11px] font-bold flex items-center gap-1 shadow-sm border border-slate-700"
-            >
-              <Video className="w-3 h-3 text-amber-400" />
-              <span>Book Call</span>
-            </button>
             <button 
               onClick={() => changeLanguage(i18n.language.startsWith('en') ? 'zh' : 'en')}
               className="p-1.5 text-[#1d1d1f] flex items-center gap-1"

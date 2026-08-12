@@ -3,11 +3,11 @@
 
 @theme {
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Georgia", "Noto Serif SC", serif;
   
-  --color-brand-gold: #0071e3;
-  --color-brand-gold-hover: #0077ed;
-  --color-brand-red: #ff3b30;
+  --color-brand-gold: #D97706;
+  --color-brand-gold-hover: #B45309;
+  --color-brand-red: #DC2626;
   --color-brand-dark: #1d1d1f;
   --color-brand-p: #86868b;
   --color-cream-50: #ffffff;
@@ -19,7 +19,73 @@
     50% { transform: translateY(-3px); }
   }
 
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+
+  @keyframes float-reverse {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(10px) rotate(-1deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes petal-fall {
+    0% {
+      transform: translateY(-20px) translateX(0px) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.9;
+    }
+    90% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(1000px) translateX(120px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes crane-glide {
+    0% {
+      transform: translateX(-100px) translateY(0px) scale(0.8);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.85;
+    }
+    85% {
+      opacity: 0.85;
+    }
+    100% {
+      transform: translateX(110vw) translateY(-60px) scale(1.1);
+      opacity: 0;
+    }
+  }
+
+  @keyframes wave-undulate {
+    0%, 100% { transform: translateX(0) scaleY(1); }
+    50% { transform: translateX(-25px) scaleY(1.05); }
+  }
+
   --animate-bounce-subtle: bounce-subtle 2s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-reverse: float-reverse 7s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-petal: petal-fall 12s linear infinite;
+  --animate-crane: crane-glide 25s linear infinite;
+  --animate-wave: wave-undulate 8s ease-in-out infinite;
 }
 
 @layer utilities {
@@ -29,6 +95,34 @@
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  
+  /* Traditional Chinese Seal / Stamp style */
+  .chinese-stamp {
+    border: 2px solid #b91c1c;
+    color: #b91c1c;
+    border-radius: 6px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgba(185, 28, 28, 0.2);
+    transform: rotate(-3deg);
+    transition: all 0.3s ease;
+  }
+
+  .chinese-stamp:hover {
+    transform: rotate(0deg) scale(1.05);
+    background-color: rgba(220, 38, 38, 0.05);
+  }
+
+  .chinese-pattern-bg {
+    background-color: #faf9f6;
+    background-image: radial-gradient(#dc2626 0.5px, transparent 0.5px), radial-gradient(#d97706 0.5px, #faf9f6 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.95;
   }
 }
 
@@ -44,3 +138,4 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-brand-dark);
   letter-spacing: -0.02em;
 }
+

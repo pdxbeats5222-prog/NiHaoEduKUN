@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX, Video, Calendar, DollarSign, Award, ShieldCheck, Sparkles, GraduationCap, Building2, FileText } from 'lucide-react';
+import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX, Video, Calendar, DollarSign, Award, ShieldCheck, Sparkles, GraduationCap, Building2, FileText, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,11 @@ import { WHATSAPP_LINK } from '../constants';
 import Deadlines from '../components/Deadlines';
 import UniversityMap from '../components/UniversityMap';
 import { BookVideoCallModal } from '../components/BookVideoCallModal';
+import { Realistic3DLantern, ChineseAestheticHeroBanner } from '../components/Chinese3DLantern';
+import { ChinaLandmarksAnimation } from '../components/ChinaLandmarksAnimation';
+import { GuofengHeritageShowcaseCard, ChineseWaveBorder, FallingPlumPetals, FlyingCranes } from '../components/ChineseGuofengAesthetic';
+import { TempleOfHeavenHeroBackground } from '../components/TempleOfHeavenBackground';
+import { ChineseAnimatedDragon } from '../components/ChineseAnimatedDragon';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -130,13 +135,41 @@ export default function Home() {
       </Helmet>
       {/* Section 1: The Hero Area */}
       <section className="relative pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden bg-[#faf9f6]">
+        {/* Transparent & Professional Temple of Heaven Background */}
+        <TempleOfHeavenHeroBackground />
+
         {/* Subtle background glow effects - Chinese Aesthetic (Crimson/Gold) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-red-500/10 to-transparent blur-3xl rounded-full pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-amber-500/10 to-transparent blur-3xl rounded-full pointer-events-none" />
+        
         {/* Subtle Cloud/Wave Motif Overlay */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #8b0000 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+
+        {/* Animated Flying Cranes & Falling Plum Petals */}
+        <FlyingCranes />
+        <FallingPlumPetals count={10} />
+
+        {/* Realistic 3D Floating Chinese Lanterns - Left & Right */}
+        <div className="absolute top-16 left-4 lg:left-12 pointer-events-none hidden sm:block z-20">
+          <Realistic3DLantern size="lg" floatDuration={6} />
+        </div>
+
+        <div className="absolute top-24 right-4 lg:right-12 pointer-events-none hidden sm:block z-20">
+          <Realistic3DLantern size="md" floatDuration={7.5} />
+        </div>
         
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12 sm:mt-16">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-50/90 border border-red-200/80 text-red-700 text-xs sm:text-sm font-semibold mb-6 shadow-xs backdrop-blur-md"
+          >
+            <span className="chinese-stamp px-1.5 py-0.2 text-[10px] font-bold border-red-600 text-red-600 bg-red-100/50">留学</span>
+            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+            <span>Official Study in China Higher Education Advisory</span>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -163,38 +196,20 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-3xl mx-auto"
           >
-            {/* 1. Book Video Call Button */}
-            <button
-              type="button"
-              onClick={() => {
-                setVideoModalTopic('career');
-                setIsVideoModalOpen(true);
-              }}
-              className="w-full sm:w-auto bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 hover:from-slate-900 hover:to-slate-850 text-white border border-amber-400/60 hover:border-amber-400 px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-xl shadow-slate-950/30 hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group cursor-pointer"
-            >
-              <div className="w-7 h-7 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center group-hover:bg-amber-400/30 transition-colors">
-                <Video className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
-              </div>
-              <span className="tracking-tight text-white">{t('Book Video Call')}</span>
-              <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 ml-0.5 tracking-wider hidden xs:inline-block shadow-xs">
-                1-on-1
-              </span>
-            </button>
-
-            {/* 2. Get Your Place for Free Button */}
+            {/* Get Your Place Button */}
             <Link 
               to="/contact" 
-              className="w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2 group text-center"
+              className="w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl shadow-red-500/25 hover:shadow-2xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2 group text-center cursor-pointer"
             >
-              <Sparkles className="w-4 h-4 text-amber-200 group-hover:rotate-12 transition-transform" />
+              <Sparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
               <span className="tracking-tight">{t('Get Free Place')}</span>
             </Link>
 
-            {/* 3. Watch About Us Button */}
+            {/* Watch About Us Button */}
             <Link 
               to="/about" 
               state={{ unmute: true }}
-              className="w-full sm:w-auto bg-white/95 hover:bg-white text-slate-900 border border-slate-200/90 px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
+              className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 px-8 py-4 rounded-full font-bold text-base shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
             >
               <div className="w-7 h-7 rounded-full bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors shadow-xs">
                 <Play className="w-3.5 h-3.5 fill-current ml-0.5 group-hover:scale-110 transition-transform" />
@@ -284,6 +299,11 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
+
+        {/* Chinese Heritage Architectural Banner */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12">
+          <ChineseAestheticHeroBanner />
+        </div>
       </section>
 
       {/* Section 2: The "Why China? Why Now?" Value Prop */}
@@ -353,8 +373,22 @@ export default function Home() {
                 referrerPolicy="no-referrer"
                 className="rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-full object-cover h-[600px] relative z-10 border border-white/50"
               />
+              {/* Chinese Seal Badge overlay */}
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-red-200 flex items-center gap-2.5"
+              >
+                <span className="chinese-stamp text-xs px-2 py-0.5 border-red-700 text-red-700 bg-red-50 font-serif">创始人</span>
+                <span className="text-xs font-bold text-slate-800">Hangzhou Local HQ</span>
+              </motion.div>
             </div>
             <div className="lg:w-1/2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-700 text-xs font-semibold mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <span>Personal Insider Experience</span>
+              </div>
               <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-6">
                 {t('Meet Shiqi.')} <br />
                 <span className="bg-gradient-to-r from-red-600 to-amber-500 bg-clip-text text-transparent">{t('Founder & Insider Guide.')}</span>
@@ -459,7 +493,7 @@ export default function Home() {
                 title: t("Master's"),
                 subtitle: t("Postgraduate"),
                 desc: t("Master's Desc Short"),
-                color: "from-purple-600 to-indigo-500"
+                color: "from-amber-500 to-red-600"
               },
               {
                 title: t("PhD"),
@@ -547,50 +581,227 @@ export default function Home() {
       </section>
 
       {/* SEO PILLAR SECTION: THE ULTIMATE GUIDE */}
-      <section id="guide" className="py-32 bg-white relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="prose prose-lg prose-red max-w-none">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-8">The Ultimate Guide to Study in China (2026 Edition)</h2>
-            
-            <p className="text-xl text-[#5a5a5c] leading-relaxed mb-8">
-              Deciding to <strong>study in China</strong> is more than just an academic choice; it's a strategic investment in your future. As the world's second-largest economy, China offers international students a unique blend of high-tech innovation, historical depth, and unparalleled career opportunities. Whether you're aiming for a top-tier Engineering degree or a Master's in International Business, China's higher education system is designed to produce global leaders.
-            </p>
+      <section id="guide" className="py-24 sm:py-32 bg-gradient-to-b from-white via-[#fcfbf9] to-slate-50 relative overflow-hidden border-t border-slate-100">
+        {/* Subtle Background Accent & Watermark */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
-            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Why International Students Choose China</h3>
-            <p className="text-[#5a5a5c] mb-6">
-              In the last decade, China has tripled its efforts to attract global talent. Universities like Tsinghua, Peking, and Zhejiang University now consistently rank within the top 50 globally. The infrastructure is world-class, but the real draw is the ecosystem: a front-row seat to the future of AI, renewable energy, and digital commerce. Furthermore, the <strong>Study in China in English</strong> options have expanded significantly, making it accessible to those who are still mastering Mandarin.
-            </p>
+        {/* Animated Traditional Imperial Chinese Dragon (祥龙腾飞) */}
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-full max-w-5xl opacity-20 hover:opacity-35 transition-opacity duration-700 pointer-events-none z-0">
+          <ChineseAnimatedDragon className="w-full h-auto scale-100 md:scale-110" />
+        </div>
 
-            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Top-Ranked English-Taught Programs</h3>
-            <p className="text-[#5a5a5c] mb-6">
-              For many, the language barrier is a major concern. However, many designated \"Double First-Class\" universities offer <strong>English-taught programs</strong> across a variety of disciplines. From <strong>MBBS in China</strong> (Medicine) to MBA programs in Shanghai, you can receive a world-class education while taking Mandarin (HSK) elective courses to build your language skills on the side.
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 text-red-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs">
+              <BookOpen className="w-4 h-4 text-red-600" />
+              <span>Official 2026 Student Handbook</span>
+              <span className="chinese-stamp px-1.5 py-0 border-red-600 text-red-700 text-[10px] bg-red-100/60 ml-1">
+                留学指南
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1d1d1f] tracking-tight">
+              The Ultimate Guide to Study in China <span className="text-red-600 font-serif">(2026 Edition)</span>
+            </h2>
+            <p className="text-[#5a5a5c] text-base md:text-lg mt-5 leading-relaxed">
+              Deciding to <strong>study in China</strong> is more than an academic choice — it's a high-value strategic investment in your future. As the world's 2nd largest economy, China offers international students cutting-edge tech innovation, rich historical depth, and global career opportunities.
             </p>
+          </div>
 
-            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Living in China's Academic Hubs: Shanghai & Hangzhou</h3>
-            <p className="text-[#5a5a5c] mb-6">
-              Where you study is just as important as what you study. <strong>Shanghai</strong> remains the international student favorite—a hyper-modern metropolis that never sleeps. Meanwhile, <strong>Hangzhou</strong> (home to Nihao.edu HQ) offers a more balanced lifestyle, combining the tech headquarters of Alibaba with the serene beauty of the UNESCO World Heritage West Lake. Both cities are incredibly safe, hyper-connected via high-speed rail, and completely cashless through platforms like WeChat Pay.
-            </p>
-
-            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Securing the Chinese Government Scholarship (CSC)</h3>
-            <p className="text-[#5a5a5c] mb-6">
-              Financial support is a cornerstone of the Chinese education strategy. The <strong>Chinese Government Scholarship application</strong> (CSC) is one of the most generous in the world, often covering full tuition, free on-campus housing, and a monthly living stipend. Managing this application requires precision: you must align your research proposal with the university's strengths and ensure your documentation is authenticated correctly.
-            </p>
-
-            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">The Application Timeline: How to Prepare</h3>
-            <div className="bg-[#faf9f6] p-8 rounded-3xl border border-gray-100 my-8">
-              <ol className="space-y-4 text-[#5a5a5c]">
-                <li><strong>Phase 1 (Sept - Dec):</strong> Research universities and programs. Prepare your academic transcripts and English proficiency scores (IELTS/TOEFL).</li>
-                <li><strong>Phase 2 (Jan - March):</strong> Submit your <strong>Apply to Chinese universities</strong> applications and scholarship requests.</li>
-                <li><strong>Phase 3 (April - June):</strong> Receive your Admission Letter and JW202/JW201 visa documents.</li>
-                <li><strong>Phase 4 (July - Aug):</strong> Apply for your <strong>China student visa X1</strong> at the nearest consulate.</li>
-                <li><strong>Phase 5 (Sept):</strong> Move to China, register at the university, and convert your visa to a Residence Permit.</li>
-              </ol>
+          {/* 4 Grid Topic Feature Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Card 1: Why China */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-red-300/80 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-bl-full pointer-events-none group-hover:bg-red-500/10 transition-colors" />
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Globe2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-3 group-hover:text-red-600 transition-colors">
+                  Why International Students Choose China
+                </h3>
+                <p className="text-[#5a5a5c] text-sm sm:text-base leading-relaxed mb-6">
+                  Over the past decade, China has invested heavily in top-tier global higher education. Universities like Tsinghua, Peking, and Zhejiang University consistently rank in the top 50 worldwide. International students get front-row seats to advancements in AI, renewable energy, and digital commerce while studying in English.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700">Top 50 Universities</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-50 text-red-700">AI & Tech Hubs</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800">Global Career Network</span>
+              </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-[#1d1d1f] mt-12 mb-4">Navigating the China Student Visa X1 Process</h3>
-            <p className="text-[#5a5a5c] mb-12">
-              The <strong>China student visa X1</strong> is for students planning to stay for more than 180 days. It is critical to note that once you arrive in China, you have exactly 30 days to apply for a Residence Permit at the local Exit and Entry Administration. Failure to do so can lead to fines. At Nihao.edu, we provide the 1-on-1 guidance needed to ensure your documentation is compliant with local regulations.
-            </p>
+            {/* Card 2: English Taught Programs */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-red-300/80 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full pointer-events-none group-hover:bg-amber-500/10 transition-colors" />
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <GraduationCap className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-3 group-hover:text-amber-700 transition-colors">
+                  Top-Ranked English-Taught Programs
+                </h3>
+                <p className="text-[#5a5a5c] text-sm sm:text-base leading-relaxed mb-6">
+                  No Mandarin proficiency? No problem. Designated "Double First-Class" universities offer hundreds of accredited <strong>English-taught programs</strong>. From <strong>MBBS in China</strong> (Medicine) to MBAs and Engineering degrees, you can learn in English while taking optional conversational Chinese (HSK) electives.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800">MBBS & Medicine</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700">MBA & Business</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-50 text-red-700">100% English Taught</span>
+              </div>
+            </div>
+
+            {/* Card 3: Shanghai & Hangzhou */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-red-300/80 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-bl-full pointer-events-none group-hover:bg-red-500/10 transition-colors" />
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Building2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-3 group-hover:text-red-600 transition-colors">
+                  Academic Hubs: Shanghai & Hangzhou
+                </h3>
+                <p className="text-[#5a5a5c] text-sm sm:text-base leading-relaxed mb-6">
+                  Where you study defines your student experience. <strong>Shanghai</strong> is a futuristic global finance metropolis. <strong>Hangzhou</strong> (home to Nihao Education HQ) balances high-tech innovation with the UNESCO West Lake scenery. Both hubs offer ultra-safe living and seamless high-speed rail connections.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-50 text-red-700">Shanghai Metropolis</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800">Hangzhou HQ</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700">Hyper-Connected</span>
+              </div>
+            </div>
+
+            {/* Card 4: CSC Scholarship */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-red-300/80 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full pointer-events-none group-hover:bg-amber-500/10 transition-colors" />
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Award className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-3 group-hover:text-amber-700 transition-colors">
+                  Securing the Chinese Government Scholarship (CSC)
+                </h3>
+                <p className="text-[#5a5a5c] text-sm sm:text-base leading-relaxed mb-6">
+                  The <strong>CSC Scholarship</strong> is among the most comprehensive funding awards globally — covering full tuition, on-campus accommodation, and a monthly living stipend. Managing your application with Nihao Education guarantees precision alignment with university quotas.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">Full Tuition Covered</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800">Free Accommodation</span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-50 text-red-700">Monthly Stipend</span>
+              </div>
+            </div>
+          </div>
+
+          {/* SHOWSTOPPER: THE APPLICATION TIMELINE CARD */}
+          <div className="bg-gradient-to-br from-white via-[#fefcf8] to-red-50/40 p-8 sm:p-12 rounded-3xl border-2 border-red-200/80 shadow-xl my-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 translate-x-10 -translate-y-10 w-64 h-64 bg-red-500/10 rounded-full blur-2xl pointer-events-none" />
+            
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-10 pb-6 border-b border-red-100">
+              <div>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-800 text-xs font-bold uppercase tracking-wider mb-2">
+                  <Calendar className="w-3.5 h-3.5" /> Step-by-Step Roadmap
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tracking-tight">
+                  The Application Timeline: How to Prepare
+                </h3>
+              </div>
+              <span className="text-xs font-bold px-4 py-2 rounded-xl bg-white border border-red-200 text-red-700 shadow-xs">
+                2026 Intake Schedule
+              </span>
+            </div>
+
+            {/* Timeline Step Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 relative">
+              {[
+                {
+                  phase: "Phase 1",
+                  time: "Sept - Dec",
+                  title: "Research & Prep",
+                  desc: "Select universities & programs. Prepare academic transcripts, passport, and IELTS/TOEFL scores.",
+                  badgeBg: "bg-red-50 text-red-700 border-red-200",
+                },
+                {
+                  phase: "Phase 2",
+                  time: "Jan - March",
+                  title: "Submit Applications",
+                  desc: "Submit official university portal applications and Chinese Government Scholarship (CSC) requests.",
+                  badgeBg: "bg-amber-50 text-amber-800 border-amber-200",
+                },
+                {
+                  phase: "Phase 3",
+                  time: "April - June",
+                  title: "Admission & JW202",
+                  desc: "Receive official Admission Letters and official JW202/JW201 government visa documentation.",
+                  badgeBg: "bg-emerald-50 text-emerald-800 border-emerald-200",
+                },
+                {
+                  phase: "Phase 4",
+                  time: "July - August",
+                  title: "Student Visa (X1)",
+                  desc: "Apply for your China Student Visa (X1) at your local Chinese Embassy or Consulate.",
+                  badgeBg: "bg-blue-50 text-blue-800 border-blue-200",
+                },
+                {
+                  phase: "Phase 5",
+                  time: "September",
+                  title: "Arrival & Registration",
+                  desc: "Fly to China! Register on campus and convert your X1 visa to a Residence Permit within 30 days.",
+                  badgeBg: "bg-purple-50 text-purple-800 border-purple-200",
+                },
+              ].map((step, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-red-400 transition-all duration-200 flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className={`text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full border ${step.badgeBg}`}>
+                        {step.phase}
+                      </span>
+                      <span className="text-xs font-bold text-slate-400">{step.time}</span>
+                    </div>
+                    <h4 className="font-bold text-[#1d1d1f] text-base mb-2 group-hover:text-red-600 transition-colors">
+                      {step.title}
+                    </h4>
+                    <p className="text-slate-600 text-xs leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-semibold">
+                    <span>Step 0{idx + 1}</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500 opacity-80" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Visa X1 Alert Callout */}
+          <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                <FileText className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-[#1d1d1f] mb-1">
+                  Navigating the China Student Visa X1 Process
+                </h3>
+                <p className="text-[#5a5a5c] text-sm leading-relaxed max-w-2xl">
+                  The <strong>China Student Visa X1</strong> is issued for stays over 180 days. Remember: you have exactly 30 days after arrival in China to convert your X1 visa to a Residence Permit at the local Exit & Entry Bureau. Nihao Education provides 1-on-1 on-ground support to ensure total compliance.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/contact"
+              className="bg-[#1d1d1f] hover:bg-red-600 text-white px-6 py-3.5 rounded-full text-xs font-bold shadow-md hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap shrink-0"
+            >
+              <span>Get Free Visa Checklist</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -886,21 +1097,22 @@ export default function Home() {
       {/* Section 6: Deadlines */}
       <Deadlines />
 
-      {/* Section 6.5: Video Consultation Feature Showcase */}
-      <section className="py-24 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Section 6.5: Video Consultation & Guidance Showcase (Clean White Professional Theme) */}
+      <section className="py-24 bg-white text-[#1d1d1f] relative overflow-hidden border-t border-slate-100">
+        {/* Animated Shanghai & Beijing Landmarks Background Layer */}
+        <ChinaLandmarksAnimation variant="all" className="opacity-25" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">
-              <Video className="w-4 h-4" /> 1-on-1 Personalized Counselor Video Guidance
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 text-red-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+              1-on-1 Direct Study in China Advisory
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-              Get Expert Guidance on a Direct Video Call
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight">
+              Get Complete Guidance From Hangzhou HQ
             </h2>
-            <p className="text-slate-400 text-base md:text-lg mt-4 leading-relaxed">
-              Have burning questions about studying in China? Book a dedicated 45-minute video call with a senior Nihao Education counselor. Here is what we guide you on during your session:
+            <p className="text-[#5a5a5c] text-base md:text-lg mt-4 leading-relaxed">
+              Have questions about studying in Shanghai, Beijing, or Hangzhou? Our senior localized team guides you step-by-step through university applications and full arrival integration:
             </p>
           </div>
 
@@ -951,46 +1163,52 @@ export default function Home() {
               return (
                 <div 
                   key={idx} 
-                  className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 hover:border-amber-400/50 hover:bg-slate-800 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-red-400/60 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                    <div className="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors">
                       <ItemIcon className="w-6 h-6" />
                     </div>
-                    <h3 className="font-bold text-white text-base mb-2">{item.title}</h3>
-                    <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                    <h3 className="font-bold text-[#1d1d1f] text-base mb-2">{item.title}</h3>
+                    <p className="text-[#5a5a5c] text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <div className="bg-gradient-to-r from-red-900/40 via-slate-900 to-amber-900/40 border border-white/10 rounded-3xl p-8 md:p-10 text-center relative overflow-hidden max-w-4xl mx-auto shadow-2xl">
+          <div className="bg-gradient-to-r from-red-50 via-amber-50 to-red-50 border border-red-200/80 rounded-3xl p-8 md:p-10 text-center relative overflow-hidden max-w-4xl mx-auto shadow-sm">
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left">
               <div>
-                <span className="bg-amber-400 text-slate-950 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">
-                  Instant Confirmation via WhatsApp
+                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">
+                  Direct Support via WhatsApp
                 </span>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white">
-                  Ready to speak with a senior counselor?
+                <h3 className="text-2xl md:text-3xl font-extrabold text-[#1d1d1f]">
+                  Ready to secure your place in China?
                 </h3>
-                <p className="text-slate-300 text-sm mt-1">
-                  Select your topic, preferred date and time, and receive instant meeting confirmation.
+                <p className="text-[#5a5a5c] text-sm mt-1">
+                  Connect with our Hangzhou advisory team today for zero-stress university applications.
                 </p>
               </div>
 
-              <button
-                onClick={() => {
-                  setVideoModalTopic('career');
-                  setIsVideoModalOpen(true);
-                }}
-                className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-8 py-4 rounded-full font-extrabold text-base shadow-xl shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap flex-shrink-0"
+              <Link
+                to="/contact"
+                className="bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-8 py-4 rounded-full font-bold text-base shadow-lg shadow-red-500/20 hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap flex-shrink-0"
               >
-                <Video className="w-5 h-5" /> Book Video Call
-              </button>
+                <span>Get Your Place</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Chinese Guofeng Heritage Showcase Card & Wave Border */}
+      <section className="py-12 bg-slate-50/50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <GuofengHeritageShowcaseCard />
+        </div>
+        <ChineseWaveBorder height={48} colorTheme="red" className="mt-8 opacity-90" />
       </section>
 
       {/* Section 7: The Lead Magnet */}
