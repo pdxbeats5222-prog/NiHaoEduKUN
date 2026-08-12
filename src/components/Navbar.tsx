@@ -54,6 +54,7 @@ export default function Navbar() {
 
   const languages = [
     { code: 'en', name: 'English' },
+    { code: 'hi', name: 'हिन्दी' },
     { code: 'zh', name: '中文' },
     { code: 'es', name: 'Español' },
     { code: 'fr', name: 'Français' },
@@ -128,7 +129,7 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      className="absolute right-0 mt-2 w-32 bg-white/90 backdrop-blur-xl border border-white/50 shadow-2xl rounded-2xl overflow-hidden py-1"
+                      className="absolute right-0 mt-2 w-36 bg-white/95 backdrop-blur-xl border border-white/50 shadow-2xl rounded-2xl overflow-hidden py-1 max-h-80 overflow-y-auto"
                     >
                       {languages.map((lang) => (
                         <button
