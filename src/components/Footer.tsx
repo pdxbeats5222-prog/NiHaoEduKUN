@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Globe, Mail, MapPin, Phone, Instagram, Youtube, Linkedin } from 'lucide-react';
 import { SiTiktok, SiXiaohongshu } from 'react-icons/si';
+import { INSTAGRAM_LINK, YOUTUBE_LINK } from '../constants';
 
 export default function Footer() {
   return (
@@ -18,10 +19,10 @@ export default function Footer() {
               Your local gateway to China. We are a localized consultancy headquartered in Hangzhou, providing unmatched insight into campus life and seamless integration.
             </p>
             <div className="flex gap-2.5 pt-2">
-              <a href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-stone-900/90 border border-stone-800 flex items-center justify-center text-stone-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
+              <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-stone-900/90 border border-stone-800 flex items-center justify-center text-stone-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-stone-900/90 border border-stone-800 flex items-center justify-center text-stone-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
+              <a href={YOUTUBE_LINK} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-stone-900/90 border border-stone-800 flex items-center justify-center text-stone-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">
                 <Youtube className="w-4 h-4" />
               </a>
               <a href="https://www.tiktok.com/@kunofficial37?_r=1&_t=ZP-95drv1GlYpK" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-stone-900/90 border border-stone-800 flex items-center justify-center text-stone-300 hover:text-white hover:bg-red-600 hover:border-red-500 transition-all">

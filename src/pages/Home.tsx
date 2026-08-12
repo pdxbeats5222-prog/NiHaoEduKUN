@@ -4,7 +4,7 @@ import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Down
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { WHATSAPP_LINK } from '../constants';
+import { WHATSAPP_LINK, INSTAGRAM_LINK, YOUTUBE_LINK } from '../constants';
 import Deadlines from '../components/Deadlines';
 import UniversityMap from '../components/UniversityMap';
 import { BookVideoCallModal } from '../components/BookVideoCallModal';
@@ -69,8 +69,8 @@ export default function Home() {
     "logo": "https://lh3.googleusercontent.com/u/0/d/1mOhv5T049YvaZY11iRie6C5Yxuk0XQC2",
     "description": "Nihao.edu is a premier educational consultancy specializing in helping international students study in China with expert admissions, scholarship (CSC), and visa (X1/X2) assistance.",
     "sameAs": [
-      "https://www.instagram.com/nihao_edu_kun",
-      "https://youtube.com/@kun-nihao.educhina"
+      INSTAGRAM_LINK,
+      YOUTUBE_LINK
     ]
   };
 
@@ -881,7 +881,7 @@ export default function Home() {
                 <motion.a 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G"
+                  href={YOUTUBE_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full font-bold shadow-lg shadow-red-200 hover:bg-red-700 transition-colors"
@@ -892,7 +892,7 @@ export default function Home() {
                 <motion.a 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr"
+                  href={INSTAGRAM_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#1d1d1f] text-[#1d1d1f] rounded-full font-bold hover:bg-[#1d1d1f] hover:text-white transition-all"
@@ -918,7 +918,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[650px]">
             {/* Main Feature: YouTube Short */}
             <motion.a 
-              href="https://youtube.com/@kun-nihao.educhina?si=oMPCkGSo6v-jM75G" 
+              href={YOUTUBE_LINK} 
               target="_blank" 
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -949,7 +949,7 @@ export default function Home() {
 
             {/* Secondary Video */}
             <motion.a 
-              href="https://www.instagram.com/nihao_edu_kun?igsh=enZzajQxZ3A1d3F5&utm_source=qr" 
+              href={INSTAGRAM_LINK} 
               target="_blank" 
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
