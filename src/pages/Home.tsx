@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX, Video, Calendar, DollarSign, Award, ShieldCheck, Sparkles, GraduationCap, Building2, FileText, MapPin } from 'lucide-react';
+import { ArrowRight, Play, BookOpen, Globe2, Briefcase, CheckCircle2, Star, Download, Instagram, Youtube, Info, HelpCircle, Volume2, VolumeX, Video, Calendar, DollarSign, Award, ShieldCheck, Sparkles, GraduationCap, Building2, FileText, MapPin, Handshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -199,22 +199,31 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8"
+                className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8"
               >
-                {/* Get Your Place Button */}
+                {/* Start Your Free Application Button */}
                 <Link 
                   to="/contact" 
-                  className="w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl shadow-red-500/25 hover:shadow-2xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2 group text-center cursor-pointer"
+                  className="w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white px-7 py-4 rounded-full font-bold text-base shadow-xl shadow-red-500/25 hover:shadow-2xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
                 >
                   <Sparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
-                  <span className="tracking-tight">{t('Get Free Place')}</span>
+                  <span className="tracking-tight">Start Your Free Application</span>
+                </Link>
+
+                {/* Become a Partner Button */}
+                <Link 
+                  to="/become-a-partner" 
+                  className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-900 border-2 border-slate-200 hover:border-amber-400/80 px-7 py-4 rounded-full font-bold text-base shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
+                >
+                  <Handshake className="w-5 h-5 text-amber-600 group-hover:scale-110 transition-transform" />
+                  <span className="tracking-tight">Become a Partner</span>
                 </Link>
 
                 {/* Watch About Us Button */}
                 <Link 
                   to="/about" 
                   state={{ unmute: true }}
-                  className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 px-8 py-4 rounded-full font-bold text-base shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-250 flex items-center justify-center gap-2.5 group text-center cursor-pointer"
+                  className="w-full sm:w-auto text-slate-700 hover:text-red-600 px-4 py-3 rounded-full font-semibold text-sm hover:bg-white/80 transition-all duration-200 flex items-center justify-center gap-2 group text-center cursor-pointer"
                 >
                   <div className="w-7 h-7 rounded-full bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors shadow-xs">
                     <Play className="w-3.5 h-3.5 fill-current ml-0.5 group-hover:scale-110 transition-transform" />

@@ -50,6 +50,7 @@ export default function Navbar() {
     { name: t('Services'), path: '/services' },
     { name: t('About'), path: '/about' },
     { name: t('Resources'), path: '/resources' },
+    { name: t('Partners', { defaultValue: 'Partners' }), path: '/become-a-partner' },
   ];
 
   const languages = [

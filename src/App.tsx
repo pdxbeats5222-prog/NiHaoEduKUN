@@ -10,6 +10,7 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
+import BecomePartner from './pages/BecomePartner';
 import UniversityDetail from './pages/UniversityDetail';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -24,8 +25,9 @@ export default function App() {
           <Route path="about" element={<About />} />
           <Route path="resources" element={<Resources />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="university/:name" element={<UniversityDetail />} />
-        </Route>
+          <Route path="become-a-partner" element={<BecomePartner />} />
+          <Route path="partners" element={<BecomePartner />} />
+          <Route path="university/:name" element={<UniversityDetail />} /></Route>
       </Routes>
     </BrowserRouter>
   );

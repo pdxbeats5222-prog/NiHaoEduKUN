@@ -44,6 +44,7 @@ export default function Footer() {
               <li><Link to="/services" className="hover:text-amber-400 transition-colors">Our Services</Link></li>
               <li><Link to="/about" className="hover:text-amber-400 transition-colors">Meet the Team</Link></li>
               <li><Link to="/resources" className="hover:text-amber-400 transition-colors">Student Resources</Link></li>
+              <li><Link to="/become-a-partner" className="text-amber-400 hover:text-amber-300 font-semibold transition-colors">Become a Partner</Link></li>
               <li><a href="https://wa.me/8615968141445" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">Get Your Place</a></li>
             </ul>
           </div>
