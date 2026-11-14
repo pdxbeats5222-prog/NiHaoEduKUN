@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { visaFaqsEn, visaFaqsZh } from '../constants/visaFaq';
 import VisaChecklist from '../components/VisaChecklist';
+import RequiredDocuments from '../components/RequiredDocuments';
 
 export default function Services() {
   const { t, i18n } = useTranslation();
@@ -170,8 +171,13 @@ export default function Services() {
           </div>
         </div>
 
+        {/* Required university application documents */}
+        <div className="mt-24 mb-16 max-w-5xl mx-auto">
+          <RequiredDocuments />
+        </div>
+
         {/* Visa document checklist tool */}
-        <div className="my-24 max-w-5xl mx-auto">
+        <div className="my-16 max-w-5xl mx-auto">
           <VisaChecklist />
         </div>
 

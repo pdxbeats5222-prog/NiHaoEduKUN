@@ -11,6 +11,7 @@ import UniversityMap from '../components/UniversityMap';
 import { BookVideoCallModal } from '../components/BookVideoCallModal';
 import { ChineseAestheticHeroBanner } from '../components/Chinese3DLantern';
 import { ChineseEducationCrest } from '../components/ChineseEducationCrest';
+import RequiredDocuments from '../components/RequiredDocuments';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -801,6 +802,11 @@ export default function Home() {
             </div>
           </div>
 
+          {/* REQUIRED APPLICATION DOCUMENTS CHECKLIST */}
+          <div className="my-12">
+            <RequiredDocuments />
+          </div>
+
           {/* SHOWSTOPPER: THE APPLICATION TIMELINE CARD */}
           <div className="bg-gradient-to-br from-white via-[#fefcf8] to-red-50/40 p-8 sm:p-12 rounded-3xl border-2 border-red-200/80 shadow-xl my-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 translate-x-10 -translate-y-10 w-64 h-64 bg-red-500/10 rounded-full blur-2xl pointer-events-none" />
@@ -826,7 +832,7 @@ export default function Home() {
                   phase: "Phase 1",
                   time: "Sept - Dec",
                   title: "Research & Prep",
-                  desc: "Select universities & programs. Prepare academic transcripts, passport, and IELTS/TOEFL scores.",
+                  desc: "Prepare passport photo page, highest diploma/expected graduation letter, full transcripts, language certificate, study plan, passport photos, and CSCA (Bachelor's only). Start early as HSK & scholarship papers take time.",
                   badgeBg: "bg-red-50 text-red-700 border-red-200",
                 },
                 {
@@ -1242,7 +1248,7 @@ export default function Home() {
               {
                 icon: FileText,
                 title: 'Recommendations & Documents',
-                desc: 'Preparing winning motivation letters, study plans, and authenticated transcripts.',
+                desc: "Passport photo page, highest diploma/expected graduation letter, full transcripts, language certificate, study plan, passport photos & CSCA (Bachelor's only).",
                 tag: 'Step 04'
               },
               {

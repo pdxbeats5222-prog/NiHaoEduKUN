@@ -24,6 +24,7 @@ import {
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import RequiredDocuments from '../components/RequiredDocuments';
 
 export default function Resources() {
   const { t } = useTranslation();
@@ -550,6 +551,10 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
               </div>
             </div>
 
+          </div>
+
+          <div className="mt-16">
+            <RequiredDocuments />
           </div>
         </div>
       </div>
