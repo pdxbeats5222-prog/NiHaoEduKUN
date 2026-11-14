@@ -277,7 +277,7 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
             "Comprehensive Multi-culture cohorts",
             "Fully Custom Consulting Services"
           ].map((adv, idx) => (
-            <div key={idx} className="bg-[#f5f5f7] p-8 rounded-[2rem] flex flex-col items-center text-center hover:bg-[#faf9f6]/80 transition-colors border border-transparent hover:border-amber-200 shadow-sm">
+            <div key={idx} className="bg-[#f8fafc] p-8 rounded-[2rem] flex flex-col items-center text-center hover:bg-white transition-colors border border-slate-200/70 hover:border-amber-200 shadow-sm">
               <CheckCircle2 className="w-8 h-8 text-amber-500 mb-4 shrink-0" />
               <p className="font-semibold text-[#1d1d1f] text-sm leading-snug">{adv}</p>
             </div>
@@ -288,7 +288,7 @@ Disclaimer: Always check with your local embassy for the most up-to-date require
       {/* 
         3. HIGH-AUTHORITY EDUCATION INSIGHTS (blogs/articles requested)
       */}
-      <div className="bg-[#faf9f6] py-32 border-y border-gray-150">
+      <div className="bg-[#f8fafc] py-32 border-y border-slate-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-black uppercase text-amber-600 tracking-widest bg-amber-50 border border-amber-100 px-3 py-1 rounded-full mb-3 inline-block">Topical Authority Publications</span>

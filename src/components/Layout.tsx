@@ -5,7 +5,7 @@ import Chatbot from './Chatbot';
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans bg-[#f8fafc] text-[#1d1d1f]">
       <Navbar />
       <main className="flex-grow">
         <Outlet />

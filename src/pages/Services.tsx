@@ -59,8 +59,8 @@ export default function Services() {
 
 
       {/* On-Ground Integration */}
-      <div className="bg-[#faf9f6] py-32 text-[#1d1d1f] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #8b0000 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+      <div className="bg-[#f8fafc] py-32 text-[#1d1d1f] relative overflow-hidden border-y border-slate-200/60">
+        <div className="absolute inset-0 architectural-grid-bg pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">

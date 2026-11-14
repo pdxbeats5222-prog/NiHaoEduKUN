@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, Award, ShieldCheck, MapPin } from 'lucide-react';
 
 interface LanternProps {
   className?: string;
@@ -171,78 +172,130 @@ export const Realistic3DLantern: React.FC<LanternProps> = ({
 };
 
 export const ChineseAestheticHeroBanner: React.FC = () => {
+  const pillars = [
+    {
+      icon: Award,
+      iconColor: 'text-amber-400',
+      iconBg: 'bg-amber-500/10 border-amber-500/20',
+      title: 'CSC Type A & B Scholarships',
+      desc: 'Full tuition coverage, campus accommodation & living stipend advisory.',
+    },
+    {
+      icon: ShieldCheck,
+      iconColor: 'text-emerald-400',
+      iconBg: 'bg-emerald-500/10 border-emerald-500/20',
+      title: 'Direct University Admissions',
+      desc: 'Official partner portals across Hangzhou, Shanghai & C9 universities.',
+    },
+    {
+      icon: MapPin,
+      iconColor: 'text-red-400',
+      iconBg: 'bg-red-500/10 border-red-500/20',
+      title: '48-Hour Ground Integration',
+      desc: 'Airport reception, residence permit, banking & campus onboarding.',
+    },
+  ];
+
   return (
-    <div className="relative w-full rounded-3xl overflow-hidden bg-[#f7f2e9] border border-[#e8ded0] p-6 sm:p-10 shadow-2xl my-8 text-slate-800">
-      {/* Background Subtle Papyrus Pattern */}
+    <div className="relative w-full rounded-[2rem] overflow-hidden bg-gradient-to-br from-[#141417] via-[#19161a] to-[#231215] border border-white/10 shadow-[0_24px_70px_-15px_rgba(20,20,23,0.38)] my-8 text-white">
+      {/* Top Executive Accent Hairline */}
+      <div className="h-[3px] w-full bg-gradient-to-r from-red-600 via-amber-500 to-red-600/30" />
+
+      {/* Subtle Ambient Radial Accents */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Subtle Architectural Micro-Grid */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
-          backgroundImage:
-            'radial-gradient(circle at 2px 2px, #8b0000 1px, transparent 0)',
-          backgroundSize: '24px 24px',
+          backgroundImage: 'radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)',
+          backgroundSize: '28px 28px',
         }}
       />
 
-      {/* Terracotta Crimson Sun Disc */}
-      <div className="absolute top-1/2 right-4 sm:right-16 -translate-y-1/2 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-gradient-to-br from-[#d84a26] via-[#c83e1c] to-[#991b1b] opacity-90 shadow-2xl pointer-events-none" />
+      {/* Main 12-Column Layout */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 p-7 sm:p-10 lg:p-12 items-center">
+        {/* Left Editorial Column */}
+        <div className="lg:col-span-7">
+          <div className="inline-flex items-center gap-2.5 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-md">
+            <span className="px-1.5 py-0.5 rounded bg-red-600/90 text-[10px] font-bold tracking-wider text-white">
+              留学
+            </span>
+            <span className="text-[11px] font-semibold tracking-[0.12em] text-stone-300 uppercase">
+              Nihao Education • Official CSC Admissions Desk
+            </span>
+          </div>
 
-      {/* Floating 3D Lantern Overlay */}
-      <div className="absolute top-4 right-8 sm:right-28 z-20 hidden md:block">
-        <Realistic3DLantern size="lg" floatDuration={5.5} />
-      </div>
+          <h3 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold !text-white tracking-tight mb-4 leading-[1.15]">
+            Experience China.
+            <span className="block mt-1 bg-gradient-to-r from-amber-300 via-amber-200 to-amber-400 bg-clip-text text-transparent">
+              Where Tradition Meets Modern Brilliance.
+            </span>
+          </h3>
 
-      <div className="absolute top-16 right-60 z-20 hidden lg:block opacity-85">
-        <Realistic3DLantern size="md" floatDuration={7} />
-      </div>
+          <p className="text-stone-300 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
+            From Hangzhou’s West Lake to China’s premier Double First-Class campuses. Gain direct admissions, merit-based CSC scholarship matching, and dedicated 48-hour landing integration.
+          </p>
 
-      {/* Traditional Pagoda Roof Architectural Silhouette */}
-      <div className="absolute bottom-0 right-0 w-full sm:w-3/4 h-36 sm:h-48 pointer-events-none opacity-20 sm:opacity-30 flex items-end justify-end">
-        <svg
-          viewBox="0 0 600 200"
-          className="w-full h-full text-[#2c1d11]"
-          fill="currentColor"
-          preserveAspectRatio="none"
-        >
-          {/* Ornate Curved Chinese Pagoda Eaves */}
-          <path d="M0 200 H600 V120 C540 120 500 80 440 60 C380 40 340 10 300 0 C260 10 220 40 160 60 C100 80 60 120 0 120 Z" />
-          <path d="M150 200 H450 V110 C410 110 380 80 340 65 C300 50 280 20 250 15 C220 20 200 50 160 65 C120 80 90 110 150 110 Z" opacity="0.7" />
-        </svg>
-      </div>
+          {/* Refined Action Row */}
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3.5">
+            <Link
+              to="/contact"
+              state={{ program: 'Chinese Government Scholarship (CSC)' }}
+              className="bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 !text-white px-6 py-3.5 rounded-xl font-semibold text-sm shadow-lg shadow-red-950/50 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2.5 group"
+            >
+              <span>Apply for CSC Scholarship</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
 
-      {/* Content Container */}
-      <div className="relative z-10 max-w-2xl">
-        {/* Red Seal Stamp Badge */}
-        <div className="inline-flex items-center gap-3 mb-6 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-red-200/80 shadow-xs">
-          <span className="chinese-stamp px-2 py-0.5 text-xs font-serif font-bold text-red-700 border-red-700 bg-red-50">
-            平安喜乐
-          </span>
-          <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
-            Nihao Education • Authentic Study in China
-          </span>
+            <Link
+              to="/services"
+              className="bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 !text-stone-100 px-6 py-3.5 rounded-xl font-semibold text-sm backdrop-blur-sm transition-all duration-200 inline-flex items-center justify-center"
+            >
+              Explore Programs & Services
+            </Link>
+          </div>
         </div>
 
-        <h3 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c1917] tracking-tight mb-4 leading-tight">
-          Experience China.<br />
-          <span className="bg-gradient-to-r from-red-700 via-amber-700 to-amber-600 bg-clip-text text-transparent">
-            Where Tradition Meets Modern Brilliance.
-          </span>
-        </h3>
+        {/* Right Institutional Summary Panel */}
+        <div className="lg:col-span-5">
+          <div className="rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 p-5 sm:p-6 shadow-inner">
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-amber-400">
+                  2026 / 2027 Admissions
+                </p>
+                <p className="text-sm font-semibold text-white mt-0.5">
+                  Institutional Scholarship Track
+                </p>
+              </div>
+              <span className="px-2.5 py-1 rounded-md border border-red-500/40 bg-red-500/10 text-red-300 text-[11px] font-bold tracking-wider">
+                CSC
+              </span>
+            </div>
 
-        <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 max-w-lg">
-          From the West Lake of Hangzhou to world-class university campuses. Enjoy zero-stress admissions, guaranteed CSC scholarships, and full 48-hour landing integration.
-        </p>
-
-        <div className="flex flex-wrap items-center gap-4">
-          <Link
-            to="/contact"
-            state={{ program: 'Chinese Government Scholarship (CSC)' }}
-            className="bg-[#b91c1c] hover:bg-[#991b1b] text-white px-6 py-3 rounded-2xl font-semibold text-sm shadow-lg shadow-red-900/20 hover:shadow-xl transition-all flex items-center gap-2"
-          >
-            <span>Apply For CSC Scholarship</span>
-            <span className="chinese-stamp text-[10px] px-1 py-0 border-white text-white bg-transparent">
-              申请
-            </span>
-          </Link>
+            <div className="divide-y divide-white/[0.07]">
+              {pillars.map((pillar) => {
+                const Icon = pillar.icon;
+                return (
+                  <div key={pillar.title} className="py-3.5 first:pt-0 last:pb-0 flex items-start gap-3.5">
+                    <div className={`w-9 h-9 rounded-xl border ${pillar.iconBg} flex items-center justify-center shrink-0 mt-0.5`}>
+                      <Icon className={`w-4 h-4 ${pillar.iconColor}`} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold !text-white leading-snug">
+                        {pillar.title}
+                      </h4>
+                      <p className="text-xs text-stone-400 leading-relaxed mt-0.5">
+                        {pillar.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

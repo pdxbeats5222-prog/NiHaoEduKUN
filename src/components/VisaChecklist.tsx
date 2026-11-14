@@ -384,7 +384,7 @@ export default function VisaChecklist() {
           return (
             <div 
               key={item.id} 
-              className={`p-6 md:p-8 hover:bg-[#faf9f6]/40 transition-colors ${
+              className={`p-6 md:p-8 hover:bg-[#f8fafc] transition-colors ${
                 status === 'completed' ? 'bg-green-50/10' : ''
               }`}
             >
@@ -518,7 +518,7 @@ export default function VisaChecklist() {
       </div>
 
       {/* Footer support prompt */}
-      <div className="bg-[#faf9f6] p-6 text-center border-t border-gray-100 text-xs md:text-sm text-[#86868b]">
+      <div className="bg-[#f8fafc] p-6 text-center border-t border-slate-200/70 text-xs md:text-sm text-[#86868b]">
         <span>{isZh ? '⚠️ 本清单依据中国各大驻外使领馆官方签证指导汇编。特定国家和校区可能会有额外附加要求。' : '⚠️ This checklist is compiled under standard embassy filing instructions. Local consulates may have regional differences.'}</span>
       </div>
     </div>

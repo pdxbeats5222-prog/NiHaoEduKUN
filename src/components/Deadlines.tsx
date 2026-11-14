@@ -80,8 +80,7 @@ END:VCALENDAR`;
   };
 
   return (
-    <section id="deadlines" className="py-32 bg-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-red-400/10 to-transparent blur-3xl rounded-full pointer-events-none" />
+    <section id="deadlines" className="py-32 bg-white relative overflow-hidden border-t border-slate-200/60">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
@@ -99,7 +98,7 @@ END:VCALENDAR`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-[#faf9f6] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 rounded-[2rem] flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between group hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500"
+              className="bg-[#f8fafc] border border-slate-200/80 shadow-[0_8px_30px_rgba(15,23,42,0.04)] p-8 rounded-[2rem] flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between group hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)] transition-all duration-500"
             >
               <div className="flex-grow">
                 <div className="flex items-center gap-2 mb-3">
@@ -180,7 +179,7 @@ END:VCALENDAR`;
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-                  <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#faf9f6] border border-gray-100">
+                  <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70">
                     <div className="p-2 bg-red-50 rounded-lg text-red-600">
                       <DollarSign className="w-6 h-6" />
                     </div>
@@ -190,7 +189,7 @@ END:VCALENDAR`;
                       <p className="text-xs text-[#5a5a5c]">No hidden fees</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#faf9f6] border border-gray-100">
+                  <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70">
                     <div className="p-2 bg-amber-50 rounded-lg text-amber-600">
                       <Calendar className="w-6 h-6" />
                     </div>
@@ -277,7 +276,7 @@ END:VCALENDAR`;
                       <MapPin className="w-6 h-6 text-red-600" />
                       <h3 className="text-xl font-bold text-[#1d1d1f]">Location</h3>
                     </div>
-                    <div className="bg-[#faf9f6] p-6 rounded-2xl border border-gray-100">
+                    <div className="bg-[#f8fafc] p-6 rounded-2xl border border-slate-200/70">
                       <p className="text-[#1d1d1f] font-medium">No. 280 Xuelin Street, Qiantang District, Hangzhou City</p>
                     </div>
                   </section>

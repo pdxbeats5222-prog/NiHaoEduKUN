@@ -309,14 +309,13 @@ export default function Contact() {
             <div className="relative z-10 rounded-[2.5rem] overflow-hidden bg-white p-3 shadow-xl border border-emerald-100">
               <div className="relative rounded-[2rem] overflow-hidden bg-emerald-100 aspect-[4/5]">
                 <img 
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" 
+                  src="/contact-student.jpg" 
                   alt="Happy International Student choosing study budget options" 
-                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    if (target.src !== 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop') {
-                      target.src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop';
+                    if (!target.src.endsWith('/about_hero.jpg')) {
+                      target.src = '/about_hero.jpg';
                     }
                   }}
                 />

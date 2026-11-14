@@ -6,13 +6,10 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { WHATSAPP_LINK, INSTAGRAM_LINK, YOUTUBE_LINK } from '../constants';
 import Deadlines from '../components/Deadlines';
+import PartnerUniversitiesMarquee from '../components/PartnerUniversitiesMarquee';
 import UniversityMap from '../components/UniversityMap';
 import { BookVideoCallModal } from '../components/BookVideoCallModal';
-import { Realistic3DLantern, ChineseAestheticHeroBanner } from '../components/Chinese3DLantern';
-import { ChinaLandmarksAnimation } from '../components/ChinaLandmarksAnimation';
-import { FallingPlumPetals, FlyingCranes } from '../components/ChineseGuofengAesthetic';
-import { TempleOfHeavenHeroBackground } from '../components/TempleOfHeavenBackground';
-import { ChineseAnimatedDragon } from '../components/ChineseAnimatedDragon';
+import { ChineseAestheticHeroBanner } from '../components/Chinese3DLantern';
 import { ChineseEducationCrest } from '../components/ChineseEducationCrest';
 
 export default function Home() {
@@ -135,29 +132,12 @@ export default function Home() {
         </script>
       </Helmet>
       {/* Section 1: The Hero Area */}
-      <section className="relative pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden bg-[#faf9f6]">
-        {/* Transparent & Professional Temple of Heaven Background */}
-        <TempleOfHeavenHeroBackground />
+      <section className="relative pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#fbfcfd] to-white border-b border-slate-200/60">
+        {/* Subtle Architectural Hairline Grid */}
+        <div className="absolute inset-0 architectural-grid-bg pointer-events-none" />
 
-        {/* Subtle background glow effects - Chinese Aesthetic (Crimson/Gold) */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-red-500/10 to-transparent blur-3xl rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-amber-500/10 to-transparent blur-3xl rounded-full pointer-events-none" />
-        
-        {/* Subtle Cloud/Wave Motif Overlay */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #8b0000 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-
-        {/* Animated Flying Cranes & Falling Plum Petals */}
-        <FlyingCranes />
-        <FallingPlumPetals count={10} />
-
-        {/* Realistic 3D Floating Chinese Lanterns - Left & Right */}
-        <div className="absolute top-16 left-4 lg:left-12 pointer-events-none hidden sm:block z-20">
-          <Realistic3DLantern size="lg" floatDuration={6} />
-        </div>
-
-        <div className="absolute top-24 right-4 lg:right-12 pointer-events-none hidden sm:block z-20">
-          <Realistic3DLantern size="md" floatDuration={7.5} />
-        </div>
+        {/* Subtle Executive Ambient Lighting */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[900px] h-[380px] bg-gradient-to-b from-slate-200/40 via-red-500/[0.03] to-transparent blur-3xl rounded-full pointer-events-none" />
         
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -414,17 +394,20 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
+      </section>
 
-        {/* Chinese Heritage Architectural Banner */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12">
+      {/* Partner Universities Marquee (right after hero video) */}
+      <PartnerUniversitiesMarquee />
+
+      {/* Chinese Heritage Architectural Banner */}
+      <section className="py-8 bg-[#f8fafc] border-t border-slate-200/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <ChineseAestheticHeroBanner />
         </div>
       </section>
 
       {/* Section 2: The "Why China? Why Now?" Value Prop */}
-      <section className="py-32 bg-[#faf9f6] relative overflow-hidden">
-        {/* Subtle background motif */}
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #047857 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+      <section className="py-32 bg-white relative overflow-hidden border-t border-slate-200/60">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
@@ -474,8 +457,7 @@ export default function Home() {
       </section>
 
       {/* Section 3: Authority & Trust Building (The Founder's Edge) */}
-      <section className="py-32 bg-white relative overflow-hidden">
-        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-l from-red-500/5 to-transparent blur-3xl rounded-full pointer-events-none -translate-y-1/2" />
+      <section className="py-32 bg-[#f8fafc] relative overflow-hidden border-t border-slate-200/60">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -533,10 +515,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>      {/* NEW SECTION: The Nihao Advantage */}
-      <section className="py-32 bg-white text-[#1d1d1f] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-red-100 to-transparent blur-3xl rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-amber-100 to-transparent blur-3xl rounded-full pointer-events-none" />
+      </section>
+
+      {/* NEW SECTION: The Nihao Advantage */}
+      <section className="py-32 bg-white text-[#1d1d1f] relative overflow-hidden border-t border-slate-200/60">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
@@ -573,7 +555,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="bg-[#faf9f6] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 rounded-[2rem] hover:shadow-[0_20px_40_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1"
+                className="bg-[#f8fafc] border border-slate-200/80 shadow-[0_8px_30px_rgba(15,23,42,0.04)] p-8 rounded-[2rem] hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-amber-500 rounded-full flex items-center justify-center mb-6 text-xl font-bold text-white shadow-md">
                   {idx + 1}
@@ -587,7 +569,7 @@ export default function Home() {
       </section>
 
       {/* NEW SECTION: Study Programs */}
-      <section className="py-32 bg-[#faf9f6] relative overflow-hidden">
+      <section className="py-32 bg-[#f8fafc] relative overflow-hidden border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">{t('Study Programs.')}</h2>
@@ -645,8 +627,7 @@ export default function Home() {
       </section>
 
       {/* Section 4: Our Services (How We Help) */}
-      <section id="services" className="py-32 bg-[#faf9f6] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-emerald-400/10 to-transparent blur-3xl rounded-full pointer-events-none" />
+      <section id="services" className="py-32 bg-white relative overflow-hidden border-t border-slate-200/60">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
@@ -702,15 +683,8 @@ export default function Home() {
       </section>
 
       {/* SEO PILLAR SECTION: THE ULTIMATE GUIDE */}
-      <section id="guide" className="py-24 sm:py-32 bg-gradient-to-b from-white via-[#fcfbf9] to-slate-50 relative overflow-hidden border-t border-slate-100">
-        {/* Subtle Background Accent & Watermark */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Animated Traditional Imperial Chinese Dragon (祥龙腾飞) */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-full max-w-5xl opacity-20 hover:opacity-35 transition-opacity duration-700 pointer-events-none z-0">
-          <ChineseAnimatedDragon className="w-full h-auto scale-100 md:scale-110" />
-        </div>
+      <section id="guide" className="py-24 sm:py-32 bg-[#f8fafc] relative overflow-hidden border-t border-slate-200/60">
+        <div className="absolute inset-0 architectural-grid-bg pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
@@ -938,10 +912,10 @@ export default function Home() {
       </section>
 
       {/* FAQ SECTION */}
-      <section id="faq" className="py-32 bg-[#faf9f6] relative overflow-hidden">
+      <section id="faq" className="py-32 bg-white relative overflow-hidden border-t border-slate-200/60">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <div className="inline-block p-3 bg-red-100 rounded-2xl mb-4">
+            <div className="inline-block p-3 bg-red-50 border border-red-100 rounded-2xl mb-4">
               <HelpCircle className="w-8 h-8 text-red-600" />
             </div>
             <h2 className="text-4xl font-bold text-[#1d1d1f] tracking-tight">{t('Frequently Asked Questions')}</h2>
@@ -976,7 +950,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm"
+                className="bg-[#f8fafc] p-8 rounded-[2rem] border border-slate-200/70 shadow-xs"
               >
                 <h3 className="text-xl font-bold text-[#1d1d1f] mb-3">{faq.q}</h3>
                 <p className="text-[#5a5a5c] leading-relaxed">{faq.a}</p>
@@ -987,8 +961,7 @@ export default function Home() {
       </section>
 
       {/* Section 5: Real Student Life in China */}
-      <section id="vlogs" className="py-32 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #b91c1c 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+      <section id="vlogs" className="py-32 bg-[#f8fafc] relative overflow-hidden border-t border-slate-200/60">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
@@ -1151,8 +1124,7 @@ export default function Home() {
       <UniversityMap />
 
       {/* Section 5.5: Testimonials */}
-      <section className="py-32 bg-gradient-to-b from-[#faf9f6] to-white relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-amber-200/20 to-transparent blur-3xl rounded-full pointer-events-none -translate-y-1/2" />
+      <section className="py-32 bg-white relative overflow-hidden">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
@@ -1229,12 +1201,9 @@ export default function Home() {
       <Deadlines />
 
       {/* Section 6.5: Video Consultation & Guidance Showcase (Elevated Modern Bento Design) */}
-      <section className="py-28 bg-gradient-to-b from-slate-50/80 via-white to-amber-50/20 text-[#1d1d1f] relative overflow-hidden border-t border-slate-200/80">
-        {/* Animated Shanghai & Beijing Landmarks Background Layer */}
-        <ChinaLandmarksAnimation variant="all" className="opacity-20 pointer-events-none" />
-
-        {/* Ambient Glow Elements */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-red-500/10 via-amber-400/10 to-red-400/10 blur-3xl rounded-full pointer-events-none" />
+      <section className="py-28 bg-[#f8fafc] text-[#1d1d1f] relative overflow-hidden border-t border-slate-200/70">
+        {/* Subtle Architectural Grid Backdrop */}
+        <div className="absolute inset-0 architectural-grid-bg pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -1363,12 +1332,9 @@ export default function Home() {
       </section>
 
       {/* Section 7: Get Your Place For Free (Lead Magnet & Advisory Form) */}
-      <section id="get-your-place" className="py-24 bg-[#faf9f6] relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-50/30 to-amber-50/40 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-red-400/10 to-amber-400/10 blur-3xl rounded-full pointer-events-none" />
-
+      <section id="get-your-place" className="py-24 bg-white relative overflow-hidden border-t border-slate-200/60">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/90 backdrop-blur-xl border border-white/80 rounded-[2.5rem] p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div className="bg-[#f8fafc] border border-slate-200/80 rounded-[2.5rem] p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(15,23,42,0.05)] overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               
               {/* Left Column: Form & Title */}
