@@ -66,6 +66,24 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/1lhx6ceasYSrlWsBk7vy1BDdTzxq_r7_I"
     },
     {
+      name: "Max",
+      role: "Operation Supervisor",
+      desc: "Overseeing daily operations and institutional coordination to maintain high standards of service excellence across all departments.",
+      image: "https://lh3.googleusercontent.com/u/0/d/1DHWaP_CEiV38Sqy9QWYUEU2FDeFPlBzv"
+    },
+    {
+      name: "Jilong Li",
+      role: "Video Editor & Photographer",
+      desc: "Creative visual storyteller and editor capturing student life, campus aesthetics, and modern educational journeys in China.",
+      image: "https://lh3.googleusercontent.com/u/0/d/163mkHG1NSzX2PrcONwQl2EuU6_QwdWVx"
+    },
+    {
+      name: "Anli Li",
+      role: "Script Writer & Video Editor",
+      desc: "Talented narrative writer and content creator specialized in structuring engaging student guides and on-campus video stories.",
+      image: "https://lh3.googleusercontent.com/u/0/d/13k2ZKux61whmV9p7TNaFdTWuz2tsvpdv"
+    },
+    {
       name: "Kiki",
       role: "Video Creator",
       desc: "Digital content specialist, highlighting authentic campus experiences and student success stories through high-quality video production.",
@@ -102,12 +120,6 @@ export default function About() {
       image: "https://lh3.googleusercontent.com/u/0/d/1rkEfLG8ifXqeNl4c8edpN02RL57URp5U"
     },
     {
-      name: "Max",
-      role: "Operation Supervisor",
-      desc: "Overseeing daily operations and institutional coordination to maintain high standards of service excellence across all departments.",
-      image: "https://lh3.googleusercontent.com/u/0/d/1DHWaP_CEiV38Sqy9QWYUEU2FDeFPlBzv"
-    },
-    {
       name: "Alan",
       role: "Team Head of Student Guidance",
       desc: "Leading international student support and academic orientation strategies for all incoming scholars.",
@@ -136,18 +148,6 @@ export default function About() {
       role: "Coordinator for African Partnership",
       desc: "Bilingual communication and Cultural Integration specialist, fostering strong relationships across African partnerships.",
       image: "https://lh3.googleusercontent.com/u/0/d/1eHXH_NkzpDOqIDw3l_X3GiAdwInug7Am"
-    },
-    {
-      name: "Jilong Li",
-      role: "Video Editor & Photographer",
-      desc: "Creative visual storyteller and editor capturing student life, campus aesthetics, and modern educational journeys in China.",
-      image: "https://lh3.googleusercontent.com/u/0/d/163mkHG1NSzX2PrcONwQl2EuU6_QwdWVx"
-    },
-    {
-      name: "Anli Li",
-      role: "Script Writer & Video Editor",
-      desc: "Talented narrative writer and content creator specialized in structuring engaging student guides and on-campus video stories.",
-      image: "https://lh3.googleusercontent.com/u/0/d/13k2ZKux61whmV9p7TNaFdTWuz2tsvpdv"
     }
   ];
 
