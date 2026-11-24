@@ -73,7 +73,7 @@ export default function About() {
     },
     {
       name: "Jilong Li",
-      role: "Video Editor & Photographer",
+      role: "Content Operation Supervisor",
       desc: "Creative visual storyteller and editor capturing student life, campus aesthetics, and modern educational journeys in China.",
       image: "https://lh3.googleusercontent.com/u/0/d/163mkHG1NSzX2PrcONwQl2EuU6_QwdWVx"
     },
